@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import BaseHead from "../components/base-head.astro";
+import { Font } from "astro:assets";
 
 interface Props {
   title: string;
@@ -18,9 +19,11 @@ const { title, description, image } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-sans" preload />
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body>
+  <body class="bg-bg min-h-screen">
     <slot />
   </body>
 </html>
