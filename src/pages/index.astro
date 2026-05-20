@@ -5,47 +5,19 @@ import BaseLayout from "../layouts/layout.astro";
 import WhatsAppLink from "../components/whatsapp-link.astro";
 import MainNav from "../components/main-nav.astro";
 import HeroImage from "../assets/images/hero.webp";
-import CrosstrainingImage from "../assets/images/crosstraining.webp";
-import IronbodyImage from "../assets/images/ironbody.webp";
-import PartnerWODImage from "../assets/images/partner-wod.webp";
 import BoxImage from "../assets/images/box.webp";
 import BathImage from "../assets/images/bath.webp";
 import RemerasImage from "../assets/images/remeras.webp";
+import { getHomeData } from "../data/home";
 
-const activities = [
-	{
-		title: "Crosstraining",
-		image: CrosstrainingImage,
-		alt: "Zona de entrenamiento funcional durante una clase de crosstraining",
-		items: [
-			"Sesiones variadas que combinan fuerza, cardio y skills.",
-			"Trabajo integral de resistencia, movilidad, coordinación y técnica.",
-			"Entrenamientos planificados para progresar de forma segura.  ",
-		],
-	},
-	{
-		title: "Ironbody",
-		image: IronbodyImage,
-		alt: "Material de fuerza preparado para una sesión de Ironbody",
-		items: [
-			"Trabajo de fuerza con movimientos tradicionales y funcionales.",
-			"Progresión de cargas cuidando técnica, control y postura.",
-			" Ejercicios accesorios para prevenir lesiones y mejorar tu base.",
-		],
-	},
-	{
-		title: "Partner WOD",
-		image: PartnerWODImage,
-		alt: "Entrenamiento funcional por parejas en Box 28012",
-		items: [
-			"Entrenamientos cooperativos por parejas o equipos.",
-			"Trabajo compartido, ritmo común y motivación durante la sesión.",
-			"Un formato social para entrenar acompañado dentro del box.",
-		],
-	},
-];
-
-const instagramUrl = "https://www.instagram.com/box28012.madrid/";
+const data = getHomeData();
+const {
+	activities,
+	aboutParagraphs,
+	businessInfo,
+	pricingPlans,
+	contactItems,
+} = data;
 ---
 
 <BaseLayout
@@ -54,24 +26,31 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 >
 	<MainNav />
 
-	<div class="relative text-white/90 font-light tracking-wide">
+	<div class="relative text-white/90 font-light tracking-wide overflow-hidden">
 		<!-- INTRO/HERO -->
 		<div class="max-w-600 mx-auto">
-			<section id="inicio" class="relative h-svh px-10 lg:px-20 py-20">
-				<div class="flex h-full items-center gap-20">
-					<div class="flex flex-col gap-8 min-w-110">
+			<section
+				id="inicio"
+				class="relative mt-18 lg:mt-0 lg:h-svh px-4 md:px-10 lg:px-20 py-10 md:py-20 w-full"
+			>
+				<div
+					class="flex flex-col-reverse md:flex-row h-full w-full items-center gap-8 md:gap-20"
+				>
+					<div class="flex flex-col gap-8 md:min-w-110 w-full md:w-auto">
 						<h1 class="tracking-[-0.06em]">
-							<span class="block font-serif text-7xl uppercase tracking-normal">
-								BOX 28012
+							<span
+								class="block font-serif text-[clamp(2.5rem,10vw,4.5rem)] uppercase tracking-normal"
+							>
+								{businessInfo.name}
 							</span>
 							<span
-								class="block font-chulapa text-xl pt-1 uppercase tracking-normal"
+								class="block font-chulapa text-[clamp(0.9rem,3vw,1.25rem)] pt-1 uppercase tracking-normal"
 							>
-								MADRID CENTRO
+								{businessInfo.city}
 							</span>
 						</h1>
 
-						<div class="space-y-1 text-xl">
+						<div class="space-y-1 text-[clamp(1rem,2.5vw,1.25rem)]">
 							<h2>Entrenamiento funcional en el corazón de Madrid.</h2>
 							<div>
 								<span
@@ -83,11 +62,12 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 						<div>
 							<WhatsAppLink
-								class="font-chulapa flex items-center gap-2 text-base cursor-pointer border border-muted px-4 py-2 w-fit bg-surface rounded-xs font-normal"
+								class="font-chulapa flex items-center gap-2 text-sm md:text-base cursor-pointer border border-muted px-4 py-3 md:py-2 w-full md:w-fit bg-surface rounded-xs font-normal"
 							>
 								<Icon name="whatsapp" class="size-7" aria-hidden="true" />
 								<div class="flex items-center gap-4">
-									RESERVA TU PRIMERA SESIÓN GRATIS <Icon
+									RESERVA TU PRIMERA SESIÓN GRATIS
+									<Icon
 										name="arrow-right"
 										class="size-5 text-accent"
 										aria-hidden="true"
@@ -97,20 +77,18 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 					</div>
 
-					<div>
+					<div class="w-full">
 						<Image
 							src={HeroImage}
 							alt="Salón principal del Box 28012"
-							class="object-cover"
+							class="w-full object-cover"
 						/>
 					</div>
 				</div>
 
-				<div class="absolute right-10 bottom-10">
+				<div class="hidden lg:block absolute right-10 bottom-10">
 					<div class="flex items-center gap-2">
-						<span class="text-muted"
-							>Calle de los Cañizares 3, Local 1, Madrid, España 28012</span
-						>
+						<span class="text-muted">{businessInfo.fullAddress}</span>
 						<div class="h-px bg-muted w-20"></div>
 					</div>
 				</div>
@@ -119,7 +97,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 		<!-- ACTIVIDADES -->
 		<div class="max-w-400 mx-auto">
-			<section id="actividades" class="px-10 py-30">
+			<section id="actividades" class="px-4 md:px-10 py-20 md:py-30">
 				<div class="space-y-2">
 					<h2 class="block font-chulapa text-4xl font-bold">ACTIVIDADES</h2>
 					<p class="text-xl">
@@ -127,14 +105,16 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					</p>
 				</div>
 
-				<div class="pt-10 grid grid-cols-3 gap-20 justify-between">
+				<div
+					class="pt-10 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-20 justify-between"
+				>
 					{
 						activities.map((activity) => (
-							<div class="space-y-4 w-100">
+							<div class="space-y-4 w-full lg:w-100">
 								<Image
 									src={activity.image}
 									alt={activity.alt}
-									class="size-100 object-cover"
+									class="w-full h-80 lg:h-100 lg:w-100 object-cover"
 								/>
 
 								<div class="space-y-2 ">
@@ -170,42 +150,34 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		<div class="max-w-400 mx-auto">
 			<section
 				id="el-box"
-				class="relative isolate grid max-w-430 gap-20 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-10 py-20"
+				class="relative isolate grid max-w-430 gap-10 md:gap-20 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-4 md:px-10 py-20"
 			>
-				<div class="space-y-6 pt-30">
+				<div class="space-y-6 md:pt-30">
 					<div class="h-1 bg-accent w-12"></div>
 					<h2 class="block font-chulapa text-4xl font-bold">SOBRE EL BOX</h2>
 					<div class="text-xl space-y-4">
-						<p>
-							Box 28012 es un espacio de entrenamiento funcional en Madrid
-							centro. Trabajamos en grupos reducidos para ofrecer atención
-							personalizada, corrección técnica y sesiones adaptadas a cada
-							nivel.
-						</p>
-						<p>
-							Da igual si empiezas desde cero, vienes de otra disciplina o
-							necesitas adaptar el entrenamiento: te ayudamos a entrenar con
-							método y progresar de forma segura.
-						</p>
+						{aboutParagraphs.map((paragraph) => <p>{paragraph}</p>)}
 					</div>
 				</div>
 
-				<div class="relative min-h-215">
+				<div class="grid grid-cols-2 gap-2 sm:relative sm:block sm:min-h-215">
+					<!-- Large image: full-width on mobile, absolute on desktop -->
 					<figure
-						class="absolute bottom-0 right-20 z-10 h-210 w-160 overflow-hidden bg-black
-           ring-1 ring-white/8
+						class="col-span-2 overflow-hidden bg-black ring-1 ring-white/8
+           sm:absolute sm:bottom-0 sm:right-20 sm:z-10 sm:h-210 sm:w-160
            shadow-[0_18px_50px_rgba(0,0,0,0.38)]"
 					>
 						<Image
 							src={BathImage}
 							alt="Vestuarios oscuros con azulejos negros y detalles rojos"
-							class="h-full w-full object-cover"
+							class="h-100 md:h-full w-full object-cover"
 						/>
 					</figure>
 
+					<!-- Bottom-left image: half-width on mobile, absolute on desktop -->
 					<figure
-						class="absolute bottom-0 left-0 z-20 h-130 w-90 overflow-hidden bg-black
-           ring-1 ring-white/10"
+						class="overflow-hidden bg-black ring-1 ring-white/10
+           sm:absolute sm:bottom-0 sm:left-0 sm:z-20 sm:h-130 sm:w-90"
 					>
 						<Image
 							src={BoxImage}
@@ -214,9 +186,10 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						/>
 					</figure>
 
+					<!-- Bottom-right image: half-width on mobile, absolute on desktop -->
 					<figure
-						class="absolute bottom-0 right-0 z-30 h-80 w-80 overflow-hidden bg-black
-           ring-1 ring-white/10"
+						class="overflow-hidden bg-black ring-1 ring-white/10
+           sm:absolute sm:bottom-0 sm:right-0 sm:z-30 sm:h-80 sm:w-80"
 					>
 						<Image
 							src={RemerasImage}
@@ -228,7 +201,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 				<div
 					aria-hidden="true"
-					class="pointer-events-none absolute h-[70%] w-[40%] -translate-y-1/2 top-1/2 inset-0 opacity-40
+					class="pointer-events-none absolute h-[70%] w-[80%] md:w-[40%] -translate-y-1/2 top-1/2 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 inset-0 opacity-40
            bg-[radial-gradient(rgba(255,255,255,0.22)_1px,transparent_1px)]
            bg-size-[28px_28px]"
 				>
@@ -240,13 +213,13 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		<div class="max-w-400 mx-auto">
 			<section
 				id="tarifas"
-				class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20"
+				class="px-4 md:px-10 md:py-40 grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-10 md:gap-20"
 			>
 				<div class="space-y-2 pt-10">
 					<h2 class="block font-chulapa text-4xl font-bold">
 						Tarifas Trimestrales
 					</h2>
-					<div class="pt-8 pb-4 max-w-110">
+					<div class="pt-8 pb-4 max-w-110 space-y-2">
 						<p class="text-xl">Sin Matrícula. Sin permanencia</p>
 						<p class="text-xl">
 							Escríbenos y te ayudamos a elegir la tarifa que mejor se adapte a
@@ -254,7 +227,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</p>
 					</div>
 					<WhatsAppLink
-						class="border-accent border-b py-1 font-chulapa rounded-xs flex items-center gap-2 w-fit cursor-pointer tracking-wider font-light"
+						class="border-accent border bg-surface py-2 px-4 font-chulapa rounded-xs flex items-center gap-2 w-fit cursor-pointer tracking-wider font-light text-pretty"
 					>
 						Reservar primera sesión gratuita
 						<div>
@@ -268,173 +241,53 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 				</div>
 
 				<div class="relative grid h-full content-center gap-0 lg:pl-0">
-					<!-- Article 01 — line goes from top to bottom (continues down) -->
-					<article
-						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
-					>
-						<div
-							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
-						>
-						</div>
+					{
+						pricingPlans.map((plan, index) => (
+							<article
+								class:list={[
+									"relative grid grid-cols-[3.5rem_1fr] items-start md:items-center gap-6 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28",
+									plan.isLast
+										? "md:py-10"
+										: "border-loose-dashed py-0 md:py-10",
+								]}
+							>
+								<div
+									class:list={[
+										"hidden absolute left-0 top-0 w-px bg-zinc-700/60 lg:block",
+										plan.isLast ? "h-1/2" : "h-full",
+									]}
+								></div>
+								<div class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"></div>
+								<div class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"></div>
 
-						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">01</span
-						>
+								<span class="text-4xl font-light text-zinc-400 sm:text-5xl pt-4 md:pt-0">
+									{plan.number}
+								</span>
 
-						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
-							<div class="h-24 bg-zinc-600"></div>
-							<div class="grid">
-								<h3
-									class="text-xl uppercase text-zinc-300 sm:text-2xl font-normal"
-								>
-									Tarifa 18
-								</h3>
-								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
-									230€
-								</p>
-								<p
-									class="text-sm uppercase text-zinc-500 font-normal sm:text-base"
-								>
-									18 clases · Todo el día
-								</p>
-							</div>
-						</div>
-					</article>
-
-					<!-- Article 02 -->
-					<article
-						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
-					>
-						<div
-							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
-						>
-						</div>
-
-						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">02</span
-						>
-
-						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
-							<div class="h-24 bg-zinc-600"></div>
-							<div class="grid">
-								<h3
-									class="text-xl uppercase text-zinc-300 sm:text-2xl font-normal"
-								>
-									Tarifa 24
-								</h3>
-								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
-									260€
-								</p>
-								<p
-									class="text-sm uppercase text-zinc-500 font-normal sm:text-base"
-								>
-									24 clases · Todo el día
-								</p>
-							</div>
-						</div>
-					</article>
-
-					<!-- Article 03 -->
-					<article
-						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
-					>
-						<div
-							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
-						>
-						</div>
-
-						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">03</span
-						>
-
-						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
-							<div class="h-24 bg-zinc-600"></div>
-							<div class="grid">
-								<h3
-									class="text-xl uppercase text-zinc-300 sm:text-2xl font-normal"
-								>
-									Tarifa 36
-								</h3>
-								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
-									310€
-								</p>
-								<p
-									class="text-sm uppercase text-zinc-500 font-normal sm:text-base"
-								>
-									36 clases · Todo el día
-								</p>
-							</div>
-						</div>
-					</article>
-
-					<!-- Article 04 — LAST: line only goes from top to the dot (top 50%) -->
-					<article
-						class="relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
-					>
-						<!-- Line stops at the dot: h-1/2 instead of h-full -->
-						<div
-							class="hidden absolute left-0 top-0 h-1/2 w-px bg-zinc-700/60 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
-						>
-						</div>
-						<div
-							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
-						>
-						</div>
-
-						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">04</span
-						>
-
-						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
-							<div class="h-24 bg-zinc-600"></div>
-							<div class="grid">
-								<h3
-									class="text-xl uppercase text-zinc-300 sm:text-2xl font-normal"
-								>
-									Tarifa Unlimited
-								</h3>
-								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
-									430€
-								</p>
-								<p
-									class="text-sm uppercase text-zinc-500 font-normal sm:text-base"
-								>
-									Clases ilimitadas · Todo el día
-								</p>
-							</div>
-						</div>
-					</article>
+								<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
+									<div class="h-30 md:h-24 bg-zinc-800 md:bg-zinc-600" />
+									<div class="grid">
+										<h3 class="text-xl uppercase text-zinc-300 sm:text-2xl font-normal">
+											{plan.name}
+										</h3>
+										<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
+											{plan.price}
+										</p>
+										<p class="text-sm uppercase text-zinc-500 font-normal sm:text-base">
+											{plan.detail}
+										</p>
+									</div>
+								</div>
+							</article>
+						))
+					}
 				</div>
 			</section>
 		</div>
 
 		<!-- PONTE EN CONTACTO -->
 		<section id="contacto" class="isolate py-20">
-			<div class="max-w-400 mx-auto px-10">
+			<div class="max-w-400 mx-auto px-4 md:px-10">
 				<div class="space-y-10">
 					<div class="space-y-6">
 						<div>
@@ -446,10 +299,12 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 
 						<div class="space-y-4">
-							<h2 class="font-chulapa text-7xl font-normal">
+							<h2
+								class="font-chulapa text-[clamp(2rem,8vw,3.5rem)] font-normal leading-10 md:leading-12"
+							>
 								Reserva tu primera sesión gratuita
 							</h2>
-							<p class="text-2xl tracking-wide">
+							<p class="text-[clamp(1.2rem,3vw,1.5rem)] tracking-wide">
 								Escríbenos por WhatsApp y te orientamos según tu experiencia,
 								disponibilidad y necesidades.
 							</p>
@@ -457,7 +312,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 						<div>
 							<WhatsAppLink
-								class="border-accent border px-4 py-3 rounded-xs flex items-center gap-2 w-fit cursor-pointer font-chulapa font-normal bg-surface text-lg"
+								class="border-accent border px-4 py-3 rounded-xs flex items-center gap-4 md:gap-2 w-fit cursor-pointer font-chulapa font-normal bg-surface md:text-lg"
 							>
 								<Icon
 									name="whatsapp"
@@ -472,78 +327,47 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 					</div>
 
-					<div class="relative h-40 w-full">
+					<div class="relative md:h-40 w-full">
 						<div
-							class="absolute z-10 left-1/2 -translate-x-1/2 top-10 bg-surface py-8 px-20 w-full rounded-xs flex items-start justify-between max-w-6xl mx-auto"
+							class="md:absolute z-10 md:left-1/2 md:-translate-x-1/2 md:top-10 bg-surface py-8 px-8 md:px-20 w-full rounded-xs flex flex-col md:flex-row gap-y-6 items-start justify-between max-w-6xl mx-auto"
 						>
-							<div class="flex items-start gap-4">
-								<Icon
-									name="map-pin"
-									class="size-10 text-accent"
-									aria-hidden="true"
-								/>
-								<div>
-									<p class="font-chulapa text-lg font-bold">Dirección</p>
-									<div class="text-lg">
-										<p>Calle de los Cañizares 3, Local 1</p>
-										<p>Madrid, España</p>
+							{
+								contactItems.map((item) => (
+									<div class="flex items-start gap-4">
+										<Icon
+											name={item.icon}
+											class="size-6 md:size-10 text-accent"
+											aria-hidden="true"
+										/>
+										<div>
+											<p class="font-chulapa md:text-lg font-bold">
+												{item.title}
+											</p>
+											<div class="text-lg">
+												{item.lines ? (
+													item.lines.map((line) => <p>{line}</p>)
+												) : (
+													<a
+														href={item.href}
+														target={item.external ? "_blank" : undefined}
+														rel={
+															item.external ? "noopener noreferrer" : undefined
+														}
+													>
+														{item.text}
+													</a>
+												)}
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-
-							<div class="flex items-start gap-4">
-								<Icon
-									name="phone"
-									class="size-10 text-accent"
-									aria-hidden="true"
-								/>
-								<div>
-									<p class="font-chulapa text-lg font-bold">Teléfono</p>
-									<div class="text-lg">
-										<a href="tel:+34604862429">+34 604 862 429</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="flex items-start gap-4">
-								<Icon
-									name="envelope"
-									class="size-10 text-accent"
-									aria-hidden="true"
-								/>
-								<div>
-									<p class="font-chulapa text-lg font-bold">Escríbenos</p>
-									<div class="text-lg">
-										<a href="mailto:info@box28012.es">info@box28012.es</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="flex items-start gap-4">
-								<Icon
-									name="instagram"
-									class="size-10 text-accent"
-									aria-hidden="true"
-								/>
-								<div>
-									<p class="font-chulapa text-lg font-bold">Instagram</p>
-									<div class="text-lg">
-										<a
-											target="_blank"
-											rel="noopener noreferrer"
-											href={instagramUrl}
-										>
-											@box28012.madrid</a
-										>
-									</div>
-								</div>
-							</div>
+								))
+							}
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div>
+			<div class="pt-4 md:pt-0 px-4 md:px-0">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
 					title="Mapa de ubicación de Box 28012 en Madrid"
@@ -560,9 +384,11 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		<!-- FIXED LEFT TITLE -->
 		<div
 			aria-hidden="true"
-			class="fixed left-0 bottom-24 transform -rotate-90 flex items-center gap-2"
+			class="hidden fixed left-0 bottom-24 transform -rotate-90 md:flex items-center gap-2"
 		>
-			<span class="text-muted font-serif text-xs">BOX 28012</span>
+			<span class="text-muted font-serif text-xs uppercase"
+				>{businessInfo.name}</span
+			>
 			<div class="h-0.5 bg-muted w-10"></div>
 		</div>
 	</div>
@@ -570,13 +396,15 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 	<!-- FOOTER -->
 	<div class="pt-32">
 		<footer class="bg-black/40">
-			<div class="max-w-7xl mx-auto px-10 py-16">
-				<div class="grid gap-16 lg:grid-cols-[1.15fr_1fr]">
+			<div class="max-w-7xl mx-auto px-4 md:px-10 py-10 md:py-16">
+				<div class="grid gap-10 md:gap-16 lg:grid-cols-[1.15fr_1fr]">
 					<div class="space-y-6">
 						<div>
-							<p class="font-serif text-4xl tracking-[-0.04em]">BOX 28012</p>
+							<p class="font-serif text-4xl tracking-[-0.04em] uppercase">
+								{businessInfo.name}
+							</p>
 							<p class="text-sm uppercase tracking-[0.28em] text-muted">
-								Madrid centro
+								{businessInfo.city}
 							</p>
 						</div>
 
@@ -586,14 +414,14 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					</div>
 
 					<div class="flex flex-col justify-between gap-10">
-						<div class="grid gap-10 sm:grid-cols-2">
+						<div class="grid gap-6 md:gap-10 sm:grid-cols-2">
 							<div>
 								<p class="font-chulapa text-sm font-bold text-muted">
 									Dirección
 								</p>
 								<p class="mt-3 leading-relaxed">
-									Calle de los Cañizares 3, Local 1<br />
-									28012 Madrid
+									{businessInfo.addressLine1}<br />
+									{businessInfo.postalCode} Madrid
 								</p>
 							</div>
 
@@ -602,14 +430,15 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 									Contacto
 								</p>
 								<div class="mt-3 space-y-2">
-									<WhatsAppLink class="block">+34 604 862 429</WhatsAppLink>
+									<WhatsAppLink class="block">{businessInfo.phone}</WhatsAppLink
+									>
 									<a
 										class="block"
 										target="_blank"
 										rel="noopener noreferrer"
-										href={instagramUrl}
+										href={businessInfo.instagramUrl}
 									>
-										@box28012.madrid
+										{businessInfo.instagramHandle}
 									</a>
 								</div>
 							</div>
@@ -632,11 +461,12 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					</div>
 				</div>
 			</div>
+
 			<div
-				class="relative flex h-86 items-center justify-center overflow-hidden bg-black px-6 py-20"
+				class="relative flex h-60 md:h-86 items-center justify-center overflow-hidden"
 			>
 				<div
-					class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-size-[340px_340px] bg-center bg-repeat"
+					class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-size-[240px_240px] md:bg-size-[340px_340px] bg-center bg-repeat"
 				>
 				</div>
 
@@ -649,15 +479,15 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 				<div class="relative z-10 text-center">
 					<h1
-						class="font-serif text-[clamp(4rem,15vw,9rem)] leading-none text-white"
+						class="font-serif text-[clamp(4rem,15vw,9rem)] uppercase leading-none text-white"
 					>
-						BOX 28012
+						{businessInfo.name}
 					</h1>
 
 					<p
 						class="font-serif text-[clamp(1.25rem,3vw,3rem)] font-semibold uppercase tracking-wider leading-none text-red-500"
 					>
-						MADRID
+						{businessInfo.cityShort}
 					</p>
 				</div>
 			</div>

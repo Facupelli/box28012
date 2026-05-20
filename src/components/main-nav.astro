@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const navItems = [
 	{ label: "Actividades", href: "#actividades" },
 	{ label: "El Box", href: "#el-box" },
@@ -13,20 +15,21 @@ const navItems = [
 	aria-label="Navegación principal"
 	data-hero="true"
 	data-visible="true"
-	class="group fixed top-0 left-0 z-50 w-full transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[visible=false]:-translate-y-full"
+	data-menu-open="false"
+	class="group fixed top-0 left-0 z-50 w-full bg-background transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[visible=false]:-translate-y-full data-[menu-open=true]:translate-y-0"
 >
 	<div
-		class="mx-auto flex h-18 max-w-400 items-center justify-between px-10 transition-[height] duration-300 ease-out group-data-[hero=true]:h-24"
+		class="mx-auto flex h-18 max-w-400 items-center justify-between px-6 transition-[height] duration-300 ease-out group-data-[hero=true]:h-20 lg:px-10 lg:group-data-[hero=true]:h-28"
 	>
 		<a
 			href="#inicio"
-			class="font-serif text-base tracking-[-0.06em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl"
+			class="font-serif text-base tracking-[-0.06em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl lg:group-data-[hero=true]:text-3xl"
 		>
 			BOX 28012
 		</a>
 
 		<ul
-			class="flex items-center gap-10 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12"
+			class="hidden items-center gap-10 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12 lg:flex"
 		>
 			{
 				navItems.map((item) => (
@@ -34,14 +37,66 @@ const navItems = [
 						{item.href ? (
 							<a
 								href={item.href}
-								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl"
+								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-2xl"
 							>
 								{item.label}
 							</a>
 						) : (
-							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl">
+							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-2xl">
 								{item.label}
 							</span>
+						)}
+					</li>
+				))
+			}
+		</ul>
+
+		<button
+			type="button"
+			id="mobile-menu-open"
+			aria-controls="mobile-menu"
+			aria-expanded="false"
+			aria-label="Abrir menú"
+			class="flex size-11 items-center justify-center transition-opacity duration-200 group-data-[menu-open=true]:pointer-events-none group-data-[menu-open=true]:opacity-0 lg:hidden"
+		>
+			<Icon name="list" class="size-7" aria-hidden="true" />
+		</button>
+	</div>
+
+	<div
+		id="mobile-menu"
+		class="pointer-events-none invisible fixed inset-0 z-10 h-svh bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out group-data-[menu-open=true]:pointer-events-auto group-data-[menu-open=true]:visible group-data-[menu-open=true]:opacity-100 lg:hidden"
+	>
+		<div class="flex h-18 items-center justify-between px-6">
+			<a
+				href="#inicio"
+				class="mobile-menu-link font-serif text-xl tracking-[-0.06em]"
+			>
+				BOX 28012
+			</a>
+
+			<button
+				type="button"
+				id="mobile-menu-close"
+				aria-label="Cerrar menú"
+				class="flex size-11 items-center justify-center"
+			>
+				<Icon name="x" class="size-7" aria-hidden="true" />
+			</button>
+		</div>
+
+		<ul
+			class="flex min-h-[calc(100dvh-72px)] -translate-y-2 flex-col justify-center gap-7 px-10 pb-18 text-4xl opacity-0 transition-[opacity,transform] delay-0 duration-300 ease-out group-data-[menu-open=true]:translate-y-0 group-data-[menu-open=true]:opacity-100 group-data-[menu-open=true]:delay-75"
+		>
+			{
+				navItems.map((item) => (
+					<li>
+						{item.href ? (
+							<a href={item.href} class="mobile-menu-link block font-chulapa">
+								{item.label}
+							</a>
+						) : (
+							<span class="block font-chulapa text-muted">{item.label}</span>
 						)}
 					</li>
 				))
@@ -53,10 +108,26 @@ const navItems = [
 <script>
 	const nav = document.querySelector<HTMLElement>("#main-nav");
 	const hero = document.querySelector<HTMLElement>("#inicio");
+	const openButton =
+		document.querySelector<HTMLButtonElement>("#mobile-menu-open");
+	const closeButton =
+		document.querySelector<HTMLButtonElement>("#mobile-menu-close");
+	const mobileMenuLinks =
+		document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
 
 	if (nav && hero) {
 		let lastScrollY = window.scrollY;
 		let ticking = false;
+
+		const setMenuOpen = (isOpen: boolean) => {
+			nav.dataset.menuOpen = String(isOpen);
+			openButton?.setAttribute("aria-expanded", String(isOpen));
+			openButton?.setAttribute(
+				"aria-label",
+				isOpen ? "Cerrar menú" : "Abrir menú",
+			);
+			document.body.style.overflow = isOpen ? "hidden" : "";
+		};
 
 		const updateNav = () => {
 			const currentScrollY = window.scrollY;
@@ -64,9 +135,12 @@ const navItems = [
 			const isHero = hero.getBoundingClientRect().bottom > compactNavHeight;
 			const isScrollingUp = currentScrollY < lastScrollY;
 			const isNearTop = currentScrollY < 8;
+			const isMenuOpen = nav.dataset.menuOpen === "true";
 
 			nav.dataset.hero = String(isHero);
-			nav.dataset.visible = String(isHero || isScrollingUp || isNearTop);
+			nav.dataset.visible = String(
+				isMenuOpen || isHero || isScrollingUp || isNearTop,
+			);
 
 			lastScrollY = currentScrollY;
 			ticking = false;
@@ -79,8 +153,38 @@ const navItems = [
 			}
 		};
 
+		openButton?.addEventListener("click", () => {
+			setMenuOpen(true);
+			requestUpdate();
+		});
+
+		closeButton?.addEventListener("click", () => {
+			setMenuOpen(false);
+			requestUpdate();
+		});
+
+		mobileMenuLinks.forEach((link) => {
+			link.addEventListener("click", () => {
+				setMenuOpen(false);
+				requestUpdate();
+			});
+		});
+
+		window.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") {
+				setMenuOpen(false);
+				requestUpdate();
+			}
+		});
+
+		window.addEventListener("resize", () => {
+			if (window.matchMedia("(min-width: 1024px)").matches) {
+				setMenuOpen(false);
+			}
+			requestUpdate();
+		});
+
 		updateNav();
 		window.addEventListener("scroll", requestUpdate, { passive: true });
-		window.addEventListener("resize", requestUpdate);
 	}
 </script>
