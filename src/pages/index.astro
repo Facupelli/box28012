@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/layout.astro";
 import WhatsAppLink from "../components/whatsapp-link.astro";
+import MainNav from "../components/main-nav.astro";
 import HeroImage from "../assets/images/hero.webp";
 import CrosstrainingImage from "../assets/images/crosstraining.webp";
 import IronbodyImage from "../assets/images/ironbody.webp";
@@ -51,23 +52,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 	title="Box 28012. Madrid."
 	description="Box 28012 es un espacio de entrenamiento funcional en Madrid centro con grupos reducidos, técnica y atención personalizada."
 >
-	<nav
-		aria-label="Navegación principal"
-		class="flex justify-between items-center px-10 h-18 max-w-400 mx-auto"
-	>
-		<div>
-			<a href="#inicio" class="font-serif tracking-[-0.06em]">BOX 28012</a>
-		</div>
-		<div>
-			<ul class="flex items-center gap-10">
-				<li><a href="#actividades">Actividades</a></li>
-				<li><a href="#el-box">El Box</a></li>
-				<li>Horarios</li>
-				<li><a href="#tarifas">Tarifas</a></li>
-				<li><a href="#contacto">Contacto</a></li>
-			</ul>
-		</div>
-	</nav>
+	<MainNav />
 
 	<div class="relative">
 		<!-- INTRO/HERO -->

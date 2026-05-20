@@ -1,0 +1,86 @@
+---
+const navItems = [
+	{ label: "Actividades", href: "#actividades" },
+	{ label: "El Box", href: "#el-box" },
+	{ label: "Horarios" },
+	{ label: "Tarifas", href: "#tarifas" },
+	{ label: "Contacto", href: "#contacto" },
+];
+---
+
+<nav
+	id="main-nav"
+	aria-label="Navegación principal"
+	data-hero="true"
+	data-visible="true"
+	class="group fixed top-0 left-0 z-50 w-full transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[visible=false]:-translate-y-full"
+>
+	<div
+		class="mx-auto flex h-18 max-w-400 items-center justify-between px-10 transition-[height] duration-300 ease-out group-data-[hero=true]:h-24"
+	>
+		<a
+			href="#inicio"
+			class="font-serif text-base tracking-[-0.06em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl"
+		>
+			BOX 28012
+		</a>
+
+		<ul
+			class="flex items-center gap-10 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12"
+		>
+			{
+				navItems.map((item) => (
+					<li>
+						{item.href ? (
+							<a
+								href={item.href}
+								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl"
+							>
+								{item.label}
+							</a>
+						) : (
+							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl">
+								{item.label}
+							</span>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</nav>
+
+<script>
+	const nav = document.querySelector<HTMLElement>("#main-nav");
+	const hero = document.querySelector<HTMLElement>("#inicio");
+
+	if (nav && hero) {
+		let lastScrollY = window.scrollY;
+		let ticking = false;
+
+		const updateNav = () => {
+			const currentScrollY = window.scrollY;
+			const compactNavHeight = 72;
+			const isHero = hero.getBoundingClientRect().bottom > compactNavHeight;
+			const isScrollingUp = currentScrollY < lastScrollY;
+			const isNearTop = currentScrollY < 8;
+
+			nav.dataset.hero = String(isHero);
+			nav.dataset.visible = String(isHero || isScrollingUp || isNearTop);
+
+			lastScrollY = currentScrollY;
+			ticking = false;
+		};
+
+		const requestUpdate = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(updateNav);
+				ticking = true;
+			}
+		};
+
+		updateNav();
+		window.addEventListener("scroll", requestUpdate, { passive: true });
+		window.addEventListener("resize", requestUpdate);
+	}
+</script>
