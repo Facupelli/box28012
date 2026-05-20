@@ -18,6 +18,18 @@
     color: var(--color-text);
     font-family: var(--font-body);
   }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @utility chulapa-ligatures {

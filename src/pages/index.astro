@@ -15,7 +15,7 @@ const activities = [
 	{
 		title: "Crosstraining",
 		image: CrosstrainingImage,
-		alt: "",
+		alt: "Zona de entrenamiento funcional durante una clase de crosstraining",
 		items: [
 			"Variedad constante de estímulos y entrenamientos.",
 			"Mejora integral de fuerza, resistencia, movilidad y coordinación.",
@@ -25,7 +25,7 @@ const activities = [
 	{
 		title: "Ironbody",
 		image: IronbodyImage,
-		alt: "",
+		alt: "Material de fuerza preparado para una sesión de Ironbody",
 		items: [
 			"Trabajo de fuerza basado en movimientos funcionales.",
 			"Estructura progresiva para construir una base solida.",
@@ -35,7 +35,7 @@ const activities = [
 	{
 		title: "Partner WOD",
 		image: PartnerWODImage,
-		alt: "",
+		alt: "Entrenamiento funcional por parejas en Box 28012",
 		items: [
 			"Entrenamientos cooperativos por parejas o equipos",
 			"Fomenta el trabajo en equipo y la motivación mutua.",
@@ -47,8 +47,14 @@ const activities = [
 const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 ---
 
-<BaseLayout title="Box 28012. Madrid.">
-	<nav class="flex justify-between items-center px-10 h-18 max-w-400 mx-auto">
+<BaseLayout
+	title="Box 28012. Madrid."
+	description="Box 28012 es un espacio de entrenamiento funcional en Madrid centro con grupos reducidos, técnica y atención personalizada."
+>
+	<nav
+		aria-label="Navegación principal"
+		class="flex justify-between items-center px-10 h-18 max-w-400 mx-auto"
+	>
 		<div>
 			<a href="#inicio" class="font-serif tracking-[-0.06em]">BOX 28012</a>
 		</div>
@@ -92,11 +98,12 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 							<WhatsAppLink
 								class="font-chulapa py-1 text-accent flex items-center gap-2 text-xl cursor-pointer"
 							>
-								<Icon name="whatsapp" class="size-7" />
+								<Icon name="whatsapp" class="size-7" aria-hidden="true" />
 								<div class="flex items-center gap-2 border-b-2 border-accent">
 									RESERVA TU PRIMERA SESIÓN GRATIS <Icon
 										name="arrow-right"
 										class="size-6"
+										aria-hidden="true"
 									/>
 								</div>
 							</WhatsAppLink>
@@ -127,7 +134,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		<div class="max-w-400 mx-auto">
 			<section id="actividades" class="px-10 py-40">
 				<div class="space-y-2">
-					<span class="block font-chulapa text-4xl font-bold">ACTIVIDADES</span>
+					<h2 class="block font-chulapa text-4xl font-bold">ACTIVIDADES</h2>
 					<p class="text-xl">Entrenamiento funcional en grupos reducidos.</p>
 				</div>
 
@@ -142,7 +149,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 								/>
 
 								<div class="space-y-2 ">
-									<p class="text-2xl font-chulapa">{activity.title}</p>
+									<h3 class="text-2xl font-chulapa">{activity.title}</h3>
 
 									<div class="relative h-0.5 bg-surface my-4">
 										<div class="absolute left-0 top-0 h-0.5 bg-accent w-8" />
@@ -151,7 +158,12 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 									<ul class="space-y-1">
 										{activity.items.map((item) => (
 											<li class="flex items-start gap-2 text-lg">
-												<Icon name="plus" class="size-5 text-accent" /> {item}
+												<Icon
+													name="plus"
+													class="size-5 text-accent"
+													aria-hidden="true"
+												/>{" "}
+												{item}
 											</li>
 										))}
 									</ul>
@@ -171,8 +183,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 			>
 				<div class="space-y-4 pt-30">
 					<div class="h-1 bg-accent w-12"></div>
-					<span class="block font-chulapa text-4xl font-bold">SOBRE EL BOX</span
-					>
+					<h2 class="block font-chulapa text-4xl font-bold">SOBRE EL BOX</h2>
 					<div class="text-xl space-y-2">
 						<p>
 							Box 28012 es un centro de entrenamiento funcional en grupos
@@ -194,7 +205,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					>
 						<Image
 							src={BathImage}
-							alt="Dark locker room with black tiles and red details"
+							alt="Vestuarios oscuros con azulejos negros y detalles rojos"
 							class="h-full w-full object-cover"
 						/>
 					</figure>
@@ -205,7 +216,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					>
 						<Image
 							src={BoxImage}
-							alt="Training area with barbell"
+							alt="Zona de entrenamiento con barra en Box 28012"
 							class="h-full w-full object-cover"
 						/>
 					</figure>
@@ -216,7 +227,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					>
 						<Image
 							src={RemerasImage}
-							alt="Black branded shirts hanging on a rack"
+							alt="Camisetas negras de Box 28012 colgadas en un perchero"
 							class="h-full w-full object-cover sm:h-70 lg:h-80"
 						/>
 					</figure>
@@ -234,11 +245,14 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 		<!-- TARIFAS -->
 		<div class="max-w-400 mx-auto">
-			<section id="tarifas" class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20">
+			<section
+				id="tarifas"
+				class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20"
+			>
 				<div class="space-y-2 pt-10">
-					<span class="block font-chulapa text-4xl font-bold"
-						>Tarifas Trimestales</span
-					>
+					<h2 class="block font-chulapa text-4xl font-bold">
+						Tarifas Trimestales
+					</h2>
 					<div class="text-muted pt-8 pb-4 max-w-110">
 						<p class="text-xl">Sin Matrícula. Sin permanencia</p>
 						<p class="text-xl">
@@ -251,7 +265,11 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					>
 						Reserva tu primera sesión gratuita
 						<div>
-							<Icon name="arrow-right" class="size-6 text-accent" />
+							<Icon
+								name="arrow-right"
+								class="size-6 text-accent"
+								aria-hidden="true"
+							/>
 						</div>
 					</WhatsAppLink>
 				</div>
@@ -261,17 +279,14 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					<article
 						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
 					>
-						<!-- Line segment: full height (connects to next item) -->
 						<div
 							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
 						>
 						</div>
-						<!-- Red dot -->
 						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
 						>
 						</div>
-						<!-- Horizontal connector -->
 						<div
 							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
 						>
@@ -283,9 +298,9 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
 							<div class="h-24 bg-zinc-600"></div>
 							<div class="grid">
-								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+								<h3 class="text-xl uppercase text-zinc-300 sm:text-2xl">
 									Tarifa 18
-								</h2>
+								</h3>
 								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
 									230€
 								</p>
@@ -305,7 +320,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						>
 						</div>
 						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
 						>
 						</div>
 						<div
@@ -319,9 +334,9 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
 							<div class="h-24 bg-zinc-600"></div>
 							<div class="grid">
-								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+								<h3 class="text-xl uppercase text-zinc-300 sm:text-2xl">
 									Tarifa 24
-								</h2>
+								</h3>
 								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
 									260€
 								</p>
@@ -341,7 +356,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						>
 						</div>
 						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
 						>
 						</div>
 						<div
@@ -355,9 +370,9 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
 							<div class="h-24 bg-zinc-600"></div>
 							<div class="grid">
-								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+								<h3 class="text-xl uppercase text-zinc-300 sm:text-2xl">
 									Tarifa 36
-								</h2>
+								</h3>
 								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
 									310€
 								</p>
@@ -378,7 +393,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						>
 						</div>
 						<div
-							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+							class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
 						>
 						</div>
 						<div
@@ -392,9 +407,9 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
 							<div class="h-24 bg-zinc-600"></div>
 							<div class="grid">
-								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+								<h3 class="text-xl uppercase text-zinc-300 sm:text-2xl">
 									Tarifa Unlimited
-								</h2>
+								</h3>
 								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
 									430€
 								</p>
@@ -422,7 +437,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 
 						<div class="space-y-4">
-							<p class="text-7xl">¿Aún tienes alguna duda?</p>
+							<h2 class="text-7xl">¿Aún tienes alguna duda?</h2>
 							<p class="text-2xl text-muted tracking-wide">
 								¡PONTE EN CONTACTO CON NUESTRO EQUIPO!
 							</p>
@@ -432,10 +447,14 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 							<WhatsAppLink
 								class="border-accent border px-6 py-3 font-chulapa rounded-xs text-white/80 flex items-center gap-2 w-fit cursor-pointer"
 							>
-								<Icon name="whatsapp" class="size-7 text-accent" />
+								<Icon
+									name="whatsapp"
+									class="size-7 text-accent"
+									aria-hidden="true"
+								/>
 								ESCRÍBENOS POR WHATSAPP
 								<div class="pl-4">
-									<Icon name="arrow-right" class="size-6" />
+									<Icon name="arrow-right" class="size-6" aria-hidden="true" />
 								</div>
 							</WhatsAppLink>
 						</div>
@@ -446,7 +465,11 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 							class="absolute z-10 left-1/2 -translate-x-1/2 top-10 bg-surface py-8 px-20 w-full rounded-xs flex items-start justify-between max-w-6xl mx-auto"
 						>
 							<div class="flex items-start gap-4">
-								<Icon name="map-pin" class="size-10 text-accent" />
+								<Icon
+									name="map-pin"
+									class="size-10 text-accent"
+									aria-hidden="true"
+								/>
 								<div>
 									<p class="font-chulapa text-lg font-bold">Dirección</p>
 									<div class="text-lg">
@@ -457,31 +480,49 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 							</div>
 
 							<div class="flex items-start gap-4">
-								<Icon name="phone" class="size-10 text-accent" />
+								<Icon
+									name="phone"
+									class="size-10 text-accent"
+									aria-hidden="true"
+								/>
 								<div>
 									<p class="font-chulapa text-lg font-bold">Teléfono</p>
 									<div class="text-lg">
-										<p>+34 604 862 429</p>
+										<a href="tel:+34604862429">+34 604 862 429</a>
 									</div>
 								</div>
 							</div>
 
 							<div class="flex items-start gap-4">
-								<Icon name="envelope" class="size-10 text-accent" />
+								<Icon
+									name="envelope"
+									class="size-10 text-accent"
+									aria-hidden="true"
+								/>
 								<div>
 									<p class="font-chulapa text-lg font-bold">Escríbenos</p>
 									<div class="text-lg">
-										<p>info@box28012.es</p>
+										<a href="mailto:info@box28012.es">info@box28012.es</a>
 									</div>
 								</div>
 							</div>
 
 							<div class="flex items-start gap-4">
-								<Icon name="instagram" class="size-10 text-accent" />
+								<Icon
+									name="instagram"
+									class="size-10 text-accent"
+									aria-hidden="true"
+								/>
 								<div>
 									<p class="font-chulapa text-lg font-bold">Instagram</p>
 									<div class="text-lg">
-										<a target="_blank" href={instagramUrl}> @box28012.madrid</a>
+										<a
+											target="_blank"
+											rel="noopener noreferrer"
+											href={instagramUrl}
+										>
+											@box28012.madrid</a
+										>
 									</div>
 								</div>
 							</div>
@@ -493,6 +534,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 			<div>
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
+					title="Mapa de ubicación de Box 28012 en Madrid"
 					width="100%"
 					height="450"
 					style="border:0;"
@@ -505,6 +547,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 		<!-- FIXED LEFT TITLE -->
 		<div
+			aria-hidden="true"
 			class="fixed left-0 bottom-24 transform -rotate-90 flex items-center gap-2"
 		>
 			<span class="text-muted font-chulapa text-xs">BOX 28012</span>
@@ -515,8 +558,11 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 	<!-- FOOTER -->
 	<div class="pt-40">
 		<footer class="bg-black/40">
-			<ul class="max-w-7xl py-14 mx-auto flex items-start justify-between">
-				<li class="font-chulapa font-bold text-muted">
+			<div class="max-w-7xl py-14 mx-auto flex items-start justify-between">
+				<nav
+					aria-label="Navegación del pie"
+					class="font-chulapa font-bold text-muted"
+				>
 					Navegación
 
 					<ul
@@ -528,22 +574,29 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						<li><a href="#tarifas">Tarifas</a></li>
 						<li><a href="#contacto">Contacto</a></li>
 					</ul>
-				</li>
-				<div class="flex items-center gap-20">
+				</nav>
+				<ul class="flex items-center gap-20">
 					<li>
 						<p class="font-chulapa font-bold text-muted">WhatsApp</p>
 						<WhatsAppLink class="text-lg">+34 604 862 429</WhatsAppLink>
 					</li>
 					<li>
 						<p class="font-chulapa font-bold text-muted">Email</p>
-						<p class="text-lg">info@box28012.es</p>
+						<a class="text-lg" href="mailto:info@box28012.es"
+							>info@box28012.es</a
+						>
 					</li>
 					<li>
 						<p class="font-chulapa font-bold text-muted">Instagram</p>
-						<p class="text-lg">@box28012.madrid</p>
+						<a
+							class="text-lg"
+							target="_blank"
+							rel="noopener noreferrer"
+							href={instagramUrl}>@box28012.madrid</a
+						>
 					</li>
-				</div>
-			</ul>
+				</ul>
+			</div>
 			<div
 				class="relative flex h-86 items-center justify-center overflow-hidden bg-black px-6 py-20"
 			>
@@ -566,7 +619,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 				<div class="relative z-10 text-center">
 					<h1
-						class="font-serif text-[clamp(4rem,15vw,11rem)] leading-none tracking-[-0.06em] text-white"
+						class="font-serif text-[clamp(4rem,15vw,10rem)] leading-none tracking-[-0.06em] text-white"
 					>
 						BOX 28012
 					</h1>
