@@ -1,10 +1,581 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/layout.astro";
+import HeroImage from "../assets/images/hero.webp";
+import CrosstrainingImage from "../assets/images/crosstraining.webp";
+import IronbodyImage from "../assets/images/ironbody.webp";
+import PartnerWODImage from "../assets/images/partner-wod.webp";
+import BoxImage from "../assets/images/box.webp";
+import BathImage from "../assets/images/bath.webp";
+import RemerasImage from "../assets/images/remeras.webp";
+
+const activities = [
+	{
+		title: "Crosstraining",
+		image: CrosstrainingImage,
+		alt: "",
+		items: [
+			"Variedad constante de estímulos y entrenamientos.",
+			"Mejora integral de fuerza, resistencia, movilidad y coordinación.",
+			"Resultados visibles, dentro y fuera del box.",
+		],
+	},
+	{
+		title: "Ironbody",
+		image: IronbodyImage,
+		alt: "",
+		items: [
+			"Trabajo de fuerza basado en movimientos funcionales.",
+			"Estructura progresiva para construir una base solida.",
+			"Ejercicios accesorios que potencian tu rendimiento.",
+		],
+	},
+	{
+		title: "Partner WOD",
+		image: PartnerWODImage,
+		alt: "",
+		items: [
+			"Entrenamientos cooperativos por parejas o equipos",
+			"Fomenta el trabajo en equipo y la motivación mutua.",
+			"Mas que entrenar: comunidad y conexión.",
+		],
+	},
+];
+
+const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 ---
 
 <BaseLayout title="Box 28012. Madrid.">
-	<p class="text-text">My page content, wrapped in a layout!</p>
-	<p class="text-accent">My page content, wrapped in a layout!</p>
-	<p class="text-muted">My page content, wrapped in a layout!</p>
-	<p class="text-surface">My page content, wrapped in a layout!</p>
+	<nav class="flex justify-between items-center px-10 h-18 max-w-400 mx-auto">
+		<div>
+			<span class="font-serif tracking-[-0.06em]">BOX 28012</span>
+		</div>
+		<div>
+			<ul class="flex items-center gap-10">
+				<li>Actividades</li>
+				<li>El Box</li>
+				<li>Horarios</li>
+				<li>Tarifas</li>
+				<li>Contacto</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="relative">
+		<!-- INTRO/HERO -->
+		<div class="max-w-400 mx-auto">
+			<section class="relative h-[calc(100vh-72px)] px-10 py-20">
+				<div class="flex h-full items-center gap-20">
+					<div class="flex flex-col gap-8 min-w-110">
+						<h1 class="font-serif tracking-[-0.06em]">
+							<span class="block text-7xl uppercase tracking-normal">
+								BOX 28012
+							</span>
+							<span class="block text-xl pt-1 uppercase tracking-normal">
+								MADRID CENTRO
+							</span>
+						</h1>
+
+						<div class="space-y-1 text-xl">
+							<h2>
+								El referente del entrenamiento funcional en el corazón de
+								Madrid.
+							</h2>
+							<div>
+								<span>Mas que un Box, una comunidad imparable.</span>
+							</div>
+						</div>
+
+						<div>
+							<button
+								class="font-chulapa py-1 text-accent flex items-center gap-2 text-xl cursor-pointer"
+							>
+								<Icon name="whatsapp" class="size-7" />
+								<div class="flex items-center gap-2 border-b-2 border-accent">
+									RESERVA TU PRIMERA SESIÓN GRATIS <Icon
+										name="arrow-right"
+										class="size-6"
+									/>
+								</div>
+							</button>
+						</div>
+					</div>
+
+					<div>
+						<Image
+							src={HeroImage}
+							alt="Salón principal del Box 28012"
+							class="object-cover"
+						/>
+					</div>
+				</div>
+
+				<div class="absolute right-10 bottom-10">
+					<div class="flex items-center gap-2">
+						<span class="text-muted"
+							>Calle de los Cañizares 3, Local 1, Madrid, España 28012</span
+						>
+						<div class="h-px bg-muted w-20"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- ACTIVIDADES -->
+		<div class="max-w-400 mx-auto">
+			<section class="px-10 py-40">
+				<div class="space-y-2">
+					<span class="block font-chulapa text-4xl font-bold">ACTIVIDADES</span>
+					<p class="text-xl">Entrenamiento funcional en grupos reducidos.</p>
+				</div>
+
+				<div class="pt-10 grid grid-cols-3 gap-20 justify-between">
+					{
+						activities.map((activity) => (
+							<div class="space-y-4 w-100">
+								<Image
+									src={activity.image}
+									alt={activity.alt}
+									class="size-100 object-cover"
+								/>
+
+								<div class="space-y-2 ">
+									<p class="text-2xl font-chulapa">{activity.title}</p>
+
+									<div class="relative h-0.5 bg-surface my-4">
+										<div class="absolute left-0 top-0 h-0.5 bg-accent w-8" />
+									</div>
+
+									<ul class="space-y-1">
+										{activity.items.map((item) => (
+											<li class="flex items-start gap-2 text-lg">
+												<Icon name="plus" class="size-5 text-accent" /> {item}
+											</li>
+										))}
+									</ul>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
+		<!-- SOBRE EL BOX -->
+		<div class="max-w-400 mx-auto">
+			<section
+				class="relative isolate grid max-w-430 gap-10 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-10 py-20"
+			>
+				<div class="space-y-4 pt-30">
+					<div class="h-1 bg-accent w-12"></div>
+					<span class="block font-chulapa text-4xl font-bold">SOBRE EL BOX</span
+					>
+					<div class="text-xl space-y-2">
+						<p>
+							Box 28012 es un centro de entrenamiento funcional en grupos
+							reducidos, con un enfoque profesional, cercano y altamente
+							personalizado.
+						</p>
+						<p>
+							Nuestra propuesta combina fuerza, técnica y comunidad para ayudar
+							a las personas a mejorar su salud y rendimiento a largo plazo.
+						</p>
+					</div>
+				</div>
+
+				<div class="relative min-h-215">
+					<figure
+						class="absolute bottom-0 right-20 z-10 h-210 w-160 overflow-hidden bg-black
+           ring-1 ring-white/8
+           shadow-[0_18px_50px_rgba(0,0,0,0.38)]"
+					>
+						<Image
+							src={BathImage}
+							alt="Dark locker room with black tiles and red details"
+							class="h-full w-full object-cover"
+						/>
+					</figure>
+
+					<figure
+						class="absolute bottom-0 left-0 z-20 h-130 w-90 overflow-hidden bg-black
+           ring-1 ring-white/10"
+					>
+						<Image
+							src={BoxImage}
+							alt="Training area with barbell"
+							class="h-full w-full object-cover"
+						/>
+					</figure>
+
+					<figure
+						class="absolute bottom-0 right-0 z-30 h-80 w-80 overflow-hidden bg-black
+           ring-1 ring-white/10"
+					>
+						<Image
+							src={RemerasImage}
+							alt="Black branded shirts hanging on a rack"
+							class="h-full w-full object-cover sm:h-70 lg:h-80"
+						/>
+					</figure>
+				</div>
+
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute h-[70%] w-[40%] -translate-y-1/2 top-1/2 inset-0 opacity-40
+           bg-[radial-gradient(rgba(255,255,255,0.22)_1px,transparent_1px)]
+           bg-size-[28px_28px]"
+				>
+				</div>
+			</section>
+		</div>
+
+		<!-- TARIFAS -->
+		<div class="max-w-400 mx-auto">
+			<section class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20">
+				<div class="space-y-2 pt-10">
+					<span class="block font-chulapa text-4xl font-bold"
+						>Tarifas Trimestales</span
+					>
+					<div class="text-muted pt-8 pb-4 max-w-110">
+						<p class="text-xl">Sin Matrícula. Sin permanencia</p>
+						<p class="text-xl">
+							Escríbenos y te ayudamos a elegir la tarifa que mejor se adapte a
+							tus objetivos.
+						</p>
+					</div>
+					<a
+						class="border-accent border-b py-1 font-chulapa rounded-xs text-white flex items-center gap-2 w-fit cursor-pointer font-light tracking-wider"
+					>
+						Reserva tu primera sesión gratuita
+						<div>
+							<Icon name="arrow-right" class="size-6 text-accent" />
+						</div>
+					</a>
+				</div>
+
+				<div class="relative grid h-full content-center gap-0 lg:pl-0">
+					<!-- Article 01 — line goes from top to bottom (continues down) -->
+					<article
+						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
+					>
+						<!-- Line segment: full height (connects to next item) -->
+						<div
+							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
+						>
+						</div>
+						<!-- Red dot -->
+						<div
+							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+						>
+						</div>
+						<!-- Horizontal connector -->
+						<div
+							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
+						>
+						</div>
+
+						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">01</span
+						>
+
+						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
+							<div class="h-24 bg-zinc-600"></div>
+							<div class="grid">
+								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+									Tarifa 18
+								</h2>
+								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
+									230€
+								</p>
+								<p class="text-sm uppercase text-zinc-500 sm:text-base">
+									18 clases · Todo el día
+								</p>
+							</div>
+						</div>
+					</article>
+
+					<!-- Article 02 -->
+					<article
+						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
+					>
+						<div
+							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
+						>
+						</div>
+
+						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">02</span
+						>
+
+						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
+							<div class="h-24 bg-zinc-600"></div>
+							<div class="grid">
+								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+									Tarifa 24
+								</h2>
+								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
+									260€
+								</p>
+								<p class="text-sm uppercase text-zinc-500 sm:text-base">
+									24 clases · Todo el día
+								</p>
+							</div>
+						</div>
+					</article>
+
+					<!-- Article 03 -->
+					<article
+						class="border-loose-dashed relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
+					>
+						<div
+							class="hidden absolute left-0 top-0 h-full w-px bg-zinc-700/60 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
+						>
+						</div>
+
+						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">03</span
+						>
+
+						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
+							<div class="h-24 bg-zinc-600"></div>
+							<div class="grid">
+								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+									Tarifa 36
+								</h2>
+								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
+									310€
+								</p>
+								<p class="text-sm uppercase text-zinc-500 sm:text-base">
+									36 clases · Todo el día
+								</p>
+							</div>
+						</div>
+					</article>
+
+					<!-- Article 04 — LAST: line only goes from top to the dot (top 50%) -->
+					<article
+						class="relative grid grid-cols-[4.5rem_1fr] items-center gap-6 py-10 sm:grid-cols-[7rem_1fr] sm:gap-10 lg:grid-cols-[8rem_1fr] lg:px-20 xl:grid-cols-[11rem_1fr] xl:px-28"
+					>
+						<!-- Line stops at the dot: h-1/2 instead of h-full -->
+						<div
+							class="hidden absolute left-0 top-0 h-1/2 w-px bg-zinc-700/60 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"
+						>
+						</div>
+						<div
+							class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"
+						>
+						</div>
+
+						<span class="text-4xl font-light text-zinc-400 sm:text-5xl">04</span
+						>
+
+						<div class="grid grid-cols-[1px_1fr] items-center gap-8 sm:gap-12">
+							<div class="h-24 bg-zinc-600"></div>
+							<div class="grid">
+								<h2 class="text-xl uppercase text-zinc-300 sm:text-2xl">
+									Tarifa Unlimited
+								</h2>
+								<p class="text-4xl font-light text-zinc-100 sm:text-5xl">
+									430€
+								</p>
+								<p class="text-sm uppercase text-zinc-500 sm:text-base">
+									Clases ilimitadas · Todo el día
+								</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+		</div>
+
+		<!-- PONTE EN CONTACTO -->
+		<section class="isolate py-20">
+			<div class="max-w-400 mx-auto px-10 pt-20">
+				<div class="space-y-10">
+					<div class="space-y-6">
+						<div>
+							<p class="text-xl max-w-150 text-pretty text-muted pb-4">
+								En Box 28012 entrenamos en grupos reducidos para ofrecerte una
+								experiencia totalmente personalizada.
+							</p>
+							<div class="h-0.5 bg-accent w-12"></div>
+						</div>
+
+						<div class="space-y-4">
+							<p class="text-7xl">¿Aún tienes alguna duda?</p>
+							<p class="text-2xl text-muted tracking-wide">
+								¡PONTE EN CONTACTO CON NUESTRO EQUIPO!
+							</p>
+						</div>
+
+						<div>
+							<a
+								class="border-accent border px-6 py-3 font-chulapa rounded-xs text-white/80 flex items-center gap-2 w-fit cursor-pointer"
+							>
+								<Icon name="whatsapp" class="size-7 text-accent" />
+								ESCRÍBENOS POR WHATSAPP
+								<div class="pl-4">
+									<Icon name="arrow-right" class="size-6" />
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<div class="relative h-40 w-full">
+						<div
+							class="absolute z-10 left-1/2 -translate-x-1/2 top-10 bg-surface py-8 px-20 w-full rounded-xs flex items-start justify-between max-w-6xl mx-auto"
+						>
+							<div class="flex items-start gap-4">
+								<Icon name="map-pin" class="size-10 text-accent" />
+								<div>
+									<p class="font-chulapa text-lg font-bold">Dirección</p>
+									<div class="text-lg">
+										<p>Calle de los Cañizares 3, Local 1</p>
+										<p>Madrid, España</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex items-start gap-4">
+								<Icon name="phone" class="size-10 text-accent" />
+								<div>
+									<p class="font-chulapa text-lg font-bold">Teléfono</p>
+									<div class="text-lg">
+										<p>+34 604 862 429</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex items-start gap-4">
+								<Icon name="envelope" class="size-10 text-accent" />
+								<div>
+									<p class="font-chulapa text-lg font-bold">Escríbenos</p>
+									<div class="text-lg">
+										<p>info@box28012.es</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex items-start gap-4">
+								<Icon name="instagram" class="size-10 text-accent" />
+								<div>
+									<p class="font-chulapa text-lg font-bold">Instagram</p>
+									<div class="text-lg">
+										<a target="_blank" href={instagramUrl}> @box28012.madrid</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
+					width="100%"
+					height="450"
+					style="border:0;"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					class="grayscale"></iframe>
+			</div>
+		</section>
+
+		<!-- FIXED LEFT TITLE -->
+		<div
+			class="fixed left-0 bottom-24 transform -rotate-90 flex items-center gap-2"
+		>
+			<span class="text-muted font-chulapa text-xs">BOX 28012</span>
+			<div class="h-0.5 bg-muted w-10"></div>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div class="pt-40">
+		<footer class="bg-black/40">
+			<ul class="max-w-7xl py-14 mx-auto flex items-start justify-between">
+				<li class="font-chulapa font-bold text-muted">
+					Navegación
+
+					<ul
+						class="pt-4 text-white space-y-4 font-light text-sm tracking-wider"
+					>
+						<li>Actividades</li>
+						<li>El Box</li>
+						<li>Horarios</li>
+						<li>Tarifas</li>
+						<li>Contacto</li>
+					</ul>
+				</li>
+				<div class="flex items-center gap-20">
+					<li>
+						<p class="font-chulapa font-bold text-muted">WhatsApp</p>
+						<p class="text-lg">+34 604 862 429</p>
+					</li>
+					<li>
+						<p class="font-chulapa font-bold text-muted">Email</p>
+						<p class="text-lg">info@box28012.es</p>
+					</li>
+					<li>
+						<p class="font-chulapa font-bold text-muted">Instagram</p>
+						<p class="text-lg">@box28012.madrid</p>
+					</li>
+				</div>
+			</ul>
+			<div
+				class="relative flex h-86 items-center justify-center overflow-hidden bg-black px-6 py-20"
+			>
+				<div
+					class="absolute inset-0 bg-[url('/images/mosaic.webp')] bg-size-[340px_340px] bg-center bg-repeat"
+				>
+				</div>
+
+				<div class="absolute inset-0 bg-black/20"></div>
+
+				<!-- <div
+				class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.25)_45%,rgba(0,0,0,0.85)_100%)]"
+			>
+			</div> -->
+
+				<div
+					class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85)_0%,transparent_25%)]"
+				>
+				</div>
+
+				<div class="relative z-10 text-center">
+					<h1
+						class="font-serif text-[clamp(4rem,15vw,11rem)] leading-none tracking-[-0.06em] text-white"
+					>
+						BOX 28012
+					</h1>
+
+					<p
+						class="font-serif text-[clamp(1.25rem,3vw,3rem)] font-semibold uppercase tracking-[0.65em] text-red-500"
+					>
+						MADRID
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
 </BaseLayout>

@@ -1,20 +1,41 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg:      #0c0c0c;
-  --color-surface: #161616;
-  --color-text:    #f0f0f0;
-  --color-muted:   #6b6b6b;
-  --color-accent:  #c0392b;
+@theme inline {
+  --font-anton: var(--font-display);
+  --font-chulapa: var(--font-sans);
+  --font-body: var(--font-body);
 
-  --font-display: var(--font-display);
-  --font-sans:    var(--font-sans);
+  --color-bg: #131313;
+  --color-surface: #1C1C1C;
+  --color-text: #f0f0f0;
+  --color-muted: #9C9CA5;
+  --color-accent: #CC2727;
 }
 
 @layer base {
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
   }
 }
+
+@utility chulapa-ligatures {
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+  font-feature-settings: "liga" 1, "dlig" 1;
+  text-rendering: optimizeLegibility;
+}
+
+@utility border-loose-dashed {
+  background-image: repeating-linear-gradient(
+    to right,
+    theme(colors.zinc.700) 0px,
+    theme(colors.zinc.700) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
