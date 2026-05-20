@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/layout.astro";
+import WhatsAppLink from "../components/whatsapp-link.astro";
 import HeroImage from "../assets/images/hero.webp";
 import CrosstrainingImage from "../assets/images/crosstraining.webp";
 import IronbodyImage from "../assets/images/ironbody.webp";
@@ -49,15 +50,15 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 <BaseLayout title="Box 28012. Madrid.">
 	<nav class="flex justify-between items-center px-10 h-18 max-w-400 mx-auto">
 		<div>
-			<span class="font-serif tracking-[-0.06em]">BOX 28012</span>
+			<a href="#inicio" class="font-serif tracking-[-0.06em]">BOX 28012</a>
 		</div>
 		<div>
 			<ul class="flex items-center gap-10">
-				<li>Actividades</li>
-				<li>El Box</li>
+				<li><a href="#actividades">Actividades</a></li>
+				<li><a href="#el-box">El Box</a></li>
 				<li>Horarios</li>
-				<li>Tarifas</li>
-				<li>Contacto</li>
+				<li><a href="#tarifas">Tarifas</a></li>
+				<li><a href="#contacto">Contacto</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -65,7 +66,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 	<div class="relative">
 		<!-- INTRO/HERO -->
 		<div class="max-w-400 mx-auto">
-			<section class="relative h-[calc(100vh-72px)] px-10 py-20">
+			<section id="inicio" class="relative h-[calc(100vh-72px)] px-10 py-20">
 				<div class="flex h-full items-center gap-20">
 					<div class="flex flex-col gap-8 min-w-110">
 						<h1 class="font-serif tracking-[-0.06em]">
@@ -88,7 +89,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 
 						<div>
-							<button
+							<WhatsAppLink
 								class="font-chulapa py-1 text-accent flex items-center gap-2 text-xl cursor-pointer"
 							>
 								<Icon name="whatsapp" class="size-7" />
@@ -98,7 +99,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 										class="size-6"
 									/>
 								</div>
-							</button>
+							</WhatsAppLink>
 						</div>
 					</div>
 
@@ -124,7 +125,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 		<!-- ACTIVIDADES -->
 		<div class="max-w-400 mx-auto">
-			<section class="px-10 py-40">
+			<section id="actividades" class="px-10 py-40">
 				<div class="space-y-2">
 					<span class="block font-chulapa text-4xl font-bold">ACTIVIDADES</span>
 					<p class="text-xl">Entrenamiento funcional en grupos reducidos.</p>
@@ -165,6 +166,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		<!-- SOBRE EL BOX -->
 		<div class="max-w-400 mx-auto">
 			<section
+				id="el-box"
 				class="relative isolate grid max-w-430 gap-10 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-10 py-20"
 			>
 				<div class="space-y-4 pt-30">
@@ -232,7 +234,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 
 		<!-- TARIFAS -->
 		<div class="max-w-400 mx-auto">
-			<section class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20">
+			<section id="tarifas" class="px-10 py-40 grid grid-cols-[1.5fr_2fr] gap-20">
 				<div class="space-y-2 pt-10">
 					<span class="block font-chulapa text-4xl font-bold"
 						>Tarifas Trimestales</span
@@ -244,14 +246,14 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 							tus objetivos.
 						</p>
 					</div>
-					<a
+					<WhatsAppLink
 						class="border-accent border-b py-1 font-chulapa rounded-xs text-white flex items-center gap-2 w-fit cursor-pointer font-light tracking-wider"
 					>
 						Reserva tu primera sesión gratuita
 						<div>
 							<Icon name="arrow-right" class="size-6 text-accent" />
 						</div>
-					</a>
+					</WhatsAppLink>
 				</div>
 
 				<div class="relative grid h-full content-center gap-0 lg:pl-0">
@@ -407,7 +409,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 		</div>
 
 		<!-- PONTE EN CONTACTO -->
-		<section class="isolate py-20">
+		<section id="contacto" class="isolate py-20">
 			<div class="max-w-400 mx-auto px-10 pt-20">
 				<div class="space-y-10">
 					<div class="space-y-6">
@@ -427,7 +429,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 						</div>
 
 						<div>
-							<a
+							<WhatsAppLink
 								class="border-accent border px-6 py-3 font-chulapa rounded-xs text-white/80 flex items-center gap-2 w-fit cursor-pointer"
 							>
 								<Icon name="whatsapp" class="size-7 text-accent" />
@@ -435,7 +437,7 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 								<div class="pl-4">
 									<Icon name="arrow-right" class="size-6" />
 								</div>
-							</a>
+							</WhatsAppLink>
 						</div>
 					</div>
 
@@ -520,17 +522,17 @@ const instagramUrl = "https://www.instagram.com/box28012.madrid/";
 					<ul
 						class="pt-4 text-white space-y-4 font-light text-sm tracking-wider"
 					>
-						<li>Actividades</li>
-						<li>El Box</li>
+						<li><a href="#actividades">Actividades</a></li>
+						<li><a href="#el-box">El Box</a></li>
 						<li>Horarios</li>
-						<li>Tarifas</li>
-						<li>Contacto</li>
+						<li><a href="#tarifas">Tarifas</a></li>
+						<li><a href="#contacto">Contacto</a></li>
 					</ul>
 				</li>
 				<div class="flex items-center gap-20">
 					<li>
 						<p class="font-chulapa font-bold text-muted">WhatsApp</p>
-						<p class="text-lg">+34 604 862 429</p>
+						<WhatsAppLink class="text-lg">+34 604 862 429</WhatsAppLink>
 					</li>
 					<li>
 						<p class="font-chulapa font-bold text-muted">Email</p>

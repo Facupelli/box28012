@@ -1,0 +1,28 @@
+---
+interface Props {
+	class?: string;
+	message?: string;
+	ariaLabel?: string;
+}
+
+const {
+	class: className,
+	message,
+	ariaLabel = "Abrir chat de WhatsApp con Box 28012",
+} = Astro.props;
+
+const phoneNumber = "34604862429";
+const href = message
+	? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+	: `https://wa.me/${phoneNumber}`;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={ariaLabel}
+	class:list={[className]}
+>
+	<slot />
+</a>
