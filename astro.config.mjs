@@ -16,10 +16,10 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Anton",
-      cssVariable: "--font-display",
-      weights: [400],
-      styles: ["normal"],
+      name: "Libre Bodoni",
+      cssVariable: "--font-brand",
+      weights: [400, 500, 600, 700],
+      styles: ["normal", "italic"],
       subsets: ["latin"],
     },
     {

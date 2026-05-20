@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-anton: var(--font-display);
+  --font-serif: var(--font-brand, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif);
   --font-chulapa: var(--font-sans);
   --font-body: var(--font-body);
 
