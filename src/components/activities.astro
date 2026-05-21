@@ -1,0 +1,127 @@
+---
+import Image from "astro/components/Image.astro";
+import { getHomeData } from "../data/home";
+import { Icon } from "astro-icon/components";
+
+const data = getHomeData();
+const activities = data.activities;
+---
+
+<div
+  class="pt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20 justify-between"
+  data-activities-accordion
+>
+  {
+    activities.map((activity, index) => (
+      <details
+        class="group w-full rounded-xs border border-muted/10 md:p-0 md:border-0 md:rounded-none lg:w-100"
+        data-activity
+        open={index === 0}
+      >
+        <summary class="flex cursor-pointer list-none items-center gap-4 pr-4 group-open:p-4 md:hidden [&::-webkit-details-marker]:hidden">
+          <Image
+            src={activity.image}
+            alt={activity.alt}
+            class="h-16 w-26 shrink-0 object-cover group-open:hidden"
+          />
+
+          <h3 class="flex-1 text-base group-open:text-lg sm:text-2xl font-chulapa font-normal tracking-wide">
+            {activity.title}
+          </h3>
+
+          <Icon
+            name="plus"
+            class="size-6 shrink-0 text-accent group-open:hidden"
+            aria-hidden="true"
+          />
+
+          <Icon
+            name="minus"
+            class="hidden size-6 shrink-0 text-accent group-open:block"
+            aria-hidden="true"
+          />
+        </summary>
+
+        <div class="px-4 pb-4 md:mt-0 md:space-y-4">
+          <Image
+            src={activity.image}
+            alt={activity.alt}
+            class="w-full h-50 sm:h-64 md:h-80 lg:h-100 lg:w-100 object-cover"
+          />
+
+          <div class="space-y-2">
+            <h3 class="hidden text-xl md:text-2xl font-chulapa font-normal tracking-wide md:block">
+              {activity.title}
+            </h3>
+
+            <div class="hidden md:block relative h-0.5 bg-surface my-4">
+              <div class="absolute left-0 top-0 h-0.5 bg-accent w-8" />
+            </div>
+
+            <ul class="space-y-3 md:space-y-1 pt-4 md:pt-0">
+              {activity.items.map((item) => (
+                <li class="flex items-start gap-2 text-sm sm:text-lg leading-relaxed">
+                  <Icon
+                    name="plus"
+                    class="mt-1 size-5 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<script>
+  const accordion = document.querySelector("[data-activities-accordion]");
+  const activities = Array.from(
+    accordion?.querySelectorAll<HTMLDetailsElement>("details[data-activity]") ??
+      [],
+  );
+
+  const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+  function syncActivities() {
+    if (activities.length === 0) return;
+
+    if (desktopQuery.matches) {
+      activities.forEach((activity) => {
+        activity.open = true;
+      });
+
+      return;
+    }
+
+    const openActivities = activities.filter((activity) => activity.open);
+
+    if (openActivities.length === 0) {
+      activities[0].open = true;
+      return;
+    }
+
+    openActivities.slice(1).forEach((activity) => {
+      activity.open = false;
+    });
+  }
+
+  activities.forEach((activity) => {
+    activity.addEventListener("toggle", () => {
+      if (desktopQuery.matches || !activity.open) return;
+
+      activities.forEach((otherActivity) => {
+        if (otherActivity !== activity) {
+          otherActivity.open = false;
+        }
+      });
+    });
+  });
+
+  desktopQuery.addEventListener("change", syncActivities);
+  syncActivities();
+</script>
