@@ -62,14 +62,14 @@ const {
 
 						<div>
 							<WhatsAppLink
-								class="font-chulapa flex items-center gap-2 text-sm md:text-base cursor-pointer border border-muted px-4 py-3 md:py-2 w-full md:w-fit bg-surface rounded-xs font-normal"
+								class="flex items-center justify-center gap-2 text-lg md:text-2xl cursor-pointer border border-accent px-4 py-3 md:py-2 w-full md:w-fit bg-surface rounded-xs font-normal"
 							>
 								<Icon name="whatsapp" class="size-7" aria-hidden="true" />
 								<div class="flex items-center gap-4">
-									RESERVA TU PRIMERA SESIÓN GRATIS
+									Reserva tu primera sesión gratis
 									<Icon
 										name="arrow-right"
-										class="size-5 text-accent"
+										class="size-5 text-accent hidden md:block"
 										aria-hidden="true"
 									/>
 								</div>
@@ -150,7 +150,7 @@ const {
 		<div class="max-w-400 mx-auto">
 			<section
 				id="el-box"
-				class="relative isolate grid max-w-430 gap-10 md:gap-20 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-4 md:px-10 py-20"
+				class="relative isolate grid max-w-430 gap-10 md:gap-20 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-4 md:px-10 py-20 md:py-30"
 			>
 				<div class="space-y-6 md:pt-30">
 					<div class="h-1 bg-accent w-12"></div>
@@ -213,7 +213,7 @@ const {
 		<div class="max-w-400 mx-auto">
 			<section
 				id="tarifas"
-				class="px-4 md:px-10 md:py-40 grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-10 md:gap-20"
+				class="px-4 md:px-10 py-20 md:py-30 grid grid-cols-1 md:grid-cols-[1.5fr_2fr] gap-10 md:gap-20"
 			>
 				<div class="space-y-2 pt-10">
 					<h2 class="block font-chulapa text-4xl font-bold">
@@ -227,9 +227,9 @@ const {
 						</p>
 					</div>
 					<WhatsAppLink
-						class="border-accent border bg-surface py-2 px-4 font-chulapa rounded-xs flex items-center gap-2 w-fit cursor-pointer tracking-wider font-light text-pretty"
+						class="border-accent border bg-surface py-2 px-4 text-xl md:text-2xl rounded-xs flex items-center justify-center gap-2 w-full md:w-fit cursor-pointer tracking-wider font-light text-pretty"
 					>
-						Reservar primera sesión gratuita
+						Consultar por WhatsApp
 						<div>
 							<Icon
 								name="arrow-right"
@@ -256,9 +256,9 @@ const {
 										"hidden absolute left-0 top-0 w-px bg-zinc-700/60 lg:block",
 										plan.isLast ? "h-1/2" : "h-full",
 									]}
-								></div>
-								<div class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block"></div>
-								<div class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block"></div>
+								/>
+								<div class="hidden absolute left-0 top-1/2 h-2 w-2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700 lg:block" />
+								<div class="hidden absolute left-0 top-1/2 h-px w-18 -translate-y-1/2 bg-zinc-500/50 lg:block" />
 
 								<span class="text-4xl font-light text-zinc-400 sm:text-5xl pt-4 md:pt-0">
 									{plan.number}
@@ -286,7 +286,7 @@ const {
 		</div>
 
 		<!-- PONTE EN CONTACTO -->
-		<section id="contacto" class="isolate py-20">
+		<section id="contacto" class="isolate py-20 md:py-30">
 			<div class="max-w-400 mx-auto px-4 md:px-10">
 				<div class="space-y-10">
 					<div class="space-y-6">
@@ -312,14 +312,14 @@ const {
 
 						<div>
 							<WhatsAppLink
-								class="border-accent border px-4 py-3 rounded-xs flex items-center gap-4 md:gap-2 w-fit cursor-pointer font-chulapa font-normal bg-surface md:text-lg"
+								class="border-accent border px-4 py-3 rounded-xs flex items-center justify-center gap-4 md:gap-2 w-full md:w-fit cursor-pointer bg-surface text-xl md:text-2xl"
 							>
 								<Icon
 									name="whatsapp"
 									class="size-7 text-accent"
 									aria-hidden="true"
 								/>
-								ESCRIBIR POR WHATSAPP
+								Escribir por WhatsApp
 								<div class="pl-4">
 									<Icon name="arrow-right" class="size-6" aria-hidden="true" />
 								</div>
@@ -394,7 +394,7 @@ const {
 	</div>
 
 	<!-- FOOTER -->
-	<div class="pt-32">
+	<div class="pt-20 md:pt-30">
 		<footer class="bg-black/40">
 			<div class="max-w-7xl mx-auto px-4 md:px-10 py-10 md:py-16">
 				<div class="grid gap-10 md:gap-16 lg:grid-cols-[1.15fr_1fr]">
@@ -448,10 +448,14 @@ const {
 							class="flex flex-col gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between"
 						>
 							<WhatsAppLink
-								class="font-chulapa text-sm tracking-wide flex items-center gap-3"
+								class="text-xl tracking-wide flex items-center gap-3"
 							>
-								<span class="h-px w-8 bg-accent"></span>
-								RESERVA TU PRIMERA SESIÓN
+								Primera sesión gratuita
+								<Icon
+									name="arrow-right"
+									class="size-6 text-accent"
+									aria-hidden="true"
+								/>
 							</WhatsAppLink>
 
 							<p class="text-xs text-muted">
