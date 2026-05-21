@@ -8,7 +8,8 @@
   --color-bg: #131313;
   --color-surface: #1C1C1C;
   --color-text: #f0f0f0;
-  --color-muted: #9C9CA5;
+  --color-muted: #A3A3A3;
+  --color-subtle: #777777;
   --color-accent: #CC2727;
 }
 
@@ -32,22 +33,44 @@
   }
 }
 
-@utility chulapa-ligatures {
-  font-variant-ligatures: common-ligatures discretionary-ligatures;
-  font-feature-settings: "liga" 1, "dlig" 1;
-  text-rendering: optimizeLegibility;
+
+@utility text-brand {
+  @apply font-serif text-[clamp(2.75rem,12vw,5rem)] leading-none tracking-[-0.04em] uppercase;
 }
 
-@utility border-loose-dashed {
-  background-image: repeating-linear-gradient(
-    to right,
-    theme(colors.zinc.700) 0px,
-    theme(colors.zinc.700) 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  background-position: bottom;
+@utility text-brand-kicker {
+  @apply font-chulapa text-[clamp(0.875rem,2vw,1.125rem)] uppercase tracking-[0.16em];
+}
+
+@utility text-section-title {
+  @apply font-chulapa text-[clamp(1.75rem,7vw,2.75rem)] leading-none font-bold uppercase;
+}
+
+@utility text-card-title {
+  @apply font-chulapa text-xl md:text-2xl leading-tight tracking-wide;
+}
+
+@utility text-lead {
+  @apply text-lg md:text-xl leading-relaxed text-muted;
+}
+
+@utility text-body {
+  @apply text-base md:text-lg leading-relaxed text-muted;
+}
+
+@utility text-meta {
+  @apply text-sm leading-normal text-subtle;
+}
+
+@utility text-eyebrow {
+  @apply text-xs md:text-sm uppercase tracking-[0.2em] text-subtle;
+}
+
+@utility text-cta {
+  @apply text-base md:text-lg font-medium;
+}
+
+@utility text-price {
+  @apply text-4xl md:text-5xl leading-none;
 }
 

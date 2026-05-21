@@ -24,7 +24,7 @@ const navItems = [
 	>
 		<a
 			href="#inicio"
-			class="font-serif text-base tracking-[-0.06em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-xl lg:group-data-[hero=true]:text-3xl"
+			class="font-serif text-lg tracking-[-0.06em] transition-[font-size] duration-300 ease-out lg:text-xl lg:group-data-[hero=true]:text-2xl"
 		>
 			BOX 28012
 		</a>
@@ -39,12 +39,12 @@ const navItems = [
 						{item.href ? (
 							<a
 								href={item.href}
-								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-2xl"
+								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-lg"
 							>
 								{item.label}
 							</a>
 						) : (
-							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-2xl">
+							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-lg">
 								{item.label}
 							</span>
 						)}
@@ -82,7 +82,7 @@ const navItems = [
 	class="pointer-events-none invisible fixed inset-x-0 bottom-0 z-40 bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
 >
 	<ul
-		class="flex h-full -translate-y-10 flex-col justify-center gap-10 px-6 text-4xl opacity-0 transition-[opacity,transform] duration-300 ease-out"
+		class="flex h-full -translate-y-10 flex-col justify-center gap-10 px-6 text-[clamp(2rem,10vw,3rem)] opacity-0 transition-[opacity,transform] duration-300 ease-out"
 	>
 		{
 			navItems.map((item) => (

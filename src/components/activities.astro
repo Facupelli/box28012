@@ -25,9 +25,7 @@ const activities = data.activities;
             class="h-16 w-26 shrink-0 object-cover group-open:hidden"
           />
 
-          <h3 class="flex-1 text-base group-open:text-lg sm:text-2xl font-chulapa font-normal tracking-wide">
-            {activity.title}
-          </h3>
+          <h3 class="flex-1 text-card-title font-normal">{activity.title}</h3>
 
           <Icon
             name="plus"
@@ -42,7 +40,10 @@ const activities = data.activities;
           />
         </summary>
 
-        <div class="px-4 pb-4 md:mt-0 md:space-y-4">
+        <div
+          class="px-4 pb-4 md:px-0 md:pb-0 md:space-y-4"
+          data-activity-content
+        >
           <Image
             src={activity.image}
             alt={activity.alt}
@@ -50,7 +51,7 @@ const activities = data.activities;
           />
 
           <div class="space-y-2">
-            <h3 class="hidden text-xl md:text-2xl font-chulapa font-normal tracking-wide md:block">
+            <h3 class="hidden text-card-title font-normal md:block">
               {activity.title}
             </h3>
 
@@ -60,7 +61,7 @@ const activities = data.activities;
 
             <ul class="space-y-3 md:space-y-1 pt-4 md:pt-0">
               {activity.items.map((item) => (
-                <li class="flex items-start gap-2 text-sm sm:text-lg leading-relaxed">
+                <li class="flex items-start gap-2 text-body">
                   <Icon
                     name="plus"
                     class="mt-1 size-5 shrink-0 text-accent"
@@ -87,6 +88,18 @@ const activities = data.activities;
 
   const desktopQuery = window.matchMedia("(min-width: 768px)");
 
+  function playReveal(activity: HTMLDetailsElement) {
+    const content = activity.querySelector<HTMLElement>(
+      "[data-activity-content]",
+    );
+
+    if (!content || desktopQuery.matches) return;
+
+    content.removeAttribute("data-revealing");
+    void content.offsetWidth;
+    content.setAttribute("data-revealing", "");
+  }
+
   function syncActivities() {
     if (activities.length === 0) return;
 
@@ -111,17 +124,52 @@ const activities = data.activities;
   }
 
   activities.forEach((activity) => {
-    activity.addEventListener("toggle", () => {
-      if (desktopQuery.matches || !activity.open) return;
+    const summary = activity.querySelector("summary");
+
+    summary?.addEventListener("click", (event) => {
+      if (desktopQuery.matches) return;
+
+      event.preventDefault();
+
+      if (activity.open) {
+        activity.open = false;
+        return;
+      }
 
       activities.forEach((otherActivity) => {
-        if (otherActivity !== activity) {
-          otherActivity.open = false;
-        }
+        otherActivity.open = otherActivity === activity;
       });
+
+      playReveal(activity);
     });
   });
 
   desktopQuery.addEventListener("change", syncActivities);
   syncActivities();
 </script>
+
+<style>
+  @media (max-width: 767px) {
+    [data-activity-content][data-revealing] {
+      animation: activityReveal 200ms ease-out;
+    }
+
+    @keyframes activityReveal {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-activity-content] {
+        animation: none;
+      }
+    }
+  }
+</style>
