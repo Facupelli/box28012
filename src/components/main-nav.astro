@@ -39,12 +39,12 @@ const navItems = [
 						{item.href ? (
 							<a
 								href={item.href}
-								class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-lg"
+								class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base"
 							>
 								{item.label}
 							</a>
 						) : (
-							<span class="text-base transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-lg">
+							<span class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base">
 								{item.label}
 							</span>
 						)}
@@ -88,11 +88,11 @@ const navItems = [
 			navItems.map((item) => (
 				<li>
 					{item.href ? (
-						<a href={item.href} class="mobile-menu-link block font-chulapa">
+						<a href={item.href} class="mobile-menu-link block font-medium uppercase tracking-[0.06em]">
 							{item.label}
 						</a>
 					) : (
-						<span class="block font-chulapa text-muted">{item.label}</span>
+						<span class="block font-medium uppercase tracking-[0.06em] text-muted">{item.label}</span>
 					)}
 				</li>
 			))

@@ -48,12 +48,20 @@ export default defineConfig({
     },
     {
       provider: fontProviders.google(),
-      name: "Alegreya Sans",
-      cssVariable: "--font-body",
+      name: "DM Sans",
+      cssVariable: "--font-dm",
       weights: [300, 400, 500, 700, 800, 900],
       styles: ["normal", "italic"],
       subsets: ["latin"],
-    }
+    },
+    // {
+    //   provider: fontProviders.google(),
+    //   name: "IBM Plex Sans Condensed",
+    //   cssVariable: "--font-ibm",
+    //   weights: [300, 400, 500, 700, 800, 900],
+    //   styles: ["normal", "italic"],
+    //   subsets: ["latin"],
+    // }
   ],
 
   integrations: [icon()]
