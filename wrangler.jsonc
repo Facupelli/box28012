@@ -1,7 +1,9 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "box28012",
+  "account_id": "4e7f6abe43f6fc493f243e66002b3d75",
   "compatibility_date": "2026-08-12",
+  "workers_dev": true,
   "assets": {
     "directory": "./dist"
   }
