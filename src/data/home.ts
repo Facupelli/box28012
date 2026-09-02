@@ -124,3 +124,25 @@ export function getHomeData() {
 		pricingPlans,
 	};
 }
+
+export function getBusinessStructuredData(siteUrl: URL) {
+	const businessUrl = new URL("/", siteUrl);
+
+	return {
+		"@context": "https://schema.org",
+		"@type": "ExerciseGym",
+		"@id": new URL("/#business", siteUrl).href,
+		name: businessInfo.name,
+		url: businessUrl.href,
+		telephone: businessInfo.phone,
+		email: businessInfo.email,
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: businessInfo.addressLine1,
+			addressLocality: businessInfo.cityShort,
+			postalCode: businessInfo.postalCode,
+			addressCountry: "ES",
+		},
+		sameAs: [businessInfo.instagramUrl],
+	};
+}

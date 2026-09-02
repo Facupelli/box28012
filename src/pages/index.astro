@@ -8,26 +8,31 @@ import HeroImage from "../assets/images/hero.webp";
 import BoxImage from "../assets/images/box.webp";
 import BathImage from "../assets/images/bath.webp";
 import RemerasImage from "../assets/images/remeras.webp";
-import { getHomeData } from "../data/home";
+import { getBusinessStructuredData, getHomeData } from "../data/home";
 import Activities from "../components/activities.astro";
 
+if (!Astro.site) {
+	throw new Error("Astro.site must be configured.");
+}
+
 const data = getHomeData();
-const {
-	activities,
-	aboutParagraphs,
-	businessInfo,
-	pricingPlans,
-	contactItems,
-} = data;
+const structuredData = getBusinessStructuredData(Astro.site);
+
+const { aboutParagraphs, businessInfo, pricingPlans, contactItems } = data;
 ---
 
 <BaseLayout
-	title="Box 28012. Madrid."
+	title="Box 28012 | Crosstraining y entrenamiento funcional en Madrid"
 	description="Box 28012 es un espacio de entrenamiento funcional en Madrid centro con grupos reducidos, técnica y atención personalizada."
 >
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify(structuredData)}
+	/>
+
 	<MainNav />
 
-	<div class="relative overflow-hidden">
+	<main class="relative overflow-hidden">
 		<!-- INTRO/HERO -->
 		<div class="max-w-600 mx-auto pb-14 md:pb-0">
 			<section
@@ -78,6 +83,7 @@ const {
 						<Image
 							src={HeroImage}
 							alt="Salón principal del Box 28012"
+							priority
 							class="w-full object-cover h-full md:h-[80%] lg:h-auto"
 						/>
 					</div>
@@ -328,7 +334,7 @@ const {
 			>
 			<div class="h-0.5 bg-muted w-10"></div>
 		</div>
-	</div>
+	</main>
 
 	<!-- FOOTER -->
 	<div class="pt-20 md:pt-30">
@@ -420,11 +426,11 @@ const {
 				</div>
 
 				<div class="relative z-10 text-center">
-					<h1
+					<p
 						class="font-serif text-[clamp(4rem,15vw,9rem)] uppercase leading-none text-text"
 					>
 						{businessInfo.name}
-					</h1>
+					</p>
 
 					<p
 						class="font-serif text-[clamp(1.25rem,3vw,3rem)] font-semibold uppercase tracking-wider leading-none text-red-500"

@@ -12,11 +12,11 @@ const activities = data.activities;
   data-activities-accordion
 >
   {
-    activities.map((activity, index) => (
+    activities.map((activity) => (
       <details
         class="group w-full rounded-xs border border-muted/10 md:p-0 md:border-0 md:rounded-none lg:w-100"
         data-activity
-        open={index === 0}
+        open
       >
         <summary class="flex cursor-pointer list-none items-center gap-4 pr-4 group-open:p-4 md:hidden [&::-webkit-details-marker]:hidden">
           <Image

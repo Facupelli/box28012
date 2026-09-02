@@ -2,7 +2,6 @@
 
 @theme inline {
   --font-serif: var(--font-brand, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif);
-  --font-chulapa: var(--font-sans);
   --font-body: var(--font-dm, ui-sans-serif, system-ui, sans-serif);
 
   --color-bg: #131313;
@@ -24,12 +23,6 @@
   button:focus-visible {
     outline: 1px solid var(--color-accent);
     outline-offset: 4px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
   }
 }
 

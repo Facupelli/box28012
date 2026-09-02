@@ -4,7 +4,6 @@ import { Icon } from "astro-icon/components";
 const navItems = [
 	{ label: "Actividades", href: "#actividades" },
 	{ label: "El Box", href: "#el-box" },
-	{ label: "Horarios" },
 	{ label: "Tarifas", href: "#tarifas" },
 	{ label: "Contacto", href: "#contacto" },
 ];
@@ -16,7 +15,7 @@ const navItems = [
 	data-hero="true"
 	data-visible="true"
 	data-menu-open="false"
-	class="group fixed top-0 left-0 z-50 w-full bg-background transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[visible=false]:-translate-y-full"
+	class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full"
 >
 	<div
 		data-nav-header
@@ -79,6 +78,7 @@ const navItems = [
 <div
 	id="mobile-menu"
 	aria-hidden="true"
+	inert
 	class="pointer-events-none invisible fixed inset-x-0 bottom-0 z-40 bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
 >
 	<ul
@@ -88,11 +88,16 @@ const navItems = [
 			navItems.map((item) => (
 				<li>
 					{item.href ? (
-						<a href={item.href} class="mobile-menu-link block font-medium uppercase tracking-[0.06em]">
+						<a
+							href={item.href}
+							class="mobile-menu-link block font-medium uppercase tracking-[0.06em]"
+						>
 							{item.label}
 						</a>
 					) : (
-						<span class="block font-medium uppercase tracking-[0.06em] text-muted">{item.label}</span>
+						<span class="block font-medium uppercase tracking-[0.06em] text-muted">
+							{item.label}
+						</span>
 					)}
 				</li>
 			))
@@ -127,8 +132,6 @@ const navItems = [
 
 			if (open) updateMenuOffset();
 
-			// Toggle burger/close icons via data attribute (group- variants still work,
-			// icons are descendants of <nav>)
 			nav.dataset.menuOpen = String(open);
 			menuToggleButton?.setAttribute("aria-expanded", String(open));
 			menuToggleButton?.setAttribute(
@@ -136,18 +139,23 @@ const navItems = [
 				open ? "Cerrar menú" : "Abrir menú",
 			);
 
-			// Mobile menu panel visibility
 			mobileMenu.setAttribute("aria-hidden", String(!open));
+			mobileMenu.inert = !open;
+
 			mobileMenu.classList.toggle("opacity-0", !open);
 			mobileMenu.classList.toggle("invisible", !open);
 			mobileMenu.classList.toggle("pointer-events-none", !open);
 
-			// List staggered entrance animation
 			mobileMenuList.classList.toggle("opacity-0", !open);
 			mobileMenuList.classList.toggle("-translate-y-2", !open);
 
-			// Lock scroll on <html> — more reliable cross-browser than <body>
 			document.documentElement.style.overflow = open ? "hidden" : "";
+
+			if (open) {
+				window.requestAnimationFrame(() => {
+					mobileMenuLinks[0]?.focus();
+				});
+			}
 		};
 
 		const updateNav = () => {
@@ -187,10 +195,51 @@ const navItems = [
 			});
 		});
 
-		window.addEventListener("keydown", (e) => {
-			if (e.key === "Escape") {
+		window.addEventListener("keydown", (event) => {
+			if (!isMenuOpen) return;
+
+			if (event.key === "Escape") {
+				event.preventDefault();
+
 				setMenuOpen(false);
+				menuToggleButton?.focus();
 				requestUpdate();
+
+				return;
+			}
+
+			if (event.key !== "Tab") return;
+
+			const focusableElements = [menuToggleButton, ...mobileMenuLinks].filter(
+				(element): element is HTMLButtonElement | HTMLAnchorElement =>
+					element !== null,
+			);
+
+			const firstElement = focusableElements[0];
+			const lastElement = focusableElements.at(-1);
+
+			if (!firstElement || !lastElement) return;
+
+			const activeElement = document.activeElement;
+			const isFocusInsideMenu = focusableElements.some(
+				(element) => element === activeElement,
+			);
+
+			if (!isFocusInsideMenu) {
+				event.preventDefault();
+				(event.shiftKey ? lastElement : firstElement).focus();
+				return;
+			}
+
+			if (event.shiftKey && activeElement === firstElement) {
+				event.preventDefault();
+				lastElement.focus();
+				return;
+			}
+
+			if (!event.shiftKey && activeElement === lastElement) {
+				event.preventDefault();
+				firstElement.focus();
 			}
 		});
 
