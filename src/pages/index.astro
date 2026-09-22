@@ -7,6 +7,7 @@ import MainNav from "../components/main-nav.astro";
 import HeroImage from "../assets/images/hero.webp";
 import { getBusinessStructuredData, getHomeData } from "../data/home";
 import Services from "../components/services.astro";
+import Schedule from "../components/schedule.astro";
 
 if (!Astro.site) {
 	throw new Error("Astro.site must be configured.");
@@ -92,6 +93,11 @@ const { aboutSections, businessInfo, pricingPlans, contactItems } = data;
 
 				<Services />
 			</section>
+		</div>
+
+		<!-- HORARIOS -->
+		<div class="max-w-350 mx-auto">
+			<Schedule />
 		</div>
 
 		<!-- TARIFAS -->

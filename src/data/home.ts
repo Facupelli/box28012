@@ -37,6 +37,111 @@ const services = [
 	},
 ];
 
+export type ScheduleDay =
+	| "monday"
+	| "tuesday"
+	| "wednesday"
+	| "thursday"
+	| "friday"
+	| "saturday";
+
+export type ScheduleActivity =
+	| "cross-training"
+	| "ironbody"
+	| "partner-wod";
+
+export type ScheduleSession = {
+	day: ScheduleDay;
+	time: string;
+	activity: ScheduleActivity;
+};
+
+const scheduleDays: Array<{
+	id: ScheduleDay;
+	label: string;
+	shortLabel: string;
+}> = [
+	{ id: "monday", label: "Lunes", shortLabel: "LUN" },
+	{ id: "tuesday", label: "Martes", shortLabel: "MAR" },
+	{ id: "wednesday", label: "Miércoles", shortLabel: "MIÉ" },
+	{ id: "thursday", label: "Jueves", shortLabel: "JUE" },
+	{ id: "friday", label: "Viernes", shortLabel: "VIE" },
+	{ id: "saturday", label: "Sábado", shortLabel: "SÁB" },
+];
+
+const scheduleActivities: Record<ScheduleActivity, { label: string }> = {
+	"cross-training": { label: "Cross Training" },
+	ironbody: { label: "IronBody" },
+	"partner-wod": { label: "Partner WOD" },
+};
+
+const scheduleTimes = [
+	"07:00",
+	"08:00",
+	"09:00",
+	"10:00",
+	"11:00",
+	"12:00",
+	"13:00",
+	"14:00",
+	"15:00",
+	"16:00",
+	"17:00",
+	"18:00",
+	"19:00",
+	"20:00",
+];
+
+const scheduleSessions: ScheduleSession[] = [
+	{ day: "monday", time: "07:00", activity: "cross-training" },
+	{ day: "monday", time: "08:00", activity: "cross-training" },
+	{ day: "monday", time: "09:00", activity: "ironbody" },
+	{ day: "monday", time: "14:00", activity: "ironbody" },
+	{ day: "monday", time: "15:00", activity: "cross-training" },
+	{ day: "monday", time: "17:00", activity: "cross-training" },
+	{ day: "monday", time: "18:00", activity: "ironbody" },
+	{ day: "monday", time: "19:00", activity: "cross-training" },
+	{ day: "monday", time: "20:00", activity: "cross-training" },
+	{ day: "tuesday", time: "08:00", activity: "ironbody" },
+	{ day: "tuesday", time: "09:00", activity: "cross-training" },
+	{ day: "tuesday", time: "10:00", activity: "cross-training" },
+	{ day: "tuesday", time: "14:00", activity: "cross-training" },
+	{ day: "tuesday", time: "15:00", activity: "ironbody" },
+	{ day: "tuesday", time: "17:00", activity: "ironbody" },
+	{ day: "tuesday", time: "18:00", activity: "cross-training" },
+	{ day: "tuesday", time: "19:00", activity: "ironbody" },
+	{ day: "tuesday", time: "20:00", activity: "cross-training" },
+	{ day: "wednesday", time: "07:00", activity: "ironbody" },
+	{ day: "wednesday", time: "08:00", activity: "cross-training" },
+	{ day: "wednesday", time: "09:00", activity: "cross-training" },
+	{ day: "wednesday", time: "10:00", activity: "ironbody" },
+	{ day: "wednesday", time: "14:00", activity: "ironbody" },
+	{ day: "wednesday", time: "15:00", activity: "ironbody" },
+	{ day: "wednesday", time: "17:00", activity: "cross-training" },
+	{ day: "wednesday", time: "18:00", activity: "ironbody" },
+	{ day: "wednesday", time: "19:00", activity: "cross-training" },
+	{ day: "wednesday", time: "20:00", activity: "cross-training" },
+	{ day: "thursday", time: "08:00", activity: "cross-training" },
+	{ day: "thursday", time: "09:00", activity: "ironbody" },
+	{ day: "thursday", time: "10:00", activity: "cross-training" },
+	{ day: "thursday", time: "14:00", activity: "cross-training" },
+	{ day: "thursday", time: "15:00", activity: "ironbody" },
+	{ day: "thursday", time: "17:00", activity: "ironbody" },
+	{ day: "thursday", time: "18:00", activity: "cross-training" },
+	{ day: "thursday", time: "19:00", activity: "ironbody" },
+	{ day: "thursday", time: "20:00", activity: "cross-training" },
+	{ day: "friday", time: "07:00", activity: "cross-training" },
+	{ day: "friday", time: "08:00", activity: "ironbody" },
+	{ day: "friday", time: "09:00", activity: "cross-training" },
+	{ day: "friday", time: "14:00", activity: "ironbody" },
+	{ day: "friday", time: "15:00", activity: "cross-training" },
+	{ day: "friday", time: "17:00", activity: "cross-training" },
+	{ day: "friday", time: "18:00", activity: "ironbody" },
+	{ day: "saturday", time: "10:00", activity: "partner-wod" },
+	{ day: "saturday", time: "11:00", activity: "partner-wod" },
+	{ day: "saturday", time: "12:00", activity: "partner-wod" },
+];
+
 const pricingPlans = [
 	{
 		number: "01",
@@ -137,6 +242,10 @@ export function getHomeData() {
 		businessInfo,
 		contactItems,
 		pricingPlans,
+		scheduleActivities,
+		scheduleDays,
+		scheduleSessions,
+		scheduleTimes,
 	};
 }
 
