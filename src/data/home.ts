@@ -142,34 +142,62 @@ const scheduleSessions: ScheduleSession[] = [
 	{ day: "saturday", time: "12:00", activity: "partner-wod" },
 ];
 
-const pricingPlans = [
+export type PricingPeriod = "monthly" | "quarterly";
+
+export type PricingPlan = {
+	id: "fit" | "pro" | "elite" | "unlimited";
+	name: string;
+	availability: string;
+	periods: Record<
+		PricingPeriod,
+		{
+			price: number;
+			classes: number | "unlimited";
+		}
+	>;
+};
+
+const pricingPeriods: Array<{ id: PricingPeriod; label: string }> = [
+	{ id: "monthly", label: "Mensual" },
+	{ id: "quarterly", label: "Trimestral" },
+];
+
+const pricingPlans: PricingPlan[] = [
 	{
-		number: "01",
-		name: "Tarifa 18",
-		price: "230€",
-		detail: "18 clases · Todo el día",
-		isLast: false,
+		id: "fit",
+		name: "FIT",
+		availability: "Todo el día",
+		periods: {
+			monthly: { price: 70, classes: 4 },
+			quarterly: { price: 230, classes: 12 },
+		},
 	},
 	{
-		number: "02",
-		name: "Tarifa 24",
-		price: "260€",
-		detail: "24 clases · Todo el día",
-		isLast: false,
+		id: "pro",
+		name: "PRO",
+		availability: "Todo el día",
+		periods: {
+			monthly: { price: 100, classes: 8 },
+			quarterly: { price: 260, classes: 24 },
+		},
 	},
 	{
-		number: "03",
-		name: "Tarifa 36",
-		price: "310€",
-		detail: "36 clases · Todo el día",
-		isLast: false,
+		id: "elite",
+		name: "ELITE",
+		availability: "Todo el día",
+		periods: {
+			monthly: { price: 120, classes: 12 },
+			quarterly: { price: 310, classes: 36 },
+		},
 	},
 	{
-		number: "04",
-		name: "Tarifa Unlimited",
-		price: "430€",
-		detail: "Clases ilimitadas · Todo el día",
-		isLast: true,
+		id: "unlimited",
+		name: "UNLIMITED",
+		availability: "Todo el día",
+		periods: {
+			monthly: { price: 150, classes: "unlimited" },
+			quarterly: { price: 400, classes: "unlimited" },
+		},
 	},
 ];
 
@@ -241,6 +269,7 @@ export function getHomeData() {
 		aboutSections,
 		businessInfo,
 		contactItems,
+		pricingPeriods,
 		pricingPlans,
 		scheduleActivities,
 		scheduleDays,
