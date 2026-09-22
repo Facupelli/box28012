@@ -9,7 +9,7 @@ import BoxImage from "../assets/images/box.webp";
 import BathImage from "../assets/images/bath.webp";
 import RemerasImage from "../assets/images/remeras.webp";
 import { getBusinessStructuredData, getHomeData } from "../data/home";
-import Activities from "../components/activities.astro";
+import Services from "../components/services.astro";
 
 if (!Astro.site) {
 	throw new Error("Astro.site must be configured.");
@@ -83,17 +83,17 @@ const { aboutParagraphs, businessInfo, pricingPlans, contactItems } = data;
 			</div>
 		</section>
 
-		<!-- ACTIVIDADES -->
+		<!-- SERVICIOS -->
 		<div class="max-w-350 mx-auto">
 			<section id="actividades" class="px-4 md:px-10 py-14 md:py-30">
 				<div class="space-y-2">
-					<h2 class="text-section-title">ACTIVIDADES</h2>
+					<h2 class="text-section-title">SERVICIOS</h2>
 					<p class="text-lead">
-						Sesiones variadas, adaptadas a distintos niveles y objetivos.
+						Dos formas de entrenar, siempre con atención cercana.
 					</p>
 				</div>
 
-				<Activities />
+				<Services />
 			</section>
 		</div>
 

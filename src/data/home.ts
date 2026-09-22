@@ -1,5 +1,4 @@
 import CrosstrainingImage from "../assets/images/crosstraining.webp";
-import IronbodyImage from "../assets/images/ironbody.webp";
 import PartnerWODImage from "../assets/images/partner-wod.webp";
 
 const businessInfo = {
@@ -18,36 +17,20 @@ const businessInfo = {
 	instagramHandle: "@box28012.madrid",
 };
 
-const activities = [
+const services = [
 	{
-		title: "Crosstraining",
+		title: "Entrenamiento en grupos reducidos",
 		image: CrosstrainingImage,
-		alt: "Zona de entrenamiento funcional durante una clase de crosstraining",
-		items: [
-			"Sesiones variadas que combinan fuerza, cardio y skills.",
-			"Trabajo integral de resistencia, movilidad, coordinación y técnica.",
-			"Entrenamientos planificados para progresar de forma segura.  ",
-		],
+		alt: "Zona de entrenamiento preparada para una sesión en grupo reducido",
+		description:
+			"Entrena con otras personas sin perder la atención individual. Grupos de máximo 8–10 personas para cuidar tu técnica, progresión y seguridad.",
 	},
 	{
-		title: "Ironbody",
-		image: IronbodyImage,
-		alt: "Material de fuerza preparado para una sesión de Ironbody",
-		items: [
-			"Trabajo de fuerza con movimientos tradicionales y funcionales.",
-			"Progresión de cargas cuidando técnica, control y postura.",
-			" Ejercicios accesorios para prevenir lesiones y mejorar tu base.",
-		],
-	},
-	{
-		title: "Partner WOD",
+		title: "Entrenamiento personal",
 		image: PartnerWODImage,
-		alt: "Entrenamiento funcional por parejas en Box 28012",
-		items: [
-			"Entrenamientos cooperativos por parejas o equipos.",
-			"Trabajo compartido, ritmo común y motivación durante la sesión.",
-			"Un formato social para entrenar acompañado dentro del box.",
-		],
+		alt: "Zona de entrenamiento preparada para una sesión personal",
+		description:
+			"Un entrenamiento completamente adaptado a ti, tus objetivos y tu punto de partida, con seguimiento cercano y atención individual durante toda la sesión.",
 	},
 ];
 
@@ -117,7 +100,7 @@ export function getHomeData() {
 	];
 
 	return {
-		activities,
+		services,
 		aboutParagraphs,
 		businessInfo,
 		contactItems,
