@@ -5,9 +5,6 @@ import BaseLayout from "../layouts/layout.astro";
 import WhatsAppLink from "../components/whatsapp-link.astro";
 import MainNav from "../components/main-nav.astro";
 import HeroImage from "../assets/images/hero.webp";
-import BoxImage from "../assets/images/box.webp";
-import BathImage from "../assets/images/bath.webp";
-import RemerasImage from "../assets/images/remeras.webp";
 import { getBusinessStructuredData, getHomeData } from "../data/home";
 import Services from "../components/services.astro";
 
@@ -18,7 +15,7 @@ if (!Astro.site) {
 const data = getHomeData();
 const structuredData = getBusinessStructuredData(Astro.site);
 
-const { aboutParagraphs, businessInfo, pricingPlans, contactItems } = data;
+const { aboutSections, businessInfo, pricingPlans, contactItems } = data;
 ---
 
 <BaseLayout
@@ -97,69 +94,6 @@ const { aboutParagraphs, businessInfo, pricingPlans, contactItems } = data;
 			</section>
 		</div>
 
-		<!-- SOBRE EL BOX -->
-		<div class="max-w-350 mx-auto">
-			<section
-				id="el-box"
-				class="relative isolate grid max-w-430 gap-10 md:gap-20 lg:min-h-125 lg:grid-cols-[0.9fr_2.25fr] px-4 md:px-10 py-14 md:py-30"
-			>
-				<div class="space-y-4 md:space-y-6 md:pt-30">
-					<div class="h-1 bg-accent w-12"></div>
-					<h2 class="text-section-title">SOBRE EL BOX</h2>
-					<div class="text-body space-y-4">
-						{aboutParagraphs.map((paragraph) => <p>{paragraph}</p>)}
-					</div>
-				</div>
-
-				<div class="grid grid-cols-2 gap-2 sm:relative sm:block sm:min-h-215">
-					<!-- Large image: full-width on mobile, absolute on desktop -->
-					<figure
-						class="col-span-2 overflow-hidden bg-black ring-1 ring-white/8
-           sm:absolute sm:bottom-0 sm:right-20 sm:z-10 sm:h-210 sm:w-160
-           shadow-[0_18px_50px_rgba(0,0,0,0.38)]"
-					>
-						<Image
-							src={BathImage}
-							alt="Vestuarios oscuros con azulejos negros y detalles rojos"
-							class="h-100 md:h-full w-full object-cover"
-						/>
-					</figure>
-
-					<!-- Bottom-left image: half-width on mobile, absolute on desktop -->
-					<figure
-						class="overflow-hidden bg-black ring-1 ring-white/10
-           sm:absolute sm:bottom-0 sm:left-0 sm:z-20 sm:h-130 sm:w-90"
-					>
-						<Image
-							src={BoxImage}
-							alt="Zona de entrenamiento con barra en Box 28012"
-							class="h-full w-full object-cover"
-						/>
-					</figure>
-
-					<!-- Bottom-right image: half-width on mobile, absolute on desktop -->
-					<figure
-						class="overflow-hidden bg-black ring-1 ring-white/10
-           sm:absolute sm:bottom-0 sm:right-0 sm:z-30 sm:h-80 sm:w-80"
-					>
-						<Image
-							src={RemerasImage}
-							alt="Camisetas negras de Box 28012 colgadas en un perchero"
-							class="h-full w-full object-cover sm:h-70 lg:h-80"
-						/>
-					</figure>
-				</div>
-
-				<div
-					aria-hidden="true"
-					class="pointer-events-none absolute h-[70%] w-[80%] md:w-[40%] -translate-y-1/2 top-1/2 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 inset-0 opacity-40
-           bg-[radial-gradient(rgba(255,255,255,0.22)_1px,transparent_1px)]
-           bg-size-[28px_28px]"
-				>
-				</div>
-			</section>
-		</div>
-
 		<!-- TARIFAS -->
 		<div class="max-w-350 mx-auto">
 			<section
@@ -215,6 +149,62 @@ const { aboutParagraphs, businessInfo, pricingPlans, contactItems } = data;
 									<p class="text-xs uppercase leading-tight tracking-wide text-subtle md:text-sm lg:text-base text-pretty">
 										{plan.detail}
 									</p>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</section>
+		</div>
+
+		<!-- SOBRE EL BOX -->
+		<div class="max-w-350 mx-auto">
+			<section id="el-box" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-30">
+				<header class="max-w-205 space-y-3 md:space-y-4">
+					<h2 class="text-section-title">SOBRE EL BOX</h2>
+					<p class="text-lead text-pretty">
+						Desde 2019 construyendo una forma diferente de entrenar en
+						Lavapiés.
+					</p>
+				</header>
+
+				<div class="mt-12 space-y-12 md:mt-18 md:space-y-16 lg:mt-24 lg:space-y-20">
+					{
+						aboutSections.map((section, index) => (
+							<article class="grid items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-20 xl:gap-28">
+								<figure
+									class:list={[
+										"aspect-8/5 overflow-hidden bg-black",
+										index === 1 && "lg:order-2",
+									]}
+								>
+									<Image
+										src={section.image}
+										alt={section.alt}
+										class="size-full object-cover"
+									/>
+								</figure>
+
+								<div
+									class:list={[
+										"max-w-135 space-y-5 md:space-y-6 lg:justify-self-center",
+										index === 1 && "lg:order-1 lg:justify-self-start",
+									]}
+								>
+									<div class="h-0.5 w-10 bg-accent" />
+									<h3 class="text-card-title text-pretty">
+										{section.title}
+									</h3>
+
+									<div class="space-y-4 text-body leading-relaxed md:space-y-5">
+										{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+									</div>
+
+									{section.emphasis && (
+										<p class="max-w-125 pt-2 text-lg font-medium leading-relaxed text-text md:pt-4 md:text-xl">
+											{section.emphasis}
+										</p>
+									)}
 								</div>
 							</article>
 						))

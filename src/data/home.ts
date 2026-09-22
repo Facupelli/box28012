@@ -1,5 +1,8 @@
+import BathImage from "../assets/images/bath.webp";
+import BoxImage from "../assets/images/box.webp";
 import CrosstrainingImage from "../assets/images/crosstraining.webp";
 import PartnerWODImage from "../assets/images/partner-wod.webp";
+import RemerasImage from "../assets/images/remeras.webp";
 
 const businessInfo = {
 	name: "Box 28012",
@@ -65,9 +68,38 @@ const pricingPlans = [
 	},
 ];
 
-const aboutParagraphs = [
-	"Box 28012 es un espacio de entrenamiento funcional en Madrid centro. Trabajamos en grupos reducidos para ofrecer atención personalizada, corrección técnica y sesiones adaptadas a cada nivel.",
-	"Da igual si empiezas desde cero, vienes de otra disciplina o necesitas adaptar el entrenamiento: te ayudamos a entrenar con método y progresar de forma segura.",
+const aboutSections = [
+	{
+		title: "Cómo empezó",
+		image: BathImage,
+		alt: "Vestuarios oscuros con azulejos negros y detalles rojos",
+		paragraphs: [
+			"Box 28012 comenzó su historia en noviembre de 2019.",
+			"Después de varios años trabajando como entrenadora personal y entrenando tanto en grandes centros como en boxes con grupos de 20 o 30 personas, empezó a tomar forma una idea: conservar la energía y la motivación de entrenar con otros, pero sin perder la atención que recibe cada persona.",
+		],
+	},
+	{
+		title: "Entrenar en grupo no significa ser uno más",
+		image: BoxImage,
+		alt: "Zona de entrenamiento con barra en Box 28012",
+		paragraphs: [
+			"Así nació nuestro modelo de entrenamiento en grupos reducidos, con un máximo de 8–10 personas.",
+			"Un formato que permite al coach estar pendiente de la técnica, la ejecución, la progresión y la seguridad de cada persona.",
+			"Entrenar en grupo significa compartir el esfuerzo, la motivación y la experiencia con otras personas, manteniendo al mismo tiempo una atención cercana y profesional.",
+		],
+	},
+	{
+		title: "28012 es nuestro barrio",
+		image: RemerasImage,
+		alt: "Camisetas negras de Box 28012 colgadas en un perchero",
+		paragraphs: [
+			"Durante más de seis años el Box ha crecido y evolucionado junto a su entorno.",
+			"El cambio de Detailors Functional Studio a Box 28012 no es solo un cambio de nombre, sino una nueva etapa y una identidad que representa mejor lo que somos.",
+			"28012 es el código postal de Lavapiés, el barrio donde estamos y donde hemos construido nuestra comunidad. Queremos ser un box de barrio, con identidad, cercanía y un lugar que la gente sienta suyo.",
+		],
+		emphasis:
+			"Nuestro objetivo nunca ha sido tener el mayor número de personas entrenando. Queremos que las personas que entrenan aquí entrenen bien y vean progresos.",
+	},
 ];
 
 
@@ -101,7 +133,7 @@ export function getHomeData() {
 
 	return {
 		services,
-		aboutParagraphs,
+		aboutSections,
 		businessInfo,
 		contactItems,
 		pricingPlans,
