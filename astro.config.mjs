@@ -30,6 +30,66 @@ export default defineConfig({
       styles: ["normal"],
       subsets: ["latin"],
     },
+    {
+      provider: fontProviders.google(),
+      name: "Anton",
+      cssVariable: "--astro-font-anton",
+      weights: [400],
+      styles: ["normal"],
+      subsets: ["latin"],
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Chulapa",
+      cssVariable: "--astro-font-chulapa",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/chulapa/Chulapa-Light.otf"],
+            weight: 300,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/chulapa/Chulapa-Regular.otf"],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: ["./src/assets/fonts/chulapa/Chulapa-Bold.otf"],
+            weight: 700,
+            style: "normal",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Pontejos Display",
+      cssVariable: "--astro-font-pontejos-display",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/pontejos/MTMPontejos2Test-EstrechaSuelta.otf"],
+            weight: 400,
+            style: "normal",
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Pontejos Identity",
+      cssVariable: "--astro-font-pontejos-identity",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/pontejos/MTMPontejos2Test-AnchaApretada.otf"],
+            weight: 400,
+            style: "normal",
+          },
+        ],
+      },
+    },
   ],
 
   integrations: [icon()]

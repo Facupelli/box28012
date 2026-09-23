@@ -3,6 +3,11 @@
 @theme inline {
   --font-serif: var(--font-brand, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif);
   --font-body: var(--font-dm, ui-sans-serif, system-ui, sans-serif);
+  --font-anton: var(--astro-font-anton, Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif);
+  --font-chulapa: var(--astro-font-chulapa, ui-sans-serif, system-ui, sans-serif);
+  --font-pontejos: var(--astro-font-pontejos-display, ui-sans-serif, system-ui, sans-serif);
+  --font-pontejos-display: var(--astro-font-pontejos-display, ui-sans-serif, system-ui, sans-serif);
+  --font-pontejos-identity: var(--astro-font-pontejos-identity, ui-sans-serif, system-ui, sans-serif);
 
   --color-bg: #131313;
   --color-surface: #1C1C1C;
