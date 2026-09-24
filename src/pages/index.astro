@@ -47,67 +47,74 @@ const formatPlanDetail = (
 	<main class="relative overflow-hidden">
 		<!-- INTRO/HERO -->
 		<section
-			id="inicio"
-			class="relative isolate flex min-h-svh w-full items-end overflow-hidden bg-black"
-		>
-			<Image
-				src={HeroImage}
-				alt="Salón principal del Box 28012"
-				priority
-				class="absolute inset-0 -z-20 size-full object-cover object-[48%_center] md:object-center"
-			/>
+	id="inicio"
+	class="relative isolate flex min-h-svh w-full items-end overflow-hidden bg-black"
+>
+	<Image
+		src={HeroImage}
+		alt="Salón principal del Box 28012"
+		priority
+		class="absolute inset-0 -z-20 size-full object-cover object-[48%_center] md:object-center"
+	/>
 
-			<div
-				aria-hidden="true"
-				class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.82)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.74)_0%,rgba(0,0,0,0.38)_42%,rgba(0,0,0,0.04)_72%),linear-gradient(180deg,rgba(0,0,0,0.32)_0%,transparent_34%,rgba(0,0,0,0.58)_100%)]"
+	<div
+		aria-hidden="true"
+		class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.84)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.58)_35%,rgba(0,0,0,0.12)_67%,rgba(0,0,0,0.02)_100%),linear-gradient(180deg,rgba(0,0,0,0.28)_0%,transparent_36%,rgba(0,0,0,0.62)_100%)]"
+	>
+	</div>
+
+	<div
+		class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20"
+	>
+		<div class="max-w-230">
+			<p
+				class="mb-5 font-chulapa text-sm uppercase tracking-[0.22em] text-text/85 md:mb-7 md:text-base"
 			>
-			</div>
+				Lavapiés <span class="mx-2 text-text/55">—</span> Calle Cañizares, 3
+			</p>
 
-			<div
-				class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20"
+			<h1
+				class="max-w-230 text-pretty font-pontejos-display text-[clamp(3.25rem,6.5vw,6.5rem)] font-normal leading-[0.88] tracking-[-0.025em] text-text"
 			>
-				<div class="max-w-205">
-					<p
-						class="mb-4 font-serif text-xl uppercase tracking-[-0.04em] text-text md:mb-6 md:text-2xl"
-					>
-						{businessInfo.name}
-					</p>
+				Entrenamiento funcional en el corazón de Madrid.
+			</h1>
 
-					<h1
-						class="max-w-205 text-pretty text-[clamp(2.75rem,6vw,5rem)] font-medium leading-[0.96] tracking-[-0.045em] text-text"
-					>
-						Entrenamiento funcional en el corazón de Madrid.
-					</h1>
+			<p
+				class="mt-5 max-w-160 text-pretty font-chulapa text-lg leading-snug text-text/90 md:mt-7 md:text-xl"
+			>
+				Grupos reducidos. Más atención. Mejor entrenamiento.
+			</p>
 
-					<p
-						class="mt-5 max-w-145 text-pretty text-lg leading-snug text-text/90 md:mt-7 md:text-xl"
-					>
-						Grupos reducidos. Más atención. Mejor entrenamiento.
-					</p>
+			<div class="mt-8 md:mt-10">
+				<WhatsAppLink
+					class="group inline-flex items-center gap-6 rounded-none border-0 bg-text px-6 py-4 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-7 md:py-4 md:text-lg"
+				>
+					¡PRUEBA GRATIS!
 
-					<div class="mt-7 md:mt-9">
-						<WhatsAppLink class="px-7 font-semibold uppercase tracking-[0.06em] md:px-8">
-							<Icon name="whatsapp" class="size-6" aria-hidden="true" />
-							¡PRUEBA GRATIS!
-						</WhatsAppLink>
-					</div>
-				</div>
+					<span
+						aria-hidden="true"
+						class="text-xl font-normal leading-none text-[#d52b2f] transition-transform group-hover:translate-x-1"
+					>
+						→
+					</span>
+				</WhatsAppLink>
 			</div>
-		</section>
-
-		<!-- SERVICIOS -->
-		<div class="max-w-350 mx-auto">
-			<section id="actividades" class="px-4 md:px-10 py-14 md:py-30">
-				<div class="space-y-2">
-					<h2 class="text-section-title">SERVICIOS</h2>
-					<p class="text-lead">
-						Dos formas de entrenar, siempre con atención cercana.
-					</p>
-				</div>
-
-				<Services />
-			</section>
 		</div>
+	</div>
+</section>
+
+	        <!-- SERVICIOS -->
+	<div class="mx-auto max-w-350">
+	<section id="servicios" class="px-4 py-14 md:px-10 md:py-30">
+		<h2
+			class="font-chulapa text-sm uppercase tracking-[0.22em] text-text/80 md:text-base"
+		>
+			SERVICIOS
+		</h2>
+
+		<Services />
+	</section>
+</div>
 
 		<!-- HORARIOS -->
 		<div class="max-w-350 mx-auto">
