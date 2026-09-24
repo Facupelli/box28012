@@ -1,38 +1,38 @@
 ---
 interface Props {
-	class?: string;
-	message?: string;
-	ariaLabel?: string;
-	variant?: "default" | "ghost";
+  class?: string;
+  message?: string;
+  ariaLabel?: string;
+  variant?: "default" | "ghost";
 }
 
 const {
-	class: className,
-	message,
-	ariaLabel = "Abrir chat de WhatsApp con Box 28012",
-	variant = "default",
+  class: className,
+  message,
+  ariaLabel = "Abrir chat de WhatsApp con Box 28012",
+  variant = "default",
 } = Astro.props;
 
 const phoneNumber = "34604862429";
 const href = message
-	? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
-	: `https://wa.me/${phoneNumber}`;
+  ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  : `https://wa.me/${phoneNumber}`;
 
 const baseClasses =
-	"flex items-center justify-center gap-2 cursor-pointer w-full md:w-fit";
+  "flex items-center justify-center gap-2 cursor-pointer w-full md:w-fit";
 
 const variantClasses: Record<"default" | "ghost", string> = {
-	default: "text-cta border border-accent px-4 py-3 bg-surface rounded-xs",
-	ghost: "",
+  default: "text-cta border border-accent px-4 py-3 bg-surface rounded-xs",
+  ghost: "",
 };
 ---
 
 <a
-	href={href}
-	target="_blank"
-	rel="noopener noreferrer"
-	aria-label={ariaLabel}
-	class:list={[baseClasses, variantClasses[variant], className]}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={ariaLabel}
+  class:list={[baseClasses, variantClasses[variant], className]}
 >
-	<slot />
+  <slot />
 </a>

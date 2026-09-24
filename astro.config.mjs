@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig, fontProviders } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, fontProviders } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 
 import { SITE_URL } from "./site.config.mjs";
@@ -10,7 +10,7 @@ export default defineConfig({
   site: SITE_URL,
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
   fonts: [
@@ -69,7 +69,9 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ["./src/assets/fonts/pontejos/MTMPontejos2Test-EstrechaSuelta.otf"],
+            src: [
+              "./src/assets/fonts/pontejos/MTMPontejos2Test-EstrechaSuelta.otf",
+            ],
             weight: 400,
             style: "normal",
           },
@@ -83,7 +85,9 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ["./src/assets/fonts/pontejos/MTMPontejos2Test-AnchaApretada.otf"],
+            src: [
+              "./src/assets/fonts/pontejos/MTMPontejos2Test-AnchaApretada.otf",
+            ],
             weight: 400,
             style: "normal",
           },
@@ -92,5 +96,5 @@ export default defineConfig({
     },
   ],
 
-  integrations: [icon()]
+  integrations: [icon()],
 });

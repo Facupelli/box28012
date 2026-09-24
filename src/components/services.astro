@@ -6,31 +6,25 @@ const { services } = getHomeData();
 ---
 
 <div class="grid grid-cols-1 gap-14 pt-10 md:pt-14 lg:grid-cols-2 lg:gap-10 xl:gap-14">
-	{
-		services.map((service) => (
-			<article class="grid content-start gap-6 md:gap-7 lg:h-full lg:grid-rows-[1fr_auto]">
-				<div class="max-w-150">
-					<h3
-						class="text-pretty font-pontejos-display text-[clamp(2rem,2.5vw,3rem)] font-normal leading-[0.92] tracking-[-0.02em] text-text"
-					>
-						{service.title}
-					</h3>
+  {services.map((service) => (
+    <article class="grid content-start gap-6 md:gap-7 lg:h-full lg:grid-rows-[1fr_auto]">
+      <div class="max-w-150">
+        <h3 class="text-pretty font-pontejos-display text-[clamp(2rem,2.5vw,3rem)] font-normal leading-[0.92] tracking-[-0.02em] text-text">
+          {service.title}
+        </h3>
 
-					<p
-						class="mt-4 max-w-140 text-pretty font-body text-base leading-relaxed text-text/85 md:text-lg"
-					>
-						{service.description}
-					</p>
-				</div>
+        <p class="mt-4 max-w-140 text-pretty font-body text-base leading-relaxed text-text/85 md:text-lg">
+          {service.description}
+        </p>
+      </div>
 
-				<figure class="aspect-[4/3] overflow-hidden bg-black">
-					<Image
-						src={service.image}
-						alt={service.alt}
-						class="size-full object-cover"
-					/>
-				</figure>
-			</article>
-		))
-	}
+      <figure class="aspect-[4/3] overflow-hidden bg-black">
+        <Image
+          src={service.image}
+          alt={service.alt}
+          class="size-full object-cover"
+        />
+      </figure>
+    </article>
+  ))}
 </div>

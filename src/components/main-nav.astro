@@ -2,255 +2,247 @@
 import { Icon } from "astro-icon/components";
 
 const navItems = [
-	{ label: "Servicios", href: "#actividades" },
-	{ label: "Horarios", href: "#horarios" },
-	{ label: "Tarifas", href: "#tarifas" },
-	{ label: "El Box", href: "#el-box" },
-	{ label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "#actividades" },
+  { label: "Horarios", href: "#horarios" },
+  { label: "Tarifas", href: "#tarifas" },
+  { label: "El Box", href: "#el-box" },
+  { label: "Contacto", href: "#contacto" },
 ];
 ---
 
 <nav
-	id="main-nav"
-	aria-label="Navegación principal"
-	data-hero="true"
-	data-visible="true"
-	data-menu-open="false"
-	class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full"
+  id="main-nav"
+  aria-label="Navegación principal"
+  data-hero="true"
+  data-visible="true"
+  data-menu-open="false"
+  class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full"
 >
-	<div
-		data-nav-header
-		class="relative z-20 mx-auto flex h-18 max-w-350 items-center justify-between px-6 transition-[height] duration-300 ease-out group-data-[hero=true]:h-20 lg:px-10 lg:group-data-[hero=true]:h-28"
-	>
-		<a
-			href="#inicio"
-			class="font-serif text-lg tracking-[-0.06em] transition-[font-size] duration-300 ease-out lg:text-xl lg:group-data-[hero=true]:text-2xl"
-		>
-			BOX 28012
-		</a>
+  <div
+    data-nav-header
+    class="relative z-20 mx-auto flex h-18 max-w-350 items-center justify-between px-6 transition-[height] duration-300 ease-out group-data-[hero=true]:h-20 lg:px-10 lg:group-data-[hero=true]:h-28"
+  >
+    <a
+      href="#inicio"
+      class="font-serif text-lg tracking-[-0.06em] transition-[font-size] duration-300 ease-out lg:text-xl lg:group-data-[hero=true]:text-2xl"
+    >
+      BOX 28012
+    </a>
 
-		<!-- DESKTOP -->
-		<ul
-			class="hidden items-center gap-10 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12 lg:flex"
-		>
-			{
-				navItems.map((item) => (
-					<li>
-						{item.href ? (
-							<a
-								href={item.href}
-								class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base"
-							>
-								{item.label}
-							</a>
-						) : (
-							<span class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base">
-								{item.label}
-							</span>
-						)}
-					</li>
-				))
-			}
-		</ul>
+    <!-- DESKTOP -->
+    <ul class="hidden items-center gap-10 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12 lg:flex">
+      {navItems.map((item) => (
+        <li>
+          {item.href ? (
+            <a
+              href={item.href}
+              class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base"
+            >
+              {item.label}
+            </a>
+          ) : (
+            <span class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base">
+              {item.label}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
 
-		<button
-			type="button"
-			id="mobile-menu-toggle"
-			aria-controls="mobile-menu"
-			aria-expanded="false"
-			aria-label="Abrir menú"
-			class="relative flex size-11 items-center justify-center lg:hidden"
-		>
-			<Icon
-				name="list"
-				class="absolute size-7 group-data-[menu-open=true]:hidden"
-				aria-hidden="true"
-			/>
-			<Icon
-				name="x"
-				class="absolute hidden size-7 group-data-[menu-open=true]:block"
-				aria-hidden="true"
-			/>
-		</button>
-	</div>
+    <button
+      type="button"
+      id="mobile-menu-toggle"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Abrir menú"
+      class="relative flex size-11 items-center justify-center lg:hidden"
+    >
+      <Icon
+        name="list"
+        class="absolute size-7 group-data-[menu-open=true]:hidden"
+        aria-hidden="true"
+      />
+      <Icon
+        name="x"
+        class="absolute hidden size-7 group-data-[menu-open=true]:block"
+        aria-hidden="true"
+      />
+    </button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU-->
 <div
-	id="mobile-menu"
-	aria-hidden="true"
-	inert
-	class="pointer-events-none invisible fixed inset-x-0 bottom-0 z-40 bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
+  id="mobile-menu"
+  aria-hidden="true"
+  inert
+  class="pointer-events-none invisible fixed inset-x-0 bottom-0 z-40 bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
 >
-	<ul
-		class="flex h-full -translate-y-10 flex-col justify-center gap-10 px-6 text-[clamp(2rem,10vw,3rem)] opacity-0 transition-[opacity,transform] duration-300 ease-out"
-	>
-		{
-			navItems.map((item) => (
-				<li>
-					{item.href ? (
-						<a
-							href={item.href}
-							class="mobile-menu-link block font-medium uppercase tracking-[0.06em]"
-						>
-							{item.label}
-						</a>
-					) : (
-						<span class="block font-medium uppercase tracking-[0.06em] text-muted">
-							{item.label}
-						</span>
-					)}
-				</li>
-			))
-		}
-	</ul>
+  <ul class="flex h-full -translate-y-10 flex-col justify-center gap-10 px-6 text-[clamp(2rem,10vw,3rem)] opacity-0 transition-[opacity,transform] duration-300 ease-out">
+    {navItems.map((item) => (
+      <li>
+        {item.href ? (
+          <a
+            href={item.href}
+            class="mobile-menu-link block font-medium uppercase tracking-[0.06em]"
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span class="block font-medium uppercase tracking-[0.06em] text-muted">
+            {item.label}
+          </span>
+        )}
+      </li>
+    ))}
+  </ul>
 </div>
 
 <script>
-	const nav = document.querySelector<HTMLElement>("#main-nav");
-	const hero = document.querySelector<HTMLElement>("#inicio");
-	const navHeader = nav?.querySelector<HTMLElement>("[data-nav-header]");
-	const menuToggleButton = document.querySelector<HTMLButtonElement>(
-		"#mobile-menu-toggle",
-	);
-	const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
-	const mobileMenuList = mobileMenu?.querySelector<HTMLElement>("ul");
-	const mobileMenuLinks =
-		document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
+  const nav = document.querySelector<HTMLElement>("#main-nav");
+  const hero = document.querySelector<HTMLElement>("#inicio");
+  const navHeader = nav?.querySelector<HTMLElement>("[data-nav-header]");
+  const menuToggleButton = document.querySelector<HTMLButtonElement>(
+    "#mobile-menu-toggle",
+  );
+  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
+  const mobileMenuList = mobileMenu?.querySelector<HTMLElement>("ul");
+  const mobileMenuLinks =
+    document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
 
-	if (nav && hero && mobileMenu && mobileMenuList) {
-		let lastScrollY = window.scrollY;
-		let ticking = false;
-		let isMenuOpen = false;
+  if (nav && hero && mobileMenu && mobileMenuList) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let isMenuOpen = false;
 
-		const updateMenuOffset = () => {
-			const headerHeight = navHeader?.offsetHeight ?? 72;
-			mobileMenu.style.top = `${headerHeight}px`;
-		};
+    const updateMenuOffset = () => {
+      const headerHeight = navHeader?.offsetHeight ?? 72;
+      mobileMenu.style.top = `${headerHeight}px`;
+    };
 
-		const setMenuOpen = (open: boolean) => {
-			isMenuOpen = open;
+    const setMenuOpen = (open: boolean) => {
+      isMenuOpen = open;
 
-			if (open) updateMenuOffset();
+      if (open) updateMenuOffset();
 
-			nav.dataset.menuOpen = String(open);
-			menuToggleButton?.setAttribute("aria-expanded", String(open));
-			menuToggleButton?.setAttribute(
-				"aria-label",
-				open ? "Cerrar menú" : "Abrir menú",
-			);
+      nav.dataset.menuOpen = String(open);
+      menuToggleButton?.setAttribute("aria-expanded", String(open));
+      menuToggleButton?.setAttribute(
+        "aria-label",
+        open ? "Cerrar menú" : "Abrir menú",
+      );
 
-			mobileMenu.setAttribute("aria-hidden", String(!open));
-			mobileMenu.inert = !open;
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+      mobileMenu.inert = !open;
 
-			mobileMenu.classList.toggle("opacity-0", !open);
-			mobileMenu.classList.toggle("invisible", !open);
-			mobileMenu.classList.toggle("pointer-events-none", !open);
+      mobileMenu.classList.toggle("opacity-0", !open);
+      mobileMenu.classList.toggle("invisible", !open);
+      mobileMenu.classList.toggle("pointer-events-none", !open);
 
-			mobileMenuList.classList.toggle("opacity-0", !open);
-			mobileMenuList.classList.toggle("-translate-y-2", !open);
+      mobileMenuList.classList.toggle("opacity-0", !open);
+      mobileMenuList.classList.toggle("-translate-y-2", !open);
 
-			document.documentElement.style.overflow = open ? "hidden" : "";
+      document.documentElement.style.overflow = open ? "hidden" : "";
 
-			if (open) {
-				window.requestAnimationFrame(() => {
-					mobileMenuLinks[0]?.focus();
-				});
-			}
-		};
+      if (open) {
+        window.requestAnimationFrame(() => {
+          mobileMenuLinks[0]?.focus();
+        });
+      }
+    };
 
-		const updateNav = () => {
-			const currentScrollY = window.scrollY;
-			const compactNavHeight = 72;
-			const isHero = hero.getBoundingClientRect().bottom > compactNavHeight;
-			const isScrollingUp = currentScrollY < lastScrollY;
-			const isNearTop = currentScrollY < 8;
+    const updateNav = () => {
+      const currentScrollY = window.scrollY;
+      const compactNavHeight = 72;
+      const isHero = hero.getBoundingClientRect().bottom > compactNavHeight;
+      const isScrollingUp = currentScrollY < lastScrollY;
+      const isNearTop = currentScrollY < 8;
 
-			nav.dataset.hero = String(isHero);
-			nav.dataset.visible = String(
-				isMenuOpen || isHero || isScrollingUp || isNearTop,
-			);
+      nav.dataset.hero = String(isHero);
+      nav.dataset.visible = String(
+        isMenuOpen || isHero || isScrollingUp || isNearTop,
+      );
 
-			if (!isMenuOpen) window.requestAnimationFrame(updateMenuOffset);
+      if (!isMenuOpen) window.requestAnimationFrame(updateMenuOffset);
 
-			lastScrollY = currentScrollY;
-			ticking = false;
-		};
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
 
-		const requestUpdate = () => {
-			if (!ticking) {
-				window.requestAnimationFrame(updateNav);
-				ticking = true;
-			}
-		};
+    const requestUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNav);
+        ticking = true;
+      }
+    };
 
-		menuToggleButton?.addEventListener("click", () => {
-			setMenuOpen(!isMenuOpen);
-			requestUpdate();
-		});
+    menuToggleButton?.addEventListener("click", () => {
+      setMenuOpen(!isMenuOpen);
+      requestUpdate();
+    });
 
-		mobileMenuLinks.forEach((link) => {
-			link.addEventListener("click", () => {
-				setMenuOpen(false);
-				requestUpdate();
-			});
-		});
+    mobileMenuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        setMenuOpen(false);
+        requestUpdate();
+      });
+    });
 
-		window.addEventListener("keydown", (event) => {
-			if (!isMenuOpen) return;
+    window.addEventListener("keydown", (event) => {
+      if (!isMenuOpen) return;
 
-			if (event.key === "Escape") {
-				event.preventDefault();
+      if (event.key === "Escape") {
+        event.preventDefault();
 
-				setMenuOpen(false);
-				menuToggleButton?.focus();
-				requestUpdate();
+        setMenuOpen(false);
+        menuToggleButton?.focus();
+        requestUpdate();
 
-				return;
-			}
+        return;
+      }
 
-			if (event.key !== "Tab") return;
+      if (event.key !== "Tab") return;
 
-			const focusableElements = [menuToggleButton, ...mobileMenuLinks].filter(
-				(element): element is HTMLButtonElement | HTMLAnchorElement =>
-					element !== null,
-			);
+      const focusableElements = [menuToggleButton, ...mobileMenuLinks].filter(
+        (element): element is HTMLButtonElement | HTMLAnchorElement =>
+          element !== null,
+      );
 
-			const firstElement = focusableElements[0];
-			const lastElement = focusableElements.at(-1);
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
 
-			if (!firstElement || !lastElement) return;
+      if (!firstElement || !lastElement) return;
 
-			const activeElement = document.activeElement;
-			const isFocusInsideMenu = focusableElements.some(
-				(element) => element === activeElement,
-			);
+      const activeElement = document.activeElement;
+      const isFocusInsideMenu = focusableElements.some(
+        (element) => element === activeElement,
+      );
 
-			if (!isFocusInsideMenu) {
-				event.preventDefault();
-				(event.shiftKey ? lastElement : firstElement).focus();
-				return;
-			}
+      if (!isFocusInsideMenu) {
+        event.preventDefault();
+        (event.shiftKey ? lastElement : firstElement).focus();
+        return;
+      }
 
-			if (event.shiftKey && activeElement === firstElement) {
-				event.preventDefault();
-				lastElement.focus();
-				return;
-			}
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+        return;
+      }
 
-			if (!event.shiftKey && activeElement === lastElement) {
-				event.preventDefault();
-				firstElement.focus();
-			}
-		});
+      if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    });
 
-		window.addEventListener("resize", () => {
-			if (window.matchMedia("(min-width: 1024px)").matches) setMenuOpen(false);
-			requestUpdate();
-		});
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) setMenuOpen(false);
+      requestUpdate();
+    });
 
-		updateMenuOffset();
-		updateNav();
-		window.addEventListener("scroll", requestUpdate, { passive: true });
-	}
+    updateMenuOffset();
+    updateNav();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+  }
 </script>

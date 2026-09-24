@@ -1,20 +1,54 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-serif: var(--font-brand, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif);
+  --font-serif: var(
+    --font-brand,
+    ui-serif,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif
+  );
   --font-body: var(--font-dm, ui-sans-serif, system-ui, sans-serif);
-  --font-anton: var(--astro-font-anton, Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif);
-  --font-chulapa: var(--astro-font-chulapa, ui-sans-serif, system-ui, sans-serif);
-  --font-pontejos: var(--astro-font-pontejos-display, ui-sans-serif, system-ui, sans-serif);
-  --font-pontejos-display: var(--astro-font-pontejos-display, ui-sans-serif, system-ui, sans-serif);
-  --font-pontejos-identity: var(--astro-font-pontejos-identity, ui-sans-serif, system-ui, sans-serif);
+  --font-anton: var(
+    --astro-font-anton,
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif
+  );
+  --font-chulapa: var(
+    --astro-font-chulapa,
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-pontejos: var(
+    --astro-font-pontejos-display,
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-pontejos-display: var(
+    --astro-font-pontejos-display,
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-pontejos-identity: var(
+    --astro-font-pontejos-identity,
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
 
   --color-bg: #131313;
-  --color-surface: #1C1C1C;
+  --color-surface: #1c1c1c;
   --color-text: #f0f0f0;
-  --color-muted: #A3A3A3;
+  --color-muted: #a3a3a3;
   --color-subtle: #777777;
-  --color-accent: #CC2727;
+  --color-accent: #cc2727;
 }
 
 @layer base {
@@ -30,7 +64,6 @@
     outline-offset: 4px;
   }
 }
-
 
 @utility text-brand {
   @apply font-serif text-[clamp(2.75rem,12vw,5rem)] leading-none tracking-[-0.04em] uppercase;
@@ -71,4 +104,3 @@
 @utility text-price {
   @apply font-body text-4xl md:text-5xl font-medium leading-none;
 }
-

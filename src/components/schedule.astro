@@ -1,170 +1,186 @@
 ---
 import { getHomeData } from "../data/home";
 
-const {
-	scheduleActivities,
-	scheduleDays,
-	scheduleSessions,
-	scheduleTimes,
-} = getHomeData();
+const { scheduleActivities, scheduleDays, scheduleSessions, scheduleTimes } =
+  getHomeData();
 
 const sessionsByDay = scheduleDays.map((day) => ({
-	...day,
-	sessions: scheduleSessions.filter((session) => session.day === day.id),
+  ...day,
+  sessions: scheduleSessions.filter((session) => session.day === day.id),
 }));
 
 const sessionBySlot = new Map(
-	scheduleSessions.map((session) => [
-		`${session.day}-${session.time}`,
-		scheduleActivities[session.activity].label,
-	]),
+  scheduleSessions.map((session) => [
+    `${session.day}-${session.time}`,
+    scheduleActivities[session.activity].label,
+  ]),
 );
 ---
 
-<section id="horarios" class="scroll-mt-18 px-4 py-14 md:flex md:min-h-[calc(100svh-4.5rem)] md:flex-col md:px-10 md:py-10 lg:py-12">
-	<header class="space-y-2">
-		<h2 class="text-section-title">HORARIOS</h2>
-		<p class="text-lead">Encuentra el momento que mejor encaje contigo.</p>
-	</header>
+<section
+  id="horarios"
+  class="scroll-mt-18 px-4 py-14 md:flex md:min-h-[calc(100svh-4.5rem)] md:flex-col md:px-10 md:py-10 lg:py-12"
+>
+  <header class="space-y-2">
+    <h2 class="text-section-title">HORARIOS</h2>
+    <p class="text-lead">Encuentra el momento que mejor encaje contigo.</p>
+  </header>
 
-	<div class="mt-10 hidden md:min-h-[35rem] md:flex-1 md:pt-8 md:mt-0 md:block">
-		<table class="h-full w-full table-fixed border-collapse" aria-label="Horario semanal de clases">
-			<colgroup>
-				<col class="w-16 lg:w-22" />
-				{scheduleDays.map(() => <col />)}
-			</colgroup>
-			<thead>
-				<tr class="border-y border-white/20">
-					<th scope="col" class="py-3 pr-3 text-left text-xs font-medium uppercase tracking-[0.16em] text-subtle lg:text-sm">
-						Hora
-					</th>
-					{scheduleDays.map((day) => (
-						<th scope="col" class="px-1 py-3 text-center text-xs font-medium uppercase tracking-[0.1em] text-text lg:px-3 lg:text-sm lg:tracking-[0.16em]">
-							{day.label}
-						</th>
-					))}
-				</tr>
-			</thead>
-			<tbody>
-				{scheduleTimes.map((time) => (
-					<tr class="h-9 border-b border-white/10">
-						<th scope="row" class="pr-3 text-left text-sm font-medium tabular-nums text-muted lg:text-base">
-							{time}
-						</th>
-						{scheduleDays.map((day) => (
-							<td class="px-1 text-center text-[0.6875rem] font-medium leading-tight text-text lg:px-3 lg:text-sm xl:text-base">
-								{sessionBySlot.get(`${day.id}-${time}`) ?? ""}
-							</td>
-						))}
-					</tr>
-				))}
-			</tbody>
-		</table>
-	</div>
+  <div class="mt-10 hidden md:min-h-[35rem] md:flex-1 md:pt-8 md:mt-0 md:block">
+    <table
+      class="h-full w-full table-fixed border-collapse"
+      aria-label="Horario semanal de clases"
+    >
+      <colgroup>
+        <col class="w-16 lg:w-22" />
+        {scheduleDays.map(() => (
+          <col />
+        ))}
+      </colgroup>
+      <thead>
+        <tr class="border-y border-white/20">
+          <th
+            scope="col"
+            class="py-3 pr-3 text-left text-xs font-medium uppercase tracking-[0.16em] text-subtle lg:text-sm"
+          >
+            Hora
+          </th>
+          {scheduleDays.map((day) => (
+            <th
+              scope="col"
+              class="px-1 py-3 text-center text-xs font-medium uppercase tracking-[0.1em] text-text lg:px-3 lg:text-sm lg:tracking-[0.16em]"
+            >
+              {day.label}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {scheduleTimes.map((time) => (
+          <tr class="h-9 border-b border-white/10">
+            <th
+              scope="row"
+              class="pr-3 text-left text-sm font-medium tabular-nums text-muted lg:text-base"
+            >
+              {time}
+            </th>
+            {scheduleDays.map((day) => (
+              <td class="px-1 text-center text-[0.6875rem] font-medium leading-tight text-text lg:px-3 lg:text-sm xl:text-base">
+                {sessionBySlot.get(`${day.id}-${time}`) ?? ""}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
-	<div class="mt-9 md:hidden" data-schedule-mobile>
-		<div
-			role="tablist"
-			aria-label="Seleccionar día"
-			class="grid grid-cols-6"
-		>
-			{scheduleDays.map((day, index) => (
-				<button
-					type="button"
-					role="tab"
-					id={`schedule-tab-${day.id}`}
-					aria-controls={`schedule-panel-${day.id}`}
-					aria-selected={index === 0 ? "true" : "false"}
-					tabindex={index === 0 ? 0 : -1}
-					data-schedule-tab={day.id}
-					class="relative py-4 text-xs font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
-				>
-					{day.shortLabel}
-				</button>
-			))}
-		</div>
+  <div class="mt-9 md:hidden" data-schedule-mobile>
+    <div role="tablist" aria-label="Seleccionar día" class="grid grid-cols-6">
+      {scheduleDays.map((day, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`schedule-tab-${day.id}`}
+          aria-controls={`schedule-panel-${day.id}`}
+          aria-selected={index === 0 ? "true" : "false"}
+          tabindex={index === 0 ? 0 : -1}
+          data-schedule-tab={day.id}
+          class="relative py-4 text-xs font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
+        >
+          {day.shortLabel}
+        </button>
+      ))}
+    </div>
 
-		<div class="mt-6">
-			{sessionsByDay.map((day, index) => (
-				<div
-					role="tabpanel"
-					id={`schedule-panel-${day.id}`}
-					aria-labelledby={`schedule-tab-${day.id}`}
-					data-schedule-panel={day.id}
-					hidden={index !== 0}
-				>
-					<h3 class="sr-only">Horario del {day.label}</h3>
-					<div class="grid grid-cols-[5.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
-						<span>Hora</span>
-						<span>Actividad</span>
-					</div>
-					<ul>
-						{day.sessions.map((session) => (
-							<li class="grid min-h-15 grid-cols-[5.5rem_1fr] items-center border-b border-white/10">
-								<time class="text-sm font-medium tabular-nums text-muted" datetime={session.time}>
-									{session.time}
-								</time>
-								<span class="text-base font-medium text-text">
-									{scheduleActivities[session.activity].label}
-								</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			))}
-		</div>
-	</div>
+    <div class="mt-6">
+      {sessionsByDay.map((day, index) => (
+        <div
+          role="tabpanel"
+          id={`schedule-panel-${day.id}`}
+          aria-labelledby={`schedule-tab-${day.id}`}
+          data-schedule-panel={day.id}
+          hidden={index !== 0}
+        >
+          <h3 class="sr-only">Horario del {day.label}</h3>
+          <div class="grid grid-cols-[5.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
+            <span>Hora</span>
+            <span>Actividad</span>
+          </div>
+          <ul>
+            {day.sessions.map((session) => (
+              <li class="grid min-h-15 grid-cols-[5.5rem_1fr] items-center border-b border-white/10">
+                <time
+                  class="text-sm font-medium tabular-nums text-muted"
+                  datetime={session.time}
+                >
+                  {session.time}
+                </time>
+                <span class="text-base font-medium text-text">
+                  {scheduleActivities[session.activity].label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
 
-	<div class="mt-8 space-y-1 text-sm leading-relaxed text-subtle md:mt-8">
-		<p>Aforo mínimo 2 personas.</p>
-		<p>Los horarios pueden estar sujetos a modificaciones en función de la logística del box.</p>
-	</div>
+  <div class="mt-8 space-y-1 text-sm leading-relaxed text-subtle md:mt-8">
+    <p>Aforo mínimo 2 personas.</p>
+    <p>
+      Los horarios pueden estar sujetos a modificaciones en función de la
+      logística del box.
+    </p>
+  </div>
 </section>
 
 <script>
-	const schedules = document.querySelectorAll<HTMLElement>(
-		"[data-schedule-mobile]",
-	);
+  const schedules = document.querySelectorAll<HTMLElement>(
+    "[data-schedule-mobile]",
+  );
 
-	schedules.forEach((schedule) => {
-		const tabs = Array.from(
-			schedule.querySelectorAll<HTMLButtonElement>("[data-schedule-tab]"),
-		);
-		const panels = Array.from(
-			schedule.querySelectorAll<HTMLElement>("[data-schedule-panel]"),
-		);
+  schedules.forEach((schedule) => {
+    const tabs = Array.from(
+      schedule.querySelectorAll<HTMLButtonElement>("[data-schedule-tab]"),
+    );
+    const panels = Array.from(
+      schedule.querySelectorAll<HTMLElement>("[data-schedule-panel]"),
+    );
 
-		const selectDay = (selectedTab: HTMLButtonElement) => {
-			const selectedDay = selectedTab.dataset.scheduleTab;
+    const selectDay = (selectedTab: HTMLButtonElement) => {
+      const selectedDay = selectedTab.dataset.scheduleTab;
 
-			tabs.forEach((tab) => {
-				const isSelected = tab === selectedTab;
-				tab.setAttribute("aria-selected", String(isSelected));
-				tab.tabIndex = isSelected ? 0 : -1;
-			});
+      tabs.forEach((tab) => {
+        const isSelected = tab === selectedTab;
+        tab.setAttribute("aria-selected", String(isSelected));
+        tab.tabIndex = isSelected ? 0 : -1;
+      });
 
-			panels.forEach((panel) => {
-				panel.hidden = panel.dataset.schedulePanel !== selectedDay;
-			});
-		};
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.schedulePanel !== selectedDay;
+      });
+    };
 
-		tabs.forEach((tab, index) => {
-			tab.addEventListener("click", () => selectDay(tab));
-			tab.addEventListener("keydown", (event) => {
-				let nextIndex: number | undefined;
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectDay(tab));
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex: number | undefined;
 
-				if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-				if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-				if (event.key === "Home") nextIndex = 0;
-				if (event.key === "End") nextIndex = tabs.length - 1;
-				if (nextIndex === undefined) return;
+        if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft")
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") nextIndex = 0;
+        if (event.key === "End") nextIndex = tabs.length - 1;
+        if (nextIndex === undefined) return;
 
-				event.preventDefault();
-				const nextTab = tabs[nextIndex];
-				if (!nextTab) return;
-				selectDay(nextTab);
-				nextTab.focus();
-			});
-		});
-	});
+        event.preventDefault();
+        const nextTab = tabs[nextIndex];
+        if (!nextTab) return;
+        selectDay(nextTab);
+        nextTab.focus();
+      });
+    });
+  });
 </script>

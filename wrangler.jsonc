@@ -6,6 +6,6 @@
   "workers_dev": true,
   "preview_urls": false,
   "assets": {
-    "directory": "./dist"
-  }
+    "directory": "./dist",
+  },
 }
