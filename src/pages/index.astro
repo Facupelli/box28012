@@ -17,7 +17,7 @@ if (!Astro.site) {
 const data = getHomeData();
 const structuredData = getBusinessStructuredData(Astro.site);
 
-const { aboutSections, businessInfo, contactItems, team } = data;
+const { aboutStory, businessInfo, contactItems, team } = data;
 ---
 
 <BaseLayout
@@ -95,53 +95,49 @@ const { aboutSections, businessInfo, contactItems, team } = data;
     <Pricing />
 
     <!-- NUESTRA HISTORIA -->
-    <div class="bg-[#f2eee6] text-black">
-      <div class="mx-auto max-w-350">
-        <section id="el-box" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-30">
-          <header>
-            <h2 class="text-section-title text-black/70">NUESTRA HISTORIA</h2>
-          </header>
-
-          <div class="mt-10 space-y-8 md:mt-14">
-            {aboutSections.map((section, index) => (
-              <article
-                class:list={[
-                  "grid items-center gap-6 lg:gap-12 xl:gap-16",
-                  index === 0
-                    ? "lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
-                    : "lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]",
-                ]}
-              >
-                <figure
-                  class:list={[
-                    "overflow-hidden bg-black",
-                    index === 0
-                      ? "aspect-[16/9]"
-                      : "aspect-[3/2] lg:order-2 lg:aspect-[2/1]",
-                  ]}
-                >
-                  <Image
-                    src={section.image}
-                    alt={section.alt}
-                    class="size-full object-cover"
-                  />
-                </figure>
-
-                <div
-                  class:list={[
-                    "max-w-[50ch] space-y-4 font-body text-[0.9375rem] leading-relaxed text-black/75 md:text-base",
-                    index === 1 && "lg:order-1",
-                  ]}
-                >
-                  {section.paragraphs.map((paragraph) => (
-                    <p>{paragraph}</p>
-                  ))}
-                </div>
-              </article>
-            ))}
+    <div class="relative isolate overflow-hidden bg-bg">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-0 left-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute right-0 bottom-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
+      ></div>
+      <section
+        id="el-box"
+        class="relative mx-auto max-w-280 scroll-mt-18 px-4 py-12 md:px-10 md:py-20"
+      >
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 xl:gap-16">
+          <div class="relative -mx-2 lg:mx-0">
+            <figure class="aspect-square overflow-hidden bg-black lg:aspect-[4/5]">
+              <Image
+                src={aboutStory.image}
+                alt={aboutStory.alt}
+                class="size-full object-cover object-[center_42%] lg:object-center"
+              />
+            </figure>
+            <figure class="absolute bottom-0 -left-[2%] z-10 aspect-[4/3] w-[50%] overflow-hidden bg-black lg:-left-[28%] lg:w-[60%]">
+              <Image
+                src={aboutStory.accentImage}
+                alt={aboutStory.accentAlt}
+                class="size-full object-cover object-center"
+              />
+            </figure>
           </div>
-        </section>
-      </div>
+
+          <div class="max-w-[52ch]">
+            <h2 class="text-section-title mb-5 text-text/80 md:mb-6">
+              NUESTRA HISTORIA
+            </h2>
+            <div class="space-y-3 font-body text-[0.9375rem] leading-relaxed text-text/75 md:text-base">
+              {aboutStory.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- EQUIPO -->

@@ -194,26 +194,20 @@ const pricingPlans: PricingPlan[] = [
   },
 ];
 
-const aboutSections = [
-  {
-    image: BoxImage,
-    alt: "Zona de entrenamiento con barra en Box 28012",
-    paragraphs: [
-      "BOX 28012 nació en noviembre de 2019, aunque la idea llevaba tiempo tomando forma.",
-      "Después de años como entrenadora personal y de entrenar en grandes superficies y boxes con grupos de 20 o 30 personas, Lorena empezó a preguntarse: ¿era posible entrenar en grupo sin perder la atención individual?",
-      "Entrenar en grupo no significa ser uno más, sino compartir la experiencia con otros mientras recibes una atención cercana y profesional.",
-    ],
-  },
-  {
-    image: RemerasImage,
-    alt: "Camisetas negras de Box 28012 colgadas en un perchero",
-    paragraphs: [
-      "Desde 2019, el box ha crecido y evolucionado. El paso de Detailors Functional Studio a BOX 28012 representa también una nueva etapa.",
-      "28012 es el código postal de Lavapiés, el barrio donde estamos y donde hemos construido nuestra comunidad.",
-      "Somos un box de barrio. Nuestro objetivo nunca ha sido tener al mayor número posible de personas entrenando, sino que quienes entrenan aquí entrenen bien y vean progresos.",
-    ],
-  },
-];
+const aboutStory = {
+  image: BoxImage,
+  alt: "Zona de entrenamiento con barra en Box 28012",
+  accentImage: RemerasImage,
+  accentAlt: "Camisetas de Box 28012 colgadas en el box",
+  paragraphs: [
+    "BOX 28012 nació en noviembre de 2019, aunque la idea llevaba tiempo tomando forma.",
+    "Después de años como entrenadora personal y de entrenar en grandes superficies y boxes con grupos de 20 o 30 personas, Lorena empezó a preguntarse: ¿era posible entrenar en grupo sin perder la atención individual?",
+    "Entrenar en grupo no significa ser uno más, sino compartir la experiencia con otros mientras recibes una atención cercana y profesional.",
+    "Desde 2019, el box ha crecido y evolucionado. El paso de Detailors Functional Studio a BOX 28012 representa también una nueva etapa.",
+    "28012 es el código postal de Lavapiés, el barrio donde estamos y donde hemos construido nuestra comunidad.",
+    "Somos un box de barrio. Nuestro objetivo nunca ha sido tener al mayor número posible de personas entrenando, sino que quienes entrenan aquí entrenen bien y vean progresos.",
+  ],
+};
 
 const team = [
   {
@@ -269,7 +263,7 @@ export function getHomeData() {
 
   return {
     services,
-    aboutSections,
+    aboutStory,
     team,
     businessInfo,
     contactItems,
