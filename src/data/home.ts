@@ -1,6 +1,8 @@
 import BathImage from "../assets/images/bath.webp";
 import BoxImage from "../assets/images/box.webp";
 import CrosstrainingImage from "../assets/images/crosstraining.webp";
+import AlbertImage from "../assets/images/team/albert.webp";
+import LorenaImage from "../assets/images/team/lorena.webp";
 import PartnerWODImage from "../assets/images/partner-wod.webp";
 import RemerasImage from "../assets/images/remeras.webp";
 
@@ -195,7 +197,6 @@ const pricingPlans: PricingPlan[] = [
 
 const aboutSections = [
   {
-    title: "Cómo empezó",
     image: BathImage,
     alt: "Vestuarios oscuros con azulejos negros y detalles rojos",
     paragraphs: [
@@ -204,7 +205,6 @@ const aboutSections = [
     ],
   },
   {
-    title: "Entrenar en grupo no significa ser uno más",
     image: BoxImage,
     alt: "Zona de entrenamiento con barra en Box 28012",
     paragraphs: [
@@ -214,7 +214,6 @@ const aboutSections = [
     ],
   },
   {
-    title: "28012 es nuestro barrio",
     image: RemerasImage,
     alt: "Camisetas negras de Box 28012 colgadas en un perchero",
     paragraphs: [
@@ -224,6 +223,30 @@ const aboutSections = [
     ],
     emphasis:
       "Nuestro objetivo nunca ha sido tener el mayor número de personas entrenando. Queremos que las personas que entrenan aquí entrenen bien y vean progresos.",
+  },
+];
+
+const team = [
+  {
+    name: "Lorena",
+    role: "Fundadora · Coach",
+    credentials: [
+      "Graduada en Ciencias de la Actividad Física y del Deporte (CAFYD)",
+      "CrossFit Level 2",
+    ],
+    description:
+      "Lorena es la fundadora y responsable de Box 28012. Desde 2019 trabaja en el desarrollo de un modelo de entrenamiento basado en grupos reducidos, atención cercana y calidad en el movimiento, con el objetivo de que cada persona pueda entrenar de forma segura y progresar independientemente de su nivel.",
+    image: LorenaImage,
+    alt: "Lorena, fundadora y coach de Box 28012",
+  },
+  {
+    name: "Albert",
+    role: "Coach",
+    credentials: [],
+    description:
+      "Albert forma parte del equipo de Box 28012 y acompaña a las personas durante sus entrenamientos, ayudándolas a trabajar con atención, constancia y una progresión adaptada a su nivel y objetivos.",
+    image: AlbertImage,
+    alt: "Albert, coach de Box 28012",
   },
 ];
 
@@ -258,6 +281,7 @@ export function getHomeData() {
   return {
     services,
     aboutSections,
+    team,
     businessInfo,
     contactItems,
     pricingPeriods,
