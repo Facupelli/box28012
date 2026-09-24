@@ -50,20 +50,28 @@ const { aboutStory, businessInfo, contactItems, team } = data;
 
       <div class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20">
         <div class="max-w-230">
-          <p class="mb-5 font-chulapa text-sm uppercase tracking-[0.22em] text-text/85 md:mb-7 md:text-base">
-            Lavapiés <span class="mx-2 text-text/55">—</span> Calle Cañizares, 3
+          <p class="mb-5 font-chulapa text-xs uppercase tracking-[0.22em] text-text/65 md:mb-7 md:text-sm">
+            Lavapiés <span class="mx-2 text-text/40">—</span> Calle Cañizares, 3
           </p>
 
-          <h1 class="max-w-200 text-pretty font-pontejos-display text-[clamp(3.25rem,5.8vw,5.75rem)] font-normal leading-[0.94] tracking-[-0.025em] text-text">
-            Entrenamiento funcional en el corazón de Madrid.
+          <h1 class="max-w-200 text-pretty font-pontejos-display text-[clamp(4.25rem,7.6vw,7.6rem)] font-normal leading-[0.94] tracking-[-0.025em] text-text">
+            BOX 28012
           </h1>
 
-          <p class="mt-5 max-w-160 text-pretty font-body text-lg leading-snug text-text/90 md:mt-7 md:text-xl">
-            Grupos reducidos. Más atención. Mejor entrenamiento.
+          <p class="mt-5 max-w-160 text-pretty font-body text-base leading-snug text-text/75 md:mt-7 md:text-lg">
+            <span class="block">
+              Entrenamiento funcional en el corazón de Madrid.
+            </span>
+            <span class="block">
+              Grupos reducidos. Más atención. Mejor entrenamiento.
+            </span>
           </p>
 
           <div class="mt-8 md:mt-10">
-            <WhatsAppLink class="group inline-flex items-center gap-6 rounded-none border-0 bg-text px-6 py-4 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-7 md:py-4 md:text-lg">
+            <WhatsAppLink
+              variant="ghost"
+              class="group inline-flex items-center gap-6 rounded-none border-0 bg-[#E8E8E8] px-5 py-3.5 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-6 md:py-3.5 md:text-lg"
+            >
               ¡PRUEBA GRATIS!
               <span
                 aria-hidden="true"
@@ -208,7 +216,10 @@ const { aboutStory, businessInfo, contactItems, team } = data;
             </div>
 
             <div>
-              <WhatsAppLink class="group inline-flex items-center gap-4 rounded-none border-0 bg-text px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-text/90 md:px-4 md:py-3 md:text-base">
+              <WhatsAppLink
+                variant="ghost"
+                class="group inline-flex items-center gap-4 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 md:px-4 md:py-3 md:text-base"
+              >
                 Escribir por WhatsApp
                 <Icon
                   name="arrow-right"
