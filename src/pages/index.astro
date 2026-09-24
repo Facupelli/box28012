@@ -4,7 +4,9 @@ import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/layout.astro";
 import WhatsAppLink from "../components/whatsapp-link.astro";
 import MainNav from "../components/main-nav.astro";
-import HeroImage from "../assets/images/hero.webp";
+import HeroImage from "../assets/images/box/hero-pro-dark.jpg";
+import BoxStreetImage from "../assets/images/box/historia_barrio-pro-dark.png";
+import BoxAccentImage from "../assets/images/box/historia_interior-pro-dark.jpg";
 import { getBusinessStructuredData, getHomeData } from "../data/home";
 import Services from "../components/services.astro";
 import Schedule from "../components/schedule.astro";
@@ -120,14 +122,14 @@ const { aboutStory, businessInfo, contactItems, team } = data;
           <div class="relative -mx-2 lg:mx-0">
             <figure class="aspect-square overflow-hidden bg-black lg:aspect-[4/5]">
               <Image
-                src={aboutStory.image}
+                src={BoxStreetImage}
                 alt={aboutStory.alt}
                 class="size-full object-cover object-[center_42%] lg:object-center"
               />
             </figure>
             <figure class="absolute bottom-0 -left-[2%] z-10 aspect-[4/3] w-[50%] overflow-hidden bg-black lg:-left-[28%] lg:w-[60%]">
               <Image
-                src={aboutStory.accentImage}
+                src={BoxAccentImage}
                 alt={aboutStory.accentAlt}
                 class="size-full object-cover object-center"
               />

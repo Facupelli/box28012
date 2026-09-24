@@ -1,8 +1,8 @@
 import BoxImage from "../assets/images/box.webp";
-import CrosstrainingImage from "../assets/images/crosstraining.webp";
+import CrosstrainingImage from "../assets/images/box/servicio_grupos-pro-dark.jpg";
 import AlbertImage from "../assets/images/team/albert.webp";
 import LorenaImage from "../assets/images/team/lorena.webp";
-import PartnerWODImage from "../assets/images/partner-wod.webp";
+import PartnerWODImage from "../assets/images/box/servicio_personal-pro-dark.jpg";
 import RemerasImage from "../assets/images/remeras.webp";
 
 const businessInfo = {
