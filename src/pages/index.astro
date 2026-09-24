@@ -179,50 +179,57 @@ const { aboutSections, businessInfo, contactItems, team } = data;
 
     <!-- PONTE EN CONTACTO -->
     <section id="contacto" class="isolate py-14 md:py-30">
-      <div class="max-w-350 mx-auto px-4 md:px-10">
+      <div class="mx-auto max-w-350 px-4 md:px-10">
         <div class="space-y-10">
           <div class="space-y-6">
             <div>
-              <p class="text-lead max-w-150 text-pretty text-muted pb-4">
+              <p class="max-w-150 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
                 En Box 28012 entrenamos en grupos reducidos para ofrecerte una
                 experiencia totalmente personalizada.
               </p>
-              <div class="h-0.5 bg-accent w-12"></div>
+
+              <div class="mt-5 h-0.5 w-12 bg-accent"></div>
             </div>
 
             <div class="space-y-4">
-              <h2 class="text-section-title">¿Tienes alguna duda?</h2>
-              <p class="text-lead">
+              <h2 class="max-w-200 text-pretty font-pontejos-display text-[clamp(2.5rem,4vw,4.5rem)] font-normal leading-[0.9] tracking-[-0.02em] text-text">
+                ¿Tienes alguna duda?
+              </h2>
+
+              <p class="max-w-180 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
                 Escríbenos por WhatsApp para consultar horarios, resolver dudas
                 o reservar tu primera sesión gratuita.
               </p>
             </div>
 
             <div>
-              <WhatsAppLink>
-                <Icon name="whatsapp" class="size-7" aria-hidden="true" />
+              <WhatsAppLink class="group inline-flex items-center gap-4 rounded-none border-0 bg-text px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-text/90 md:px-4 md:py-3 md:text-base">
                 Escribir por WhatsApp
                 <Icon
                   name="arrow-right"
-                  class="size-5 text-accent"
+                  class="size-5 text-accent transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 />
               </WhatsAppLink>
             </div>
           </div>
 
-          <div class="relative lg:h-40 w-full">
-            <div class="lg:absolute z-10 lg:left-1/2 lg:-translate-x-1/2 lg:top-10 bg-surface py-6 md:py-8 px-4 md:px-10 lg:px-20 w-full rounded-xs flex flex-col lg:flex-row gap-y-6 items-start justify-between max-w-6xl mx-auto">
+          <div class="relative w-full lg:h-40">
+            <div class="z-10 mx-auto flex w-full flex-col items-start justify-between gap-y-6 bg-surface px-4 py-6 md:px-10 md:py-8 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2 lg:flex-row lg:px-12 xl:px-16">
               {contactItems.map((item) => (
                 <div class="flex items-start gap-4">
                   <Icon
                     name={item.icon}
-                    class="size-6 md:size-8 text-accent"
+                    class="size-6 shrink-0 text-accent md:size-7"
                     aria-hidden="true"
                   />
-                  <div>
-                    <p class="text-eyebrow">{item.title}</p>
-                    <div class="text-body text-text">
+
+                  <div class="min-w-0">
+                    <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
+                      {item.title}
+                    </p>
+
+                    <div class="mt-1 font-body text-sm leading-relaxed text-text md:text-base">
                       {item.lines ? (
                         item.lines.map((line) => <p>{line}</p>)
                       ) : (
@@ -245,7 +252,7 @@ const { aboutSections, businessInfo, contactItems, team } = data;
         </div>
       </div>
 
-      <div class="pt-4 md:pt-0 px-4 md:px-0 h-100 md:h-112.5">
+      <div class="h-100 px-4 pt-4 md:h-112.5 md:px-0 md:pt-0">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
           title="Mapa de ubicación de Box 28012 en Madrid"
@@ -260,7 +267,7 @@ const { aboutSections, businessInfo, contactItems, team } = data;
       </div>
     </section>
 
-    <!-- FIXED LEFT TITLE -->
+    <!-- FIXED BOX STRIP -->
     <div
       aria-hidden="true"
       class="hidden fixed right-0 bottom-24 transform -rotate-90 lg:flex items-center gap-2"
@@ -275,26 +282,32 @@ const { aboutSections, businessInfo, contactItems, team } = data;
   <!-- FOOTER -->
   <div class="pt-20 md:pt-30">
     <footer class="bg-black/40">
-      <div class="max-w-7xl mx-auto px-4 md:px-10 py-10 md:py-16">
+      <div class="mx-auto max-w-7xl px-4 py-10 md:px-10 md:py-16">
         <div class="grid gap-10 md:gap-16 lg:grid-cols-[1.15fr_1fr]">
           <div class="space-y-6">
             <div>
-              <p class="font-serif text-3xl md:text-4xl tracking-[-0.04em] uppercase">
+              <p class="font-pontejos-identity text-3xl uppercase leading-none tracking-[-0.03em] md:text-4xl">
                 {businessInfo.name}
               </p>
-              <p class="text-eyebrow tracking-[0.28em]">{businessInfo.city}</p>
+
+              <p class="mt-2 font-chulapa text-xs uppercase tracking-[0.28em] text-muted md:text-sm">
+                {businessInfo.city}
+              </p>
             </div>
 
-            <p class="text-body max-w-md">
+            <p class="max-w-md font-body text-base leading-relaxed text-muted md:text-lg">
               Entrenamiento funcional en grupos reducidos en Madrid centro.
             </p>
           </div>
 
           <div class="flex flex-col justify-between gap-10">
-            <div class="grid gap-6 md:gap-10 sm:grid-cols-2">
+            <div class="grid gap-6 sm:grid-cols-2 md:gap-10">
               <div>
-                <p class="text-eyebrow">Dirección</p>
-                <p class="text-body mt-3">
+                <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
+                  Dirección
+                </p>
+
+                <p class="mt-3 font-body text-base leading-relaxed text-text md:text-lg">
                   {businessInfo.addressLine1}
                   <br />
                   {businessInfo.postalCode} Madrid
@@ -302,14 +315,18 @@ const { aboutSections, businessInfo, contactItems, team } = data;
               </div>
 
               <div>
-                <p class="text-eyebrow">Contacto</p>
-                <div class="text-body mt-3 space-y-2">
+                <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
+                  Contacto
+                </p>
+
+                <div class="mt-3 space-y-2 font-body text-base leading-relaxed text-text md:text-lg">
                   <WhatsAppLink
                     class="block justify-start md:justify-center"
                     variant="ghost"
                   >
                     {businessInfo.phone}
                   </WhatsAppLink>
+
                   <a
                     class="block"
                     target="_blank"
@@ -324,7 +341,7 @@ const { aboutSections, businessInfo, contactItems, team } = data;
 
             <div class="flex flex-col gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
               <WhatsAppLink
-                class="font-medium text-base flex items-center gap-3 justify-start"
+                class="flex items-center justify-start gap-3 font-body text-base font-medium"
                 variant="ghost"
               >
                 Primera sesión gratuita
@@ -335,7 +352,7 @@ const { aboutSections, businessInfo, contactItems, team } = data;
                 />
               </WhatsAppLink>
 
-              <p class="text-xs text-muted">
+              <p class="font-body text-xs text-muted">
                 © 2026 Box 28012 · Todos los derechos reservados
               </p>
             </div>
@@ -343,19 +360,19 @@ const { aboutSections, businessInfo, contactItems, team } = data;
         </div>
       </div>
 
-      <div class="relative flex h-60 md:h-86 items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-size-[240px_240px] md:bg-size-[340px_340px] bg-center bg-repeat"></div>
+      <div class="relative flex h-60 items-center justify-center overflow-hidden md:h-86">
+        <div class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-center bg-repeat bg-size-[240px_240px] md:bg-size-[340px_340px]"></div>
 
         <div class="absolute inset-0 bg-black/20"></div>
 
         <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85)_0%,transparent_25%)]"></div>
 
         <div class="relative z-10 text-center">
-          <p class="font-serif text-[clamp(4rem,15vw,9rem)] uppercase leading-none text-text">
+          <p class="font-pontejos-identity text-[clamp(4rem,15vw,9rem)] uppercase leading-none tracking-[-0.03em] text-text">
             {businessInfo.name}
           </p>
 
-          <p class="font-serif text-[clamp(1.25rem,3vw,3rem)] font-semibold uppercase tracking-wider leading-none text-red-500">
+          <p class="font-pontejos-display text-[clamp(1.25rem,3vw,3rem)] uppercase leading-none tracking-[0.08em] text-red-500">
             {businessInfo.cityShort}
           </p>
         </div>
