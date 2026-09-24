@@ -1,23 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-serif: var(
-    --font-brand,
-    ui-serif,
-    Georgia,
-    Cambria,
-    "Times New Roman",
-    Times,
-    serif
-  );
   --font-body: var(--font-dm, ui-sans-serif, system-ui, sans-serif);
-  --font-anton: var(
-    --astro-font-anton,
-    Impact,
-    Haettenschweiler,
-    "Arial Narrow Bold",
-    sans-serif
-  );
   --font-chulapa: var(
     --astro-font-chulapa,
     ui-sans-serif,
@@ -63,10 +47,6 @@
     outline: 1px solid var(--color-accent);
     outline-offset: 4px;
   }
-}
-
-@utility text-brand {
-  @apply font-serif text-[clamp(2.75rem,12vw,5rem)] leading-none tracking-[-0.04em] uppercase;
 }
 
 @utility text-brand-kicker {

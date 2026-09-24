@@ -16,25 +16,9 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Libre Bodoni",
-      cssVariable: "--font-brand",
-      weights: [400, 600],
-      styles: ["normal"],
-      subsets: ["latin"],
-    },
-    {
-      provider: fontProviders.google(),
       name: "DM Sans",
       cssVariable: "--font-dm",
       weights: [400, 500, 600, 700],
-      styles: ["normal"],
-      subsets: ["latin"],
-    },
-    {
-      provider: fontProviders.google(),
-      name: "Anton",
-      cssVariable: "--astro-font-anton",
-      weights: [400],
       styles: ["normal"],
       subsets: ["latin"],
     },
