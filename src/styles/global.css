@@ -50,15 +50,15 @@
 }
 
 @utility text-brand-kicker {
-  @apply font-body text-[clamp(0.875rem,2vw,1.125rem)] font-medium uppercase tracking-[0.2em];
+  @apply font-chulapa text-[clamp(0.875rem,2vw,1.125rem)] font-medium uppercase tracking-[0.2em];
 }
 
 @utility text-section-title {
-  @apply font-body text-[clamp(1.75rem,7vw,2.75rem)] leading-none font-semibold uppercase tracking-[0.04em];
+  @apply font-chulapa text-2xl md:text-3xl leading-none font-normal uppercase tracking-[0.08em];
 }
 
 @utility text-card-title {
-  @apply font-body text-xl md:text-2xl font-medium leading-tight tracking-[0.02em];
+  @apply font-chulapa text-xl md:text-2xl font-medium leading-tight tracking-[0.02em];
 }
 
 @utility text-lead {
@@ -74,11 +74,11 @@
 }
 
 @utility text-eyebrow {
-  @apply font-body text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-subtle;
+  @apply font-chulapa text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-subtle;
 }
 
 @utility text-cta {
-  @apply font-body text-base md:text-lg font-medium;
+  @apply font-chulapa text-base md:text-lg font-medium;
 }
 
 @utility text-price {

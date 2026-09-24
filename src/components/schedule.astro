@@ -85,7 +85,7 @@ const sessionBySlot = new Map(
           aria-selected={index === 0 ? "true" : "false"}
           tabindex={index === 0 ? 0 : -1}
           data-schedule-tab={day.id}
-          class="relative py-4 text-xs font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
+          class="relative py-4 font-chulapa text-xs font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
         >
           {day.shortLabel}
         </button>
@@ -101,7 +101,7 @@ const sessionBySlot = new Map(
           data-schedule-panel={day.id}
           hidden={index !== 0}
         >
-          <h3 class="sr-only">Horario del {day.label}</h3>
+          <h3 class="sr-only font-chulapa">Horario del {day.label}</h3>
           <div class="grid grid-cols-[5.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
             <span>Hora</span>
             <span>Actividad</span>
