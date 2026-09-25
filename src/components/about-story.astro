@@ -1,51 +1,66 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
+import TransparentTile from "../assets/images/tiles/transparent-tile-1-cropped.png";
 import { getHomeData } from "../data/home";
 
 const { aboutStory } = getHomeData();
+const backgroundTile = await getImage({
+  src: TransparentTile,
+  width: 520,
+  format: "webp",
+});
 ---
 
-<div class="relative isolate overflow-hidden bg-bg">
+<section
+  id="el-box"
+  class="relative isolate scroll-mt-18 overflow-hidden bg-bg"
+>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute top-0 left-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
+    class="pointer-events-none absolute top-[16%] left-0 hidden h-[52%] w-[clamp(150px,16vw,300px)] bg-size-[260px_260px] opacity-[0.07] [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%,black_78%,transparent_100%)] lg:block"
+    style={`background-image: url("${backgroundTile.src}")`}
   ></div>
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute right-0 bottom-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
-  ></div>
-  <section
-    id="el-box"
-    class="relative mx-auto max-w-280 scroll-mt-18 px-4 py-12 md:px-10 md:py-20"
-  >
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 xl:gap-16">
-      <div class="relative -mx-2 lg:mx-0">
-        <figure class="aspect-square overflow-hidden bg-black lg:aspect-[4/5]">
-          <Image
-            src={aboutStory.image}
-            alt={aboutStory.alt}
-            class="size-full object-cover object-[center_42%] lg:object-center"
-          />
-        </figure>
-        <figure class="absolute bottom-0 -left-[2%] z-10 aspect-[4/3] w-[50%] overflow-hidden bg-black lg:-left-[28%] lg:w-[60%]">
-          <Image
-            src={aboutStory.accentImage}
-            alt={aboutStory.accentAlt}
-            class="size-full object-cover object-center"
-          />
-        </figure>
-      </div>
-
-      <div class="max-w-[52ch]">
-        <h2 class="text-section-title mb-5 text-text/80 md:mb-6">
-          {aboutStory.title}
-        </h2>
-        <div class="space-y-3 font-body text-[0.9375rem] leading-relaxed text-text/75 md:text-base">
-          {aboutStory.paragraphs.map((paragraph) => (
-            <p>{paragraph}</p>
+  <div class="relative mx-auto grid max-w-350 gap-12 px-4 py-16 md:px-10 md:py-24 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12 lg:py-32 xl:gap-18">
+    <div class="lg:order-2 lg:pt-14">
+      <header>
+        <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-muted md:text-sm">
+          {aboutStory.label}
+        </p>
+        <div aria-hidden="true" class="mt-4 h-0.5 w-10 bg-accent"></div>
+        <h2 class="mt-7 font-pontejos-display text-[clamp(3.125rem,4.2vw,4.875rem)] leading-[0.95] tracking-[-0.02em] text-text md:mt-8">
+          {aboutStory.title.split(" ").map((word) => (
+            <span class="block">{word}</span>
           ))}
-        </div>
+        </h2>
+      </header>
+
+      <div class="mt-8 max-w-[39ch] space-y-4 font-body text-sm leading-[1.65] text-text/80 md:mt-9 md:space-y-5 md:text-[0.9375rem]">
+        {aboutStory.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
       </div>
     </div>
-  </section>
-</div>
+
+    <div class="relative lg:order-1 lg:self-start lg:pb-[14%]">
+      <figure class="aspect-[4/5] w-[84%] overflow-hidden bg-black lg:w-[78%]">
+        <Image
+          src={aboutStory.image}
+          alt={aboutStory.alt}
+          widths={[480, 720, 960, 1200]}
+          sizes="(min-width: 1400px) 650px, (min-width: 1024px) 46vw, 80vw"
+          class="size-full object-cover object-center"
+        />
+      </figure>
+      <figure class="relative z-20 -mt-14 ml-auto aspect-[4/3] w-[69%] overflow-hidden bg-black lg:absolute lg:top-[47%] lg:right-[5%] lg:mt-0 lg:w-[66%]">
+        <Image
+          src={aboutStory.accentImage}
+          alt={aboutStory.accentAlt}
+          widths={[360, 600, 840]}
+          sizes="(min-width: 1400px) 480px, (min-width: 1024px) 33vw, 62vw"
+          class="size-full object-cover object-center"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </div>
+</section>

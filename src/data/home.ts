@@ -1,6 +1,6 @@
 import CrosstrainingImage from "../assets/images/box/servicio_grupos-pro-dark.jpg";
-import BoxStreetImage from "../assets/images/box/historia_barrio-pro-dark.png";
-import BoxAccentImage from "../assets/images/box/historia_interior-pro-dark.jpg";
+import BoxEntranceImage from "../assets/images/box/box-entrance.png";
+import BoxInteriorImage from "../assets/images/box/historia_interior-pro-dark.jpg";
 import AlbertImage from "../assets/images/team/albert.webp";
 import LorenaImage from "../assets/images/team/lorena.webp";
 import PartnerWODImage from "../assets/images/box/servicio_personal-pro-dark.jpg";
@@ -261,17 +261,19 @@ const contact = {
 };
 
 const aboutStory = {
-  title: "BOX 28012 · NUESTRA HISTORIA",
+  label: "SOBRE EL BOX",
+  title: "NUESTRA HISTORIA",
   paragraphs: [
     "Box 28012 nació en noviembre de 2019 con una idea clara: entrenar en grupo sin renunciar a la atención individual.",
     "Desde entonces, hemos crecido junto al barrio de Lavapiés, apostando por los grupos reducidos, la calidad del entrenamiento y la cercanía.",
     "Hoy seguimos evolucionando con una nueva identidad, pero con la misma filosofía: entrenar bien, progresar y construir comunidad.",
     "Porque 28012 no es solo un código postal. Es el barrio al que pertenecemos.",
   ],
-  image: BoxStreetImage,
-  alt: "Fachada de Box 28012 en Lavapiés",
-  accentImage: BoxAccentImage,
-  accentAlt: "Interior de Box 28012",
+  image: BoxEntranceImage,
+  alt: "Entrada de Box 28012 y su fachada en Lavapiés",
+  accentImage: BoxInteriorImage,
+  accentAlt:
+    "Interior de Box 28012 con estructura de madera y zona de entrenamiento",
 };
 
 const team = {
