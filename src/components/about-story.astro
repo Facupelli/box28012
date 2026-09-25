@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import { getHomeData } from "../data/home";
+
+const { aboutStory } = getHomeData();
+---
+
+<div class="relative isolate overflow-hidden bg-bg">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-0 left-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute right-0 bottom-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
+  ></div>
+  <section
+    id="el-box"
+    class="relative mx-auto max-w-280 scroll-mt-18 px-4 py-12 md:px-10 md:py-20"
+  >
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 xl:gap-16">
+      <div class="relative -mx-2 lg:mx-0">
+        <figure class="aspect-square overflow-hidden bg-black lg:aspect-[4/5]">
+          <Image
+            src={aboutStory.image}
+            alt={aboutStory.alt}
+            class="size-full object-cover object-[center_42%] lg:object-center"
+          />
+        </figure>
+        <figure class="absolute bottom-0 -left-[2%] z-10 aspect-[4/3] w-[50%] overflow-hidden bg-black lg:-left-[28%] lg:w-[60%]">
+          <Image
+            src={aboutStory.accentImage}
+            alt={aboutStory.accentAlt}
+            class="size-full object-cover object-center"
+          />
+        </figure>
+      </div>
+
+      <div class="max-w-[52ch]">
+        <h2 class="text-section-title mb-5 text-text/80 md:mb-6">
+          {aboutStory.title}
+        </h2>
+        <div class="space-y-3 font-body text-[0.9375rem] leading-relaxed text-text/75 md:text-base">
+          {aboutStory.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

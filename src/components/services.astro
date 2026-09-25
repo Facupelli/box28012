@@ -5,26 +5,32 @@ import { getHomeData } from "../data/home";
 const { services } = getHomeData();
 ---
 
-<div class="grid grid-cols-1 gap-14 pt-10 md:pt-14 lg:grid-cols-2 lg:gap-10 xl:gap-14">
-  {services.map((service) => (
-    <article class="grid content-start gap-6 md:gap-7 lg:h-full lg:grid-rows-[1fr_auto]">
-      <div class="max-w-150">
-        <h3 class="text-pretty font-pontejos-display text-[clamp(2rem,2.25vw,2.5rem)] font-normal leading-[1] tracking-[-0.02em] text-text">
-          {service.title}
-        </h3>
+<div class="mx-auto max-w-350">
+  <section id="servicios" class="px-4 py-14 md:px-10 md:py-30">
+    <h2 class="text-section-title text-text/80">{services.title}</h2>
 
-        <p class="mt-4 max-w-140 text-pretty font-body text-base leading-relaxed text-text/85 md:text-lg">
-          {service.description}
-        </p>
-      </div>
+    <div class="grid grid-cols-1 gap-14 pt-10 md:pt-14 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+      {services.items.map((service) => (
+        <article class="grid content-start gap-6 md:gap-7 lg:h-full lg:grid-rows-[1fr_auto]">
+          <div class="max-w-150">
+            <h3 class="text-pretty font-pontejos-display text-[clamp(2rem,2.25vw,2.5rem)] font-normal leading-[1] tracking-[-0.02em] text-text">
+              {service.title}
+            </h3>
 
-      <figure class="aspect-[4/3] overflow-hidden bg-black">
-        <Image
-          src={service.image}
-          alt={service.alt}
-          class="size-full object-cover"
-        />
-      </figure>
-    </article>
-  ))}
+            <p class="mt-4 max-w-140 text-pretty font-body text-base leading-relaxed text-text/85 md:text-lg">
+              {service.description}
+            </p>
+          </div>
+
+          <figure class="aspect-[4/3] overflow-hidden bg-black">
+            <Image
+              src={service.image}
+              alt={service.alt}
+              class="size-full object-cover"
+            />
+          </figure>
+        </article>
+      ))}
+    </div>
+  </section>
 </div>

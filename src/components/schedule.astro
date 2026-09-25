@@ -1,8 +1,13 @@
 ---
 import { getHomeData } from "../data/home";
 
-const { scheduleActivities, scheduleDays, scheduleSessions, scheduleTimes } =
-  getHomeData();
+const {
+  schedule,
+  scheduleActivities,
+  scheduleDays,
+  scheduleSessions,
+  scheduleTimes,
+} = getHomeData();
 
 const sessionsByDay = scheduleDays.map((day) => ({
   ...day,
@@ -19,7 +24,7 @@ const sessionBySlot = new Map(
 
 <section id="horarios" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-10">
   <header class="space-y-2">
-    <h2 class="text-section-title">HORARIOS</h2>
+    <h2 class="text-section-title">{schedule.title}</h2>
   </header>
 
   <div class="mt-10 hidden md:mt-14 md:block">

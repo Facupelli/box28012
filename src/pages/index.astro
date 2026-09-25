@@ -1,25 +1,22 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/layout.astro";
-import WhatsAppLink from "../components/whatsapp-link.astro";
 import MainNav from "../components/main-nav.astro";
-import HeroImage from "../assets/images/box/hero-pro-dark.jpg";
-import BoxStreetImage from "../assets/images/box/historia_barrio-pro-dark.png";
-import BoxAccentImage from "../assets/images/box/historia_interior-pro-dark.jpg";
-import { getBusinessStructuredData, getHomeData } from "../data/home";
+import Hero from "../components/hero.astro";
 import Services from "../components/services.astro";
 import Schedule from "../components/schedule.astro";
 import Pricing from "../components/pricing.astro";
+import AboutStory from "../components/about-story.astro";
+import Team from "../components/team.astro";
+import Contact from "../components/contact.astro";
+import Footer from "../components/footer.astro";
+import { getBusinessStructuredData, getHomeData } from "../data/home";
 
 if (!Astro.site) {
   throw new Error("Astro.site must be configured.");
 }
 
-const data = getHomeData();
+const { businessInfo } = getHomeData();
 const structuredData = getBusinessStructuredData(Astro.site);
-
-const { aboutStory, businessInfo, contactItems, team } = data;
 ---
 
 <BaseLayout
@@ -33,257 +30,15 @@ const { aboutStory, businessInfo, contactItems, team } = data;
   <MainNav />
 
   <main class="relative overflow-hidden">
-    <!-- INTRO/HERO -->
-    <section
-      id="inicio"
-      class="relative isolate flex min-h-svh w-full items-end overflow-hidden bg-black"
-    >
-      <Image
-        src={HeroImage}
-        alt="Salón principal del Box 28012"
-        priority
-        class="absolute inset-0 -z-20 size-full object-cover object-[48%_center] md:object-center"
-      />
-
-      <div
-        aria-hidden="true"
-        class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.84)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.58)_35%,rgba(0,0,0,0.12)_67%,rgba(0,0,0,0.02)_100%),linear-gradient(180deg,rgba(0,0,0,0.28)_0%,transparent_36%,rgba(0,0,0,0.62)_100%)]"
-      ></div>
-
-      <div class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20">
-        <div class="max-w-230">
-          <p class="mb-5 font-chulapa text-xs uppercase tracking-[0.22em] text-text/65 md:mb-7 md:text-sm">
-            Lavapiés <span class="mx-2 text-text/40">—</span> Calle Cañizares, 3
-          </p>
-
-          <h1 class="max-w-200 text-pretty font-pontejos-display text-[clamp(4.25rem,7.6vw,7.6rem)] font-normal leading-[0.94] tracking-[-0.025em] text-text">
-            BOX 28012
-          </h1>
-
-          <p class="mt-5 max-w-160 text-pretty font-body text-base leading-snug text-text/75 md:mt-7 md:text-lg">
-            <span class="block">
-              Entrenamiento funcional en el corazón de Madrid.
-            </span>
-            <span class="block">
-              Grupos reducidos. Más atención. Mejor entrenamiento.
-            </span>
-          </p>
-
-          <div class="mt-8 md:mt-10">
-            <WhatsAppLink
-              variant="ghost"
-              class="group inline-flex items-center gap-6 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-4 md:py-3 md:text-lg"
-            >
-              ¡PRUEBA GRATIS!
-              <span
-                aria-hidden="true"
-                class="text-xl font-normal leading-none text-[#d52b2f] transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </WhatsAppLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICIOS -->
+    <Hero />
+    <Services />
     <div class="mx-auto max-w-350">
-      <section id="servicios" class="px-4 py-14 md:px-10 md:py-30">
-        <h2 class="text-section-title text-text/80">SERVICIOS</h2>
-
-        <Services />
-      </section>
-    </div>
-
-    <!-- HORARIOS -->
-    <div class="max-w-350 mx-auto">
       <Schedule />
     </div>
-
-    <!-- TARIFAS -->
     <Pricing />
-
-    <!-- NUESTRA HISTORIA -->
-    <div class="relative isolate overflow-hidden bg-bg">
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute top-0 left-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
-      ></div>
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute right-0 bottom-0 size-80 bg-[url('/images/mosaic.webp')] bg-repeat bg-size-[140px_140px] opacity-[0.09] mix-blend-screen [mask-image:radial-gradient(circle_closest-side_at_center,black_8%,transparent_100%)] md:size-120 md:bg-size-[180px_180px]"
-      ></div>
-      <section
-        id="el-box"
-        class="relative mx-auto max-w-280 scroll-mt-18 px-4 py-12 md:px-10 md:py-20"
-      >
-        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 xl:gap-16">
-          <div class="relative -mx-2 lg:mx-0">
-            <figure class="aspect-square overflow-hidden bg-black lg:aspect-[4/5]">
-              <Image
-                src={BoxStreetImage}
-                alt={aboutStory.alt}
-                class="size-full object-cover object-[center_42%] lg:object-center"
-              />
-            </figure>
-            <figure class="absolute bottom-0 -left-[2%] z-10 aspect-[4/3] w-[50%] overflow-hidden bg-black lg:-left-[28%] lg:w-[60%]">
-              <Image
-                src={BoxAccentImage}
-                alt={aboutStory.accentAlt}
-                class="size-full object-cover object-center"
-              />
-            </figure>
-          </div>
-
-          <div class="max-w-[52ch]">
-            <h2 class="text-section-title mb-5 text-text/80 md:mb-6">
-              NUESTRA HISTORIA
-            </h2>
-            <div class="space-y-3 font-body text-[0.9375rem] leading-relaxed text-text/75 md:text-base">
-              {aboutStory.paragraphs.map((paragraph) => (
-                <p>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- EQUIPO -->
-    <div class="mx-auto max-w-350">
-      <section id="equipo" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-30">
-        <header>
-          <h2 class="text-section-title text-text/80">EQUIPO</h2>
-        </header>
-
-        <div class="mt-10 grid max-w-258 grid-cols-1 gap-12 md:mt-14 lg:grid-cols-2 lg:gap-14 xl:gap-18">
-          {team.map((member) => (
-            <article class="grid content-start">
-              <figure class="aspect-[4/3] overflow-hidden bg-black">
-                <Image
-                  src={member.image}
-                  alt={member.alt}
-                  class="size-full object-cover"
-                />
-              </figure>
-
-              <div class="pt-6 md:pt-7">
-                <h3 class="font-pontejos-display text-[clamp(2rem,2.25vw,2.5rem)] font-normal leading-[1] tracking-[-0.02em] text-text">
-                  {member.name}
-                </h3>
-                <p class="mt-3 font-chulapa text-sm uppercase tracking-[0.12em] text-text/70">
-                  {member.role}
-                </p>
-                {member.credentials.length > 0 && (
-                  <ul class="mt-4 space-y-1 font-body text-sm leading-relaxed text-text/65">
-                    {member.credentials.map((credential) => (
-                      <li>{credential}</li>
-                    ))}
-                  </ul>
-                )}
-                <p class="mt-5 max-w-[65ch] font-body text-base leading-relaxed text-text/85">
-                  {member.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </div>
-
-    <!-- PONTE EN CONTACTO -->
-    <section id="contacto" class="isolate pt-14 md:pt-30">
-      <div class="mx-auto max-w-350 px-4 md:px-10">
-        <div class="space-y-10">
-          <div class="space-y-6">
-            <div>
-              <p class="max-w-150 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
-                En Box 28012 entrenamos en grupos reducidos para ofrecerte una
-                experiencia totalmente personalizada.
-              </p>
-
-              <div class="mt-5 h-0.5 w-12 bg-accent"></div>
-            </div>
-
-            <div class="space-y-4">
-              <h2 class="max-w-200 text-pretty font-pontejos-display text-[clamp(2.5rem,4vw,4.5rem)] font-normal leading-[0.9] tracking-[-0.02em] text-text">
-                ¿Tienes alguna duda?
-              </h2>
-
-              <p class="max-w-180 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
-                Escríbenos por WhatsApp para consultar horarios, resolver dudas
-                o reservar tu primera sesión gratuita.
-              </p>
-            </div>
-
-            <div>
-              <WhatsAppLink
-                variant="ghost"
-                class="group inline-flex items-center gap-4 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 md:px-4 md:py-3 md:text-base"
-              >
-                Escribir por WhatsApp
-                <Icon
-                  name="arrow-right"
-                  class="size-5 text-accent transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </WhatsAppLink>
-            </div>
-          </div>
-
-          <div class="relative w-full lg:h-40">
-            <div class="z-10 mx-auto flex w-full flex-col items-start justify-between gap-y-6 bg-surface px-4 py-6 md:px-10 md:py-8 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2 lg:flex-row lg:px-12 xl:px-16">
-              {contactItems.map((item) => (
-                <div class="flex items-start gap-4">
-                  <Icon
-                    name={item.icon}
-                    class="size-6 shrink-0 text-accent md:size-7"
-                    aria-hidden="true"
-                  />
-
-                  <div class="min-w-0">
-                    <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
-                      {item.title}
-                    </p>
-
-                    <div class="mt-1 font-body text-sm leading-relaxed text-text md:text-base">
-                      {item.lines ? (
-                        item.lines.map((line) => <p>{line}</p>)
-                      ) : (
-                        <a
-                          href={item.href}
-                          target={item.external ? "_blank" : undefined}
-                          rel={
-                            item.external ? "noopener noreferrer" : undefined
-                          }
-                        >
-                          {item.text}
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="h-100 px-4 pt-4 md:h-125 md:px-0 md:pt-0">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
-          title="Mapa de ubicación de Box 28012 en Madrid"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="grayscale"
-        ></iframe>
-      </div>
-    </section>
+    <AboutStory />
+    <Team />
+    <Contact />
 
     <!-- FIXED BOX STRIP -->
     <div
@@ -297,102 +52,5 @@ const { aboutStory, businessInfo, contactItems, team } = data;
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-black/40">
-    <div class="mx-auto max-w-7xl px-4 py-12 md:px-10 md:py-20">
-      <div class="grid gap-10 md:gap-16 lg:grid-cols-[1.15fr_1fr]">
-        <div class="space-y-6">
-          <div>
-            <p class="font-pontejos-identity text-3xl uppercase leading-none tracking-[-0.03em] md:text-4xl">
-              {businessInfo.name}
-            </p>
-
-            <p class="mt-2 font-chulapa text-xs uppercase tracking-[0.28em] text-muted md:text-sm">
-              {businessInfo.city}
-            </p>
-          </div>
-
-          <p class="max-w-md font-body text-base leading-relaxed text-muted md:text-lg">
-            Entrenamiento funcional en grupos reducidos en Madrid centro.
-          </p>
-        </div>
-
-        <div class="flex flex-col justify-between gap-10">
-          <div class="grid gap-6 sm:grid-cols-2 md:gap-10">
-            <div>
-              <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
-                Dirección
-              </p>
-
-              <p class="mt-3 font-body text-base leading-relaxed text-text md:text-lg">
-                {businessInfo.addressLine1}
-                <br />
-                {businessInfo.postalCode} Madrid
-              </p>
-            </div>
-
-            <div>
-              <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
-                Contacto
-              </p>
-
-              <div class="mt-3 space-y-2 font-body text-base leading-relaxed text-text md:text-lg">
-                <WhatsAppLink
-                  class="block justify-start md:justify-center"
-                  variant="ghost"
-                >
-                  {businessInfo.phone}
-                </WhatsAppLink>
-
-                <a
-                  class="block"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={businessInfo.instagramUrl}
-                >
-                  {businessInfo.instagramHandle}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <WhatsAppLink
-              class="flex items-center justify-start gap-3 font-chulapa text-base font-medium"
-              variant="ghost"
-            >
-              Primera sesión gratuita
-              <Icon
-                name="arrow-right"
-                class="size-6 text-accent"
-                aria-hidden="true"
-              />
-            </WhatsAppLink>
-
-            <p class="font-body text-xs text-muted">
-              © 2026 Box 28012 · Todos los derechos reservados
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="relative flex h-60 items-center justify-center overflow-hidden md:h-86">
-      <div class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-center bg-repeat bg-size-[240px_240px] md:bg-size-[340px_340px]"></div>
-
-      <div class="absolute inset-0 bg-black/20"></div>
-
-      <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85)_0%,transparent_25%)]"></div>
-
-      <div class="relative z-10 text-center">
-        <p class="font-pontejos-identity text-[clamp(4rem,15vw,9rem)] uppercase leading-none tracking-[-0.03em] text-text">
-          {businessInfo.name}
-        </p>
-
-        <p class="font-pontejos-display text-[clamp(1.25rem,3vw,3rem)] uppercase leading-none tracking-[0.08em] text-red-500">
-          {businessInfo.cityShort}
-        </p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>

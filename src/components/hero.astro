@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import WhatsAppLink from "./whatsapp-link.astro";
+import HeroImage from "../assets/images/box/hero-pro-dark.jpg";
+---
+
+<section
+  id="inicio"
+  class="relative isolate flex min-h-svh w-full items-end overflow-hidden bg-black"
+>
+  <Image
+    src={HeroImage}
+    alt="Salón principal del Box 28012"
+    priority
+    class="absolute inset-0 -z-20 size-full object-cover object-[48%_center] md:object-center"
+  />
+
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.84)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.58)_35%,rgba(0,0,0,0.12)_67%,rgba(0,0,0,0.02)_100%),linear-gradient(180deg,rgba(0,0,0,0.28)_0%,transparent_36%,rgba(0,0,0,0.62)_100%)]"
+  ></div>
+
+  <div class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20">
+    <div class="max-w-230">
+      <p class="mb-5 font-chulapa text-xs uppercase tracking-[0.22em] text-text/65 md:mb-7 md:text-sm">
+        Lavapiés <span class="mx-2 text-text/40">·</span> Calle Cañizares, 3
+      </p>
+
+      <h1 class="max-w-200 text-pretty font-pontejos-display text-[clamp(4.25rem,7.6vw,7.6rem)] font-normal leading-[0.94] tracking-[-0.025em] text-text">
+        BOX 28012
+      </h1>
+
+      <p class="mt-5 max-w-160 text-pretty font-body text-base leading-snug text-text/75 md:mt-7 md:text-lg">
+        <span class="block">
+          Entrenamiento funcional en el corazón de Madrid.
+        </span>
+        <span class="block">
+          Grupos reducidos. Más atención. Mejor entrenamiento.
+        </span>
+      </p>
+
+      <div class="mt-8 md:mt-10">
+        <WhatsAppLink
+          variant="ghost"
+          class="group inline-flex items-center gap-6 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-4 md:py-3 md:text-lg"
+        >
+          ¡PRUEBA GRATIS!
+          <span
+            aria-hidden="true"
+            class="text-xl font-normal leading-none text-[#d52b2f] transition-transform group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </WhatsAppLink>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,105 @@
+---
+import { Icon } from "astro-icon/components";
+import WhatsAppLink from "./whatsapp-link.astro";
+import { getHomeData } from "../data/home";
+
+const { businessInfo } = getHomeData();
+---
+
+<footer class="bg-black/40">
+  <div class="mx-auto max-w-7xl px-4 py-12 md:px-10 md:py-20">
+    <div class="grid gap-10 md:gap-16 lg:grid-cols-[1.15fr_1fr]">
+      <div class="space-y-6">
+        <div>
+          <p class="font-pontejos-identity text-3xl uppercase leading-none tracking-[-0.03em] md:text-4xl">
+            {businessInfo.name}
+          </p>
+
+          <p class="mt-2 font-chulapa text-xs uppercase tracking-[0.28em] text-muted md:text-sm">
+            {businessInfo.city}
+          </p>
+        </div>
+
+        <p class="max-w-md font-body text-base leading-relaxed text-muted md:text-lg">
+          Entrenamiento funcional en grupos reducidos en Madrid centro.
+        </p>
+      </div>
+
+      <div class="flex flex-col justify-between gap-10">
+        <div class="grid gap-6 sm:grid-cols-2 md:gap-10">
+          <div>
+            <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
+              Dirección
+            </p>
+
+            <p class="mt-3 font-body text-base leading-relaxed text-text md:text-lg">
+              {businessInfo.addressLine1}
+              <br />
+              {businessInfo.postalCode} Madrid
+            </p>
+          </div>
+
+          <div>
+            <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
+              Contacto
+            </p>
+
+            <div class="mt-3 space-y-2 font-body text-base leading-relaxed text-text md:text-lg">
+              <WhatsAppLink
+                class="block justify-start md:justify-center"
+                variant="ghost"
+              >
+                {businessInfo.phone}
+              </WhatsAppLink>
+
+              <a
+                class="block"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={businessInfo.instagramUrl}
+              >
+                {businessInfo.instagramHandle}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <WhatsAppLink
+            class="flex items-center justify-start gap-3 font-chulapa text-base font-medium"
+            variant="ghost"
+          >
+            Primera sesión gratuita
+            <Icon
+              name="arrow-right"
+              class="size-6 text-accent"
+              aria-hidden="true"
+            />
+          </WhatsAppLink>
+
+          <p class="font-body text-xs text-muted">
+            © 2026 Box 28012 · Todos los derechos reservados
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative flex h-60 items-center justify-center overflow-hidden md:h-86">
+    <div class="absolute inset-0 bg-[url('/images/mosaic-v2.webp')] bg-center bg-repeat bg-size-[240px_240px] md:bg-size-[340px_340px]"></div>
+
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85)_0%,transparent_25%)]"></div>
+
+    <div class="relative z-10 text-center">
+      <p class="font-pontejos-identity text-[clamp(4rem,15vw,9rem)] uppercase leading-none tracking-[-0.03em] text-text">
+        {businessInfo.name}
+      </p>
+
+      <p class="font-pontejos-display text-[clamp(1.25rem,3vw,3rem)] uppercase leading-none tracking-[0.08em] text-red-500">
+        {businessInfo.cityShort}
+      </p>
+    </div>
+  </div>
+</footer>
