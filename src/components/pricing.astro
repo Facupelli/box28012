@@ -1,126 +1,135 @@
 ---
-import { Icon } from "astro-icon/components";
 import { getHomeData } from "../data/home";
-import WhatsAppLink from "./whatsapp-link.astro";
 
 const { pricing } = getHomeData();
-const pricingPeriods = [
-  { id: "monthly", label: "Mensual" },
-  { id: "quarterly", label: "Trimestral" },
-] as const;
-const pricingPlans = pricing.smallGroup.monthly.plans.map((monthly, index) => ({
-  name: monthly.name,
-  monthly,
-  quarterly: pricing.smallGroup.quarterly.plans[index],
-}));
-
-const formatPlanDetail = (sessions: number | string) =>
-  sessions === "unlimited" ? "Clases ilimitadas" : `${sessions} clases`;
 ---
 
 <div class="mx-auto max-w-350">
   <section
     id="tarifas"
-    class="grid grid-cols-1 gap-10 px-4 py-14 md:gap-12 lg:grid-cols-[minmax(16rem,0.35fr)_minmax(0,0.65fr)] lg:gap-16 lg:px-10 lg:py-30"
+    class="scroll-mt-18 max-w-220 px-4 py-14 md:px-10 lg:py-30"
   >
-    <div>
+    <header class="space-y-2">
       <h2 class="text-section-title text-text">{pricing.title}</h2>
+      <p class="font-body text-base leading-relaxed text-muted md:text-lg">
+        {pricing.headline}
+      </p>
+    </header>
 
-      <div class="max-w-110 space-y-3 pb-5 pt-10 md:pt-14">
-        <p class="font-body text-lg leading-snug text-text md:text-xl">
-          {pricing.headline}
-        </p>
-
-        <p class="font-body text-base leading-relaxed text-muted md:text-lg">
-          Escríbenos y te ayudamos a elegir la tarifa que mejor se adapte a tus
-          objetivos.
-        </p>
-      </div>
-
-      <WhatsAppLink
-        variant="ghost"
-        class="group inline-flex items-center gap-4 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 md:px-4 md:py-3 md:text-base"
-      >
-        Consultar por WhatsApp
-        <Icon
-          name="arrow-right"
-          class="size-5 text-accent transition-transform group-hover:translate-x-1"
-          aria-hidden="true"
-        />
-      </WhatsAppLink>
-    </div>
-
-    <div class="grid min-w-0 content-center" data-pricing>
-      <div
-        role="tablist"
-        aria-label="Periodo de la tarifa"
-        class="flex border-b border-white/20"
-      >
-        {pricingPeriods.map((period, index) => (
-          <button
-            type="button"
-            role="tab"
-            id={`pricing-tab-${period.id}`}
-            aria-controls="pricing-panel"
-            aria-selected={index === 0 ? "true" : "false"}
-            tabindex={index === 0 ? 0 : -1}
-            data-pricing-tab={period.id}
-            class="relative px-1 py-4 font-chulapa text-xs uppercase lg:pt-0 tracking-[0.16em] text-muted first:mr-7 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100 md:text-sm"
+    <div class="mt-16 md:mt-20" data-pricing>
+      <section aria-labelledby="pricing-group-title">
+        <div class="md:flex md:items-end md:justify-between md:gap-8">
+          <h3
+            id="pricing-group-title"
+            class="text-pretty font-pontejos-display text-[clamp(2rem,2.25vw,2.5rem)] leading-none tracking-[-0.02em] text-text"
           >
-            {period.label}
-          </button>
+            {pricing.smallGroup.title}
+          </h3>
+
+          <div
+            role="tablist"
+            aria-label="Periodo de entrenamiento en grupo reducido"
+            class="mt-6 flex shrink-0 border-b border-white/20 md:mt-0"
+          >
+            {pricing.smallGroup.periods.map((period, index) => (
+              <button
+                type="button"
+                role="tab"
+                id={`pricing-tab-${period.id}`}
+                aria-controls={`pricing-panel-${period.id}`}
+                aria-selected={index === 0 ? "true" : "false"}
+                tabindex={index === 0 ? 0 : -1}
+                data-pricing-tab={period.id}
+                class="relative px-1 py-4 font-chulapa text-xs uppercase tracking-[0.16em] text-muted first:mr-7 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100 md:text-sm"
+              >
+                {period.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {pricing.smallGroup.periods.map((period, index) => (
+          <div
+            id={`pricing-panel-${period.id}`}
+            role="tabpanel"
+            aria-labelledby={`pricing-tab-${period.id}`}
+            tabindex="0"
+            hidden={index !== 0}
+            data-pricing-panel={period.id}
+          >
+            <p class="pt-4 font-body text-sm leading-relaxed text-muted md:text-base">
+              {period.description}
+            </p>
+
+            <div class="mt-8 md:mt-10">
+              {period.plans.map((plan, index) => (
+                <article class="grid min-w-0 grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 border-b border-white/10 py-6 last:border-b-0 md:min-h-24 md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1fr)_auto] md:gap-x-8 md:py-8">
+                  <span class="col-start-1 row-start-1 font-body text-base font-semibold leading-none text-accent md:text-lg">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h4 class="col-start-2 row-start-1 font-chulapa text-base font-normal uppercase leading-none tracking-[0.08em] text-text md:text-lg lg:text-xl">
+                    {plan.name}
+                  </h4>
+                  <p class="col-start-2 row-start-2 text-pretty font-body text-xs uppercase leading-tight tracking-[0.06em] text-subtle md:col-start-3 md:row-start-1 md:text-sm">
+                    {plan.sessionsLabel}
+                  </p>
+                  <p class="col-start-3 row-start-1 whitespace-nowrap text-right font-pontejos-identity text-[clamp(2rem,2.7vw,2.5rem)] leading-none tracking-[-0.02em] text-text tabular-nums md:col-start-4">
+                    {plan.price} €
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
         ))}
-      </div>
 
-      <div
-        id="pricing-panel"
-        role="tabpanel"
-        aria-labelledby="pricing-tab-monthly"
-      >
-        {pricingPlans.map((plan, index) => {
-          const { monthly, quarterly } = plan;
+        <article class="mt-14">
+          <h4 class="font-chulapa text-lg uppercase tracking-[0.08em] text-text md:text-xl">
+            {pricing.smallGroup.dropIn.name}
+          </h4>
+          <p class="mt-4 font-body text-base font-semibold leading-snug text-text md:text-lg">
+            {pricing.smallGroup.dropIn.headline}
+          </p>
+          <div class="mt-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:gap-8">
+            <p class="max-w-140 font-body text-sm leading-relaxed text-muted md:text-base">
+              {pricing.smallGroup.dropIn.description}
+            </p>
+            <p class="whitespace-nowrap text-right font-pontejos-identity text-[clamp(2rem,2.7vw,2.5rem)] leading-none text-text tabular-nums">
+              {pricing.smallGroup.dropIn.price} €
+              <span class="block pt-2 font-body text-xs uppercase tracking-[0.06em] text-subtle md:text-sm">
+                / {pricing.smallGroup.dropIn.unit}
+              </span>
+            </p>
+          </div>
+        </article>
+      </section>
 
-          return (
-            <article
-              data-pricing-plan
-              data-price-monthly={monthly.price}
-              data-classes-monthly={monthly.sessions}
-              data-price-quarterly={quarterly.price}
-              data-classes-quarterly={quarterly.sessions}
-              class:list={[
-                "grid min-w-0 grid-cols-[3rem_minmax(0,1fr)] gap-x-5 border-b border-white/10 py-6 last:border-b-0",
-                "md:min-h-24 md:grid-cols-[3rem_minmax(9rem,1fr)_8rem_minmax(9rem,1.2fr)] md:items-center md:gap-6 md:py-8",
-                "lg:grid-cols-[3.5rem_minmax(11rem,1fr)_9rem_minmax(11rem,1.2fr)] lg:gap-8",
-                "xl:grid-cols-[4rem_minmax(13rem,1fr)_10rem_minmax(13rem,1.2fr)] xl:gap-10",
-              ]}
-            >
-              <span class="pt-1 font-body text-base font-semibold leading-none text-accent md:pt-0 md:text-lg">
+      <section aria-labelledby="pricing-personal-title" class="mt-24 md:mt-32">
+        <h3
+          id="pricing-personal-title"
+          class="text-pretty font-pontejos-display text-[clamp(2rem,2.25vw,2.5rem)] leading-none tracking-[-0.02em] text-text"
+        >
+          {pricing.personal.title}
+        </h3>
+        <p class="max-w-120 pt-4 font-body text-sm leading-relaxed text-muted md:text-base">
+          {pricing.personal.description}
+        </p>
+
+        <div class="mt-8 md:mt-10">
+          {pricing.personal.plans.map((plan, index) => (
+            <article class="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b border-white/10 py-6 last:border-b-0 md:min-h-24 md:gap-x-8 md:py-8">
+              <span class="font-body text-base font-semibold leading-none text-accent md:text-lg">
                 {String(index + 1).padStart(2, "0")}
               </span>
-
-              <div class="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-x-4 gap-y-2 md:contents">
-                <h3 class="font-chulapa text-base font-normal uppercase leading-none tracking-[0.08em] text-text md:text-lg lg:text-xl">
-                  {plan.name}
-                </h3>
-
-                <p
-                  class="whitespace-nowrap font-pontejos-identity text-[clamp(2rem,2.7vw,2.5rem)] font-normal leading-none tracking-[-0.02em] text-text tabular-nums"
-                  data-plan-price
-                >
-                  {monthly.price}€
-                </p>
-
-                <p
-                  class="col-span-2 text-pretty font-body text-xs uppercase leading-tight tracking-[0.06em] text-subtle md:col-auto md:text-sm"
-                  data-plan-detail
-                >
-                  {formatPlanDetail(monthly.sessions)}
-                </p>
-              </div>
+              <h4 class="min-w-0 font-chulapa text-base font-normal uppercase leading-tight tracking-[0.08em] text-text md:text-lg lg:text-xl">
+                {plan.name}
+              </h4>
+              <p class="whitespace-nowrap text-right font-pontejos-identity text-[clamp(2rem,2.7vw,2.5rem)] leading-none text-text tabular-nums">
+                {plan.price} €
+              </p>
             </article>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   </section>
 </div>
@@ -133,14 +142,13 @@ const formatPlanDetail = (sessions: number | string) =>
     const tabs = Array.from(
       pricing.querySelectorAll<HTMLButtonElement>("[data-pricing-tab]"),
     );
-    const plans = Array.from(
-      pricing.querySelectorAll<HTMLElement>("[data-pricing-plan]"),
+    const panels = Array.from(
+      pricing.querySelectorAll<HTMLElement>("[data-pricing-panel]"),
     );
-    const panel = pricing.querySelector<HTMLElement>("[role='tabpanel']");
 
     const selectPeriod = (selectedTab: HTMLButtonElement) => {
       const period = selectedTab.dataset.pricingTab;
-      if (period !== "monthly" && period !== "quarterly") return;
+      if (!period) return;
 
       tabs.forEach((tab) => {
         const isSelected = tab === selectedTab;
@@ -148,29 +156,8 @@ const formatPlanDetail = (sessions: number | string) =>
         tab.tabIndex = isSelected ? 0 : -1;
       });
 
-      panel?.setAttribute("aria-labelledby", selectedTab.id);
-
-      plans.forEach((plan) => {
-        const price =
-          plan.dataset[`price${period[0]?.toUpperCase()}${period.slice(1)}`];
-
-        const classes =
-          plan.dataset[`classes${period[0]?.toUpperCase()}${period.slice(1)}`];
-
-        const priceElement =
-          plan.querySelector<HTMLElement>("[data-plan-price]");
-
-        const detailElement =
-          plan.querySelector<HTMLElement>("[data-plan-detail]");
-
-        if (priceElement && price) {
-          priceElement.textContent = `${price}€`;
-        }
-
-        if (detailElement && classes) {
-          detailElement.textContent =
-            classes === "unlimited" ? "Clases ilimitadas" : `${classes} clases`;
-        }
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.pricingPanel !== period;
       });
     };
 

@@ -178,37 +178,52 @@ const pricing = {
   title: "TARIFAS",
   headline: "Entrena a tu ritmo. Elige tu plan.",
   smallGroup: {
-    monthly: {
-      title: "TARIFAS MENSUALES EGR",
-      description: "30 días para entrenar a tu ritmo. Sin permanencia.",
-      plans: [
-        { id: "fit", name: "FIT", sessions: 4, price: 70 },
-        { id: "pro", name: "PRO", sessions: 8, price: 100 },
-        { id: "elite", name: "ELITE", sessions: 12, price: 120 },
-        {
-          id: "unlimited",
-          name: "UNLIMITED",
-          sessions: "unlimited",
-          price: 150,
-        },
-      ],
-    },
-    quarterly: {
-      title: "TARIFAS TRIMESTRALES EGR",
-      description: "90 días para entrenar y progresar.",
-      plans: [
-        { id: "fit", name: "FIT", sessions: 18, price: 230 },
-        { id: "pro", name: "PRO", sessions: 24, price: 260 },
-        { id: "elite", name: "ELITE", sessions: 36, price: 310 },
-        {
-          id: "unlimited",
-          name: "UNLIMITED",
-          sessions: "unlimited",
-          durationDays: 90,
-          price: 400,
-        },
-      ],
-    },
+    title: "Entrenamiento en Grupo Reducido",
+    periods: [
+      {
+        id: "monthly",
+        label: "Mensual",
+        description: "30 días para entrenar a tu ritmo. Sin permanencia.",
+        plans: [
+          { id: "fit", name: "FIT", sessionsLabel: "4 clases", price: 70 },
+          { id: "pro", name: "PRO", sessionsLabel: "8 clases", price: 100 },
+          {
+            id: "elite",
+            name: "ELITE",
+            sessionsLabel: "12 clases",
+            price: 120,
+          },
+          {
+            id: "unlimited",
+            name: "UNLIMITED",
+            sessionsLabel: "Clases ilimitadas",
+            price: 150,
+          },
+        ],
+      },
+      {
+        id: "quarterly",
+        label: "Trimestral",
+        description: "90 días para entrenar y progresar.",
+        plans: [
+          { id: "fit", name: "FIT", sessionsLabel: "18 clases", price: 230 },
+          { id: "pro", name: "PRO", sessionsLabel: "24 clases", price: 260 },
+          {
+            id: "elite",
+            name: "ELITE",
+            sessionsLabel: "36 clases",
+            price: 310,
+          },
+          {
+            id: "unlimited",
+            name: "UNLIMITED",
+            sessionsLabel: "Clases ilimitadas",
+            durationDays: 90,
+            price: 400,
+          },
+        ],
+      },
+    ],
     dropIn: {
       title: "DROP-IN EGR",
       headline: "¿Quieres entrenar un día puntual?",
