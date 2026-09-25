@@ -1,8 +1,7 @@
 import CrosstrainingImage from "../assets/images/box/servicio_grupos-pro-dark.jpg";
 import BoxEntranceImage from "../assets/images/box/box-entrance.png";
 import BoxInteriorImage from "../assets/images/box/historia_interior-pro-dark.jpg";
-import AlbertImage from "../assets/images/team/albert.webp";
-import LorenaImage from "../assets/images/team/lorena.webp";
+import ContactImage from "../assets/images/contact/contact.png";
 import PartnerWODImage from "../assets/images/box/servicio_personal-pro-dark.jpg";
 
 const businessInfo = {
@@ -249,15 +248,15 @@ const pricing = {
 
 const contact = {
   title: "CONTACTO",
-  headline: "Estamos aquí para ayudarte.",
+  headline: "ESTAMOS AQUÍ PARA AYUDARTE.",
   description:
     "¿Tienes dudas sobre nuestras actividades, tarifas o no sabes qué entrenamiento encaja mejor contigo? Escríbenos y te ayudaremos a encontrar la opción que mejor se adapte a tus objetivos.",
-  secondaryText: "Ven a conocernos y reserva tu primera sesión gratuita.",
-  locationLabel: "BOX 28012 · LAVAPIÉS, MADRID",
   address: "C/ Cañizares, 3 · 28012 Madrid",
   whatsapp: businessInfo.phone,
   instagram: businessInfo.instagramHandle,
   cta: "RESERVA TU PRIMERA SESIÓN GRATIS",
+  image: ContactImage,
+  imageAlt: "Placa cerámica de Box 28012 en Lavapiés, Madrid",
 };
 
 const aboutStory = {
@@ -288,8 +287,6 @@ const team = {
         "Graduada en Ciencias de la Actividad Física y del Deporte (CAFYD) y CrossFit Level 2, Lorena es la fundadora de Box 28012.",
         "Desde 2019, su trabajo se centra en ofrecer un entrenamiento estructurado de calidad, con atención cercana y grupos reducidos, donde cada persona pueda mejorar, progresar y disfrutar del proceso.",
       ],
-      image: LorenaImage,
-      alt: "Lorena, fundadora de Box 28012",
     },
     {
       id: "albert",
@@ -299,8 +296,6 @@ const team = {
         "Graduado en Enseñanzas Deportivas, con formación en adaptación a necesidades especiales, y en Magisterio de Educación Infantil, Albert es Head Coach en Box 28012.",
         "Desde su incorporación al equipo, destaca por su atención al orden, el cuidado de los pequeños detalles y su compromiso con la inclusión y la adaptación de sus clases a las necesidades de cada persona.",
       ],
-      image: AlbertImage,
-      alt: "Albert, Head Coach de Box 28012",
     },
   ],
 };

@@ -1,118 +1,127 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import WhatsAppLink from "./whatsapp-link.astro";
 import { getHomeData } from "../data/home";
 
-const { businessInfo } = getHomeData();
-
-const contactItems = [
-  {
-    icon: "map-pin",
-    title: "Dirección",
-    lines: [businessInfo.addressLine1, businessInfo.addressLine2],
-  },
-  {
-    icon: "phone",
-    title: "Teléfono",
-    href: businessInfo.phoneHref,
-    text: businessInfo.phone,
-  },
-  {
-    icon: "instagram",
-    title: "Instagram",
-    href: businessInfo.instagramUrl,
-    text: businessInfo.instagramHandle,
-    external: true,
-  },
-];
+const { businessInfo, contact } = getHomeData();
+const [headlineFirstLine, headlineSecondLine] =
+  contact.headline.split(/ (?=PARA )/);
 ---
 
-<section id="contacto" class="isolate pt-14 md:pt-30">
-  <div class="mx-auto max-w-350 px-4 md:px-10">
-    <div class="space-y-10">
-      <div class="space-y-6">
-        <div>
-          <p class="max-w-150 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
-            En Box 28012 entrenamos en grupos reducidos para ofrecerte una
-            experiencia totalmente personalizada.
-          </p>
-
-          <div class="mt-5 h-0.5 w-12 bg-accent"></div>
-        </div>
-
-        <div class="space-y-4">
-          <h2 class="max-w-200 text-pretty font-pontejos-display text-[clamp(2.5rem,4vw,4.5rem)] font-normal leading-[0.9] tracking-[-0.02em] text-text">
-            ¿Tienes alguna duda?
-          </h2>
-
-          <p class="max-w-180 text-pretty font-body text-base leading-relaxed text-muted md:text-lg">
-            Escríbenos por WhatsApp para consultar horarios, resolver dudas o
-            reservar tu primera sesión gratuita.
-          </p>
-        </div>
-
-        <div>
+<section id="contacto" class="isolate scroll-mt-18 bg-bg">
+  <div class="relative overflow-hidden lg:min-h-[clamp(36rem,33vw,42rem)]">
+    <div class="relative z-10 mx-auto max-w-[1800px] px-4 md:px-10">
+      <div class="py-12 md:py-16 lg:w-[min(58vw,56rem)] lg:pb-16 lg:pt-20">
+        <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-muted md:text-sm">
+          {contact.title}
+        </p>
+        <div aria-hidden="true" class="mt-4 h-0.5 w-10 bg-accent"></div>
+        <h2 class="mt-7 max-w-[16ch] font-pontejos-display text-[clamp(3.125rem,5vw,5.5rem)] font-normal leading-[0.94] tracking-[-0.02em] text-text md:mt-8 lg:text-[clamp(4.25rem,6vw,7rem)]">
+          <span class="block">{headlineFirstLine}</span>{" "}
+          <span class="block">{headlineSecondLine}</span>
+        </h2>
+        <p class="mt-8 max-w-[64ch] text-pretty font-body text-base leading-relaxed text-text/80 md:mt-9 md:text-lg lg:mt-6">
+          {contact.description}
+        </p>
+        <div class="mt-8 md:mt-10">
           <WhatsAppLink
             variant="ghost"
-            class="group inline-flex items-center gap-4 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 md:px-4 md:py-3 md:text-base"
+            class="group inline-flex items-center gap-3 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-3 font-chulapa text-xs font-bold uppercase leading-tight tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 sm:text-sm md:w-fit md:px-4 md:text-base"
           >
-            Escribir por WhatsApp
+            {contact.cta}
             <Icon
               name="arrow-right"
-              class="size-5 text-accent transition-transform group-hover:translate-x-1"
+              class="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1"
               aria-hidden="true"
             />
           </WhatsAppLink>
         </div>
       </div>
+    </div>
 
-      <div class="relative w-full lg:h-40">
-        <div class="z-10 mx-auto flex w-full flex-col items-start justify-between gap-y-6 bg-surface px-4 py-6 md:px-10 md:py-8 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2 lg:flex-row lg:px-12 xl:px-16">
-          {contactItems.map((item) => (
-            <div class="flex items-start gap-4">
-              <Icon
-                name={item.icon}
-                class="size-6 shrink-0 text-accent md:size-7"
-                aria-hidden="true"
-              />
-
-              <div class="min-w-0">
-                <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted md:text-sm">
-                  {item.title}
-                </p>
-
-                <div class="mt-1 font-body text-sm leading-relaxed text-text md:text-base">
-                  {item.lines ? (
-                    item.lines.map((line) => <p>{line}</p>)
-                  ) : (
-                    <a
-                      href={item.href}
-                      target={item.external ? "_blank" : undefined}
-                      rel={item.external ? "noopener noreferrer" : undefined}
-                    >
-                      {item.text}
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div class="relative aspect-[4/3] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[min(60vw,75rem)]">
+      <Image
+        src={contact.image}
+        alt={contact.imageAlt}
+        widths={[480, 720, 960, 1200, 1448]}
+        sizes="(min-width: 1400px) 1200px, (min-width: 1024px) 60vw, 100vw"
+        class="size-full object-cover object-center [mask-image:linear-gradient(to_right,transparent_25%,black_55%)] lg:object-[right_30%]"
+        loading="lazy"
+      />
     </div>
   </div>
 
-  <div class="h-100 px-4 pt-4 md:h-125 md:px-0 md:pt-0">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
-      title="Mapa de ubicación de Box 28012 en Madrid"
-      width="100%"
-      height="100%"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      class="grayscale"
-    ></iframe>
+  <div class="grid border-t border-white/20 lg:grid-cols-[40%_minmax(0,1fr)] xl:grid-cols-[33%_minmax(0,1fr)]">
+    <div class="flex flex-col divide-y divide-white/20 border-b border-white/20 px-4 md:px-10 lg:min-h-[clamp(26rem,29vw,37rem)] lg:pl-[max(2.5rem,calc((100vw-1800px)/2+2.5rem))] lg:pr-12">
+      <div class="flex flex-1 items-start gap-5 py-6 md:gap-6 md:py-7 lg:items-center lg:gap-4">
+        <Icon
+          name="map-pin"
+          class="mt-1 size-5 shrink-0 text-accent md:size-6 lg:mt-0 lg:size-9"
+          aria-hidden="true"
+        />
+        <div>
+          <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted">
+            DIRECCIÓN
+          </p>
+          <p class="mt-1 font-body text-base leading-relaxed text-text">
+            {contact.address}
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-1 items-start gap-5 py-6 md:gap-6 md:py-7 lg:items-center lg:gap-4">
+        <Icon
+          name="whatsapp"
+          class="mt-1 size-5 shrink-0 text-accent md:size-6 lg:mt-0 lg:size-9"
+          aria-hidden="true"
+        />
+        <div>
+          <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted">
+            WHATSAPP
+          </p>
+          <WhatsAppLink
+            variant="ghost"
+            ariaLabel={`Escribir a Box 28012 por WhatsApp al ${contact.whatsapp}`}
+            class="!w-fit !justify-start mt-1 font-body text-base leading-relaxed text-text hover:text-accent"
+          >
+            {contact.whatsapp}
+          </WhatsAppLink>
+        </div>
+      </div>
+      <div class="flex flex-1 items-start gap-5 py-6 md:gap-6 md:py-7 lg:items-center lg:gap-4">
+        <Icon
+          name="instagram"
+          class="mt-1 size-5 shrink-0 text-accent md:size-6 lg:mt-0 lg:size-9"
+          aria-hidden="true"
+        />
+        <div>
+          <p class="font-chulapa text-xs uppercase tracking-[0.18em] text-muted">
+            INSTAGRAM
+          </p>
+          <a
+            href={businessInfo.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 inline-block font-body text-base leading-relaxed text-text hover:text-accent"
+          >
+            {contact.instagram}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-90 md:h-110 lg:h-auto lg:min-h-[clamp(26rem,29vw,37rem)]">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6075.61906106362!2d-3.7029538!3d40.4130701!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228802012091b%3A0x5b588730434e9bca!2sCalle%20de%20los%20Ca%C3%B1izares%2C%203%2C%20Centro%2C%2028012%20Madrid%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1779226540583!5m2!1ses-419!2sar"
+        title="Mapa de ubicación de Box 28012 en Madrid"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="block size-full grayscale"
+      ></iframe>
+    </div>
   </div>
 </section>
