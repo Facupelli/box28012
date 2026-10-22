@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getHomeData } from "../data/home";
 
 const { team } = getHomeData();
@@ -20,6 +21,21 @@ const { team } = getHomeData();
               "border-t border-white/20 pt-12 md:pt-14 lg:border-t-0 lg:pt-0",
           ]}
         >
+          <figure class="mb-8 h-60 w-full overflow-hidden bg-surface md:h-72">
+            <Image
+              src={member.image}
+              alt={member.imageAlt}
+              widths={[480, 720, 960, 1200]}
+              sizes="(min-width: 1024px) 45vw, (min-width: 768px) calc(100vw - 80px), calc(100vw - 32px)"
+              class:list={[
+                "size-full object-cover",
+                member.id === "lorena"
+                  ? "object-[center_55%]"
+                  : "object-[center_75%]",
+              ]}
+              loading="lazy"
+            />
+          </figure>
           <header>
             <h3 class="text-feature-title text-text">{member.name}</h3>
             <p class="text-eyebrow mt-3 text-accent-text">{member.role}</p>

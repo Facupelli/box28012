@@ -1,8 +1,10 @@
-import CrosstrainingImage from "../assets/images/box/box-50.jpg";
-import BoxEntranceImage from "../assets/images/box/box-entrance.png";
-import BoxInteriorImage from "../assets/images/box/historia_interior-pro-dark.jpg";
+import CrosstrainingImage from "../assets/images/box/box-46.jpg";
+import BoxInteriorDetailImage from "../assets/images/box/IMG_9760-2.jpg";
+import BoxInteriorWideImage from "../assets/images/box/IMG_9789.jpg";
+import LorenaImage from "../assets/images/box/box-21.jpg";
+import AlbertImage from "../assets/images/box/box-03.jpg";
 import ContactImage from "../assets/images/contact/contact.png";
-import PartnerWODImage from "../assets/images/box/box-36.jpg";
+import PersonalTrainingImage from "../assets/images/box/box-35.jpg";
 
 const businessInfo = {
   name: "Box 28012",
@@ -27,7 +29,7 @@ const services = {
       description:
         "Entrenamiento individual, adaptado a tus objetivos y necesidades.",
       claim: "Más atención, más calidad, mejor entrenamiento.",
-      image: PartnerWODImage,
+      image: PersonalTrainingImage,
       alt: "Persona levantando una barra durante una sesión de entrenamiento",
     },
     {
@@ -37,7 +39,7 @@ const services = {
       description:
         "Entrena en grupo de máximo 8 - 10 personas, con atención cercana y dinámicas de entrenamiento adaptadas a tu nivel.",
       image: CrosstrainingImage,
-      alt: "Persona entrenando con una pesa rusa en Box 28012",
+      alt: "Personas entrenando en Box 28012",
     },
   ],
 };
@@ -268,11 +270,10 @@ const aboutStory = {
     "Hoy seguimos evolucionando con una nueva identidad, pero con la misma filosofía: entrenar bien, progresar y construir comunidad.",
     "Porque 28012 no es solo un código postal. Es el barrio al que pertenecemos.",
   ],
-  image: BoxEntranceImage,
-  alt: "Entrada de Box 28012 y su fachada en Lavapiés",
-  accentImage: BoxInteriorImage,
-  accentAlt:
-    "Interior de Box 28012 con estructura de madera y zona de entrenamiento",
+  image: BoxInteriorWideImage,
+  alt: "Espacio de entrenamiento de Box 28012",
+  accentImage: BoxInteriorDetailImage,
+  accentAlt: "Anillas y pesas rusas en el interior de Box 28012",
 };
 
 const team = {
@@ -282,6 +283,8 @@ const team = {
     {
       id: "lorena",
       name: "LORENA",
+      image: LorenaImage,
+      imageAlt: "Lorena, fundadora de Box 28012",
       role: "OWNER",
       description: [
         "Graduada en Ciencias de la Actividad Física y del Deporte (CAFYD) y CrossFit Level 2, Lorena es la fundadora de Box 28012.",
@@ -291,6 +294,8 @@ const team = {
     {
       id: "albert",
       name: "ALBERT",
+      image: AlbertImage,
+      imageAlt: "Albert, entrenador de Box 28012",
       role: "HEAD COACH",
       description: [
         "Graduado en Enseñanzas Deportivas, con formación en adaptación a necesidades especiales, y en Magisterio de Educación Infantil, Albert es Head Coach en Box 28012.",
