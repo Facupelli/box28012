@@ -5,7 +5,7 @@ const { team } = getHomeData();
 ---
 
 <div class="mx-auto max-w-350">
-  <section id="equipo" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-30">
+  <section id="equipo" class="scroll-mt-18 px-4 py-section md:px-10">
     <header class="space-y-2">
       <h2 class="text-section-title text-text">{team.title}</h2>
       <p class="font-body text-base leading-relaxed text-muted md:text-lg">
@@ -13,7 +13,7 @@ const { team } = getHomeData();
       </p>
     </header>
 
-    <div class="mt-12 grid grid-cols-1 gap-y-12 md:mt-18 md:gap-y-14 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-0 xl:gap-x-18">
+    <div class="mt-section-content grid grid-cols-1 gap-y-12 md:gap-y-14 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-0 xl:gap-x-18">
       {team.members.map((member, index) => (
         <article
           class:list={[

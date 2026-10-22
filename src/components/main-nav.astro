@@ -2,7 +2,8 @@
 import { Icon } from "astro-icon/components";
 
 const navItems = [
-  { label: "Servicios", href: "#actividades" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Actividades", href: "#actividades" },
   { label: "Horarios", href: "#horarios" },
   { label: "Tarifas", href: "#tarifas" },
   { label: "El Box", href: "#el-box" },
@@ -30,7 +31,7 @@ const navItems = [
     </a>
 
     <!-- DESKTOP -->
-    <ul class="hidden items-center gap-10 text-text/80 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-12 lg:flex">
+    <ul class="hidden items-center gap-6 text-text/80 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-8 lg:flex xl:gap-10 xl:group-data-[hero=true]:gap-12">
       {navItems.map((item) => (
         <li>
           {item.href ? (

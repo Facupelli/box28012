@@ -33,9 +33,22 @@
   --color-muted: #a3a3a3;
   --color-subtle: #777777;
   --color-accent: #cc2727;
+
+  --spacing-section: var(--section-space);
+  --spacing-section-content: var(--section-content-space);
 }
 
 @layer base {
+  :root {
+    --section-space: 4rem;
+    --section-content-space: 2.5rem;
+
+    @media (width >= 48rem) {
+      --section-space: 6rem;
+      --section-content-space: 3.5rem;
+    }
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-text);

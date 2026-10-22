@@ -20,7 +20,7 @@ const backgroundTile = await getImage({
     class="pointer-events-none absolute top-[16%] left-0 hidden h-[52%] w-[clamp(150px,16vw,300px)] bg-size-[260px_260px] opacity-[0.07] [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%,black_78%,transparent_100%)] lg:block"
     style={`background-image: url("${backgroundTile.src}")`}
   ></div>
-  <div class="relative mx-auto grid max-w-350 gap-12 px-4 py-16 md:px-10 md:py-24 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12 lg:py-32 xl:gap-18">
+  <div class="relative mx-auto grid max-w-350 gap-12 px-4 py-section md:px-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12 xl:gap-18">
     <div class="lg:order-2 lg:pt-14">
       <header>
         <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-muted md:text-sm">
@@ -41,7 +41,7 @@ const backgroundTile = await getImage({
       </div>
     </div>
 
-    <div class="relative lg:order-1 lg:self-start lg:pb-[14%]">
+    <div class="relative lg:order-1 lg:self-start">
       <figure class="aspect-[4/5] w-[84%] overflow-hidden bg-black lg:w-[78%]">
         <Image
           src={aboutStory.image}
@@ -51,7 +51,7 @@ const backgroundTile = await getImage({
           class="size-full object-cover object-center"
         />
       </figure>
-      <figure class="relative z-20 -mt-14 ml-auto aspect-[4/3] w-[69%] overflow-hidden bg-black lg:absolute lg:top-[47%] lg:right-[5%] lg:mt-0 lg:w-[66%]">
+      <figure class="relative z-20 -mt-14 ml-auto aspect-[4/3] w-[69%] overflow-hidden bg-black lg:-mt-[45%] lg:mr-[5%] lg:w-[66%]">
         <Image
           src={aboutStory.accentImage}
           alt={aboutStory.accentAlt}

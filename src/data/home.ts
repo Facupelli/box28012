@@ -1,8 +1,8 @@
-import CrosstrainingImage from "../assets/images/box/servicio_grupos-pro-dark.jpg";
+import CrosstrainingImage from "../assets/images/box/box-50.jpg";
 import BoxEntranceImage from "../assets/images/box/box-entrance.png";
 import BoxInteriorImage from "../assets/images/box/historia_interior-pro-dark.jpg";
 import ContactImage from "../assets/images/contact/contact.png";
-import PartnerWODImage from "../assets/images/box/servicio_personal-pro-dark.jpg";
+import PartnerWODImage from "../assets/images/box/box-36.jpg";
 
 const businessInfo = {
   name: "Box 28012",
@@ -28,7 +28,7 @@ const services = {
         "Entrenamiento individual, adaptado a tus objetivos y necesidades.",
       claim: "Más atención, más calidad, mejor entrenamiento.",
       image: PartnerWODImage,
-      alt: "Zona de entrenamiento preparada para una sesión personal",
+      alt: "Persona levantando una barra durante una sesión de entrenamiento",
     },
     {
       id: "grupo-reducido",
@@ -37,7 +37,7 @@ const services = {
       description:
         "Entrena en grupo de máximo 8 - 10 personas, con atención cercana y dinámicas de entrenamiento adaptadas a tu nivel.",
       image: CrosstrainingImage,
-      alt: "Zona de entrenamiento preparada para una sesión en grupo reducido",
+      alt: "Persona entrenando con una pesa rusa en Box 28012",
     },
   ],
 };
@@ -250,7 +250,7 @@ const contact = {
   title: "CONTACTO",
   headline: "ESTAMOS AQUÍ PARA AYUDARTE.",
   description:
-    "¿Tienes dudas sobre nuestras actividades, tarifas o no sabes qué entrenamiento encaja mejor contigo? Escríbenos y te ayudaremos a encontrar la opción que mejor se adapte a tus objetivos.",
+    "¿Tienes dudas o no sabes por dónde empezar? Escríbenos y te ayudamos a encontrar el entrenamiento que mejor encaja contigo.",
   address: "C/ Cañizares, 3 · 28012 Madrid",
   whatsapp: businessInfo.phone,
   instagram: businessInfo.instagramHandle,

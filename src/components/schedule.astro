@@ -22,7 +22,7 @@ const sessionBySlot = new Map(
 );
 ---
 
-<section id="horarios" class="scroll-mt-18 px-4 py-14 md:px-10 md:py-10">
+<section id="horarios" class="scroll-mt-18 px-4 py-section md:px-10">
   <header class="space-y-2">
     <h2 class="text-section-title">{schedule.title}</h2>
 
@@ -31,7 +31,7 @@ const sessionBySlot = new Map(
     </p>
   </header>
 
-  <div class="mt-10 hidden md:mt-14 md:block">
+  <div class="mt-section-content hidden md:block">
     <table
       class="w-full table-fixed border-collapse"
       aria-label="Horario semanal de clases"
@@ -80,7 +80,7 @@ const sessionBySlot = new Map(
     </table>
   </div>
 
-  <div class="mt-10 md:hidden" data-schedule-mobile>
+  <div class="mt-section-content md:hidden" data-schedule-mobile>
     <div role="tablist" aria-label="Seleccionar día" class="grid grid-cols-6">
       {scheduleDays.map((day, index) => (
         <button
