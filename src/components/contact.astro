@@ -5,19 +5,16 @@ import WhatsAppLink from "./whatsapp-link.astro";
 import { getHomeData } from "../data/home";
 
 const { businessInfo, contact } = getHomeData();
-const [headlineFirstLine, headlineSecondLine] =
-  contact.headline.split(/ (?=PARA )/);
 ---
 
-<section id="contacto" class="isolate scroll-mt-18 bg-black/40 lg:mt-section">
+<section id="contacto" class="isolate bg-black/40">
   <div class="relative overflow-hidden lg:flex lg:min-h-[calc(clamp(36rem,33vw,42rem)-var(--spacing-section))] lg:items-center">
     <div class="relative z-10 mx-auto w-full max-w-350 px-4 md:px-10">
       <div class="py-section lg:w-[min(58vw,56rem)]">
-        <h2 class="max-w-[16ch] font-pontejos-display text-[clamp(2.5rem,4.2vw,4.875rem)] font-normal leading-[0.95] tracking-[-0.02em] text-text">
-          <span class="block">{headlineFirstLine}</span>{" "}
-          <span class="block">{headlineSecondLine}</span>
+        <h2 class="text-page-title max-w-[16ch] text-text">
+          {contact.headline}
         </h2>
-        <p class="mt-6 max-w-[54ch] text-pretty font-body text-base leading-relaxed text-text/80 md:mt-8 md:text-lg">
+        <p class="text-body mt-6 max-w-[54ch] text-muted md:mt-8">
           {contact.description}
         </p>
         <div class="mt-8 md:mt-10">
@@ -78,7 +75,7 @@ const [headlineFirstLine, headlineSecondLine] =
           <WhatsAppLink
             variant="ghost"
             ariaLabel={`Escribir a Box 28012 por WhatsApp al ${contact.whatsapp}`}
-            class="!w-fit !justify-start mt-1 font-body text-base leading-relaxed text-text hover:text-accent"
+            class="!w-fit !justify-start mt-1 font-body text-base leading-relaxed text-text hover:text-accent-text"
           >
             {contact.whatsapp}
           </WhatsAppLink>
@@ -98,7 +95,7 @@ const [headlineFirstLine, headlineSecondLine] =
             href={businessInfo.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-1 inline-block font-body text-base leading-relaxed text-text hover:text-accent"
+            class="mt-1 inline-block font-body text-base leading-relaxed text-text hover:text-accent-text"
           >
             {contact.instagram}
           </a>

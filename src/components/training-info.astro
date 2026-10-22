@@ -24,18 +24,16 @@ const items = [
 
 <section
   aria-label="Horarios y tarifas"
-  class="mx-auto max-w-350 px-4 py-24 md:px-10 md:py-36"
+  class="mx-auto max-w-350 px-4 pt-section-compact pb-section md:px-10"
 >
   <div class="grid divide-y divide-white/20 md:grid-cols-2 md:divide-x md:divide-y-0">
     {items.map((item) => (
       <article
         id={item.id}
-        class="flex scroll-mt-18 flex-col items-start py-10 first:pt-0 last:pb-0 md:py-0 md:first:pr-12 md:last:pl-12 lg:first:pr-20 lg:last:pl-20"
+        class="flex flex-col items-start py-10 first:pt-0 last:pb-0 md:py-0 md:first:pr-12 md:last:pl-12 lg:first:pr-20 lg:last:pl-20"
       >
-        <h2 class="font-pontejos-display text-[clamp(2.5rem,4vw,3.5rem)] leading-none tracking-[-0.02em]">
-          {item.title}
-        </h2>
-        <p class="mt-5 mb-8 max-w-120 text-pretty text-base leading-relaxed text-muted md:mb-10 md:text-lg">
+        <h2 class="text-feature-title">{item.title}</h2>
+        <p class="text-body mt-5 mb-8 max-w-120 text-muted md:mb-10">
           {item.description}
         </p>
         <a

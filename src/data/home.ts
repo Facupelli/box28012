@@ -101,7 +101,7 @@ const scheduleDays: Array<{
 ];
 
 const scheduleActivities: Record<ScheduleActivity, { label: string }> = {
-  "cross-training": { label: "Cross Training" },
+  "cross-training": { label: "CrossTraining" },
   ironbody: { label: "IronBody" },
   "partner-wod": { label: "Partner WOD" },
 };

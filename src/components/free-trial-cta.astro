@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+import WhatsAppLink from "./whatsapp-link.astro";
+---
+
+<WhatsAppLink
+  variant="ghost"
+  message="¡Hola! Me gustaría reservar una sesión de prueba gratis."
+  ariaLabel="Reservar una prueba gratis por WhatsApp"
+  class="group inline-flex min-h-11 items-center gap-6 rounded-none border-0 bg-text px-4 py-3 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-bg transition-colors hover:bg-text/90 md:text-base"
+>
+  ¡PRUEBA GRATIS!
+  <Icon
+    name="arrow-right"
+    class="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+    aria-hidden="true"
+  />
+</WhatsAppLink>

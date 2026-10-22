@@ -6,7 +6,7 @@ const { services } = getHomeData();
 ---
 
 <div class="mx-auto max-w-350">
-  <section id="servicios" class="scroll-mt-18 px-4 py-section md:px-10">
+  <section id="servicios" class="px-4 pt-section pb-section-compact md:px-10">
     <h2 class="text-section-title text-text/80">{services.title}</h2>
 
     <div class="mt-section-content grid grid-cols-1 gap-6 lg:max-w-292 lg:grid-cols-2 lg:gap-8">
@@ -26,15 +26,11 @@ const { services } = getHomeData();
           />
 
           <div class="service-panel-content relative">
-            <h3 class="max-w-120 text-balance font-pontejos-display text-[clamp(2rem,2.8vw,2.625rem)] font-normal leading-[1.05] tracking-[-0.02em] text-text">
-              {service.title}
-            </h3>
+            <h3 class="text-card-title max-w-120 text-text">{service.title}</h3>
 
-            <p class="mt-5 max-w-120 text-pretty font-body text-lg font-bold leading-snug text-text">
-              {service.claim}
-            </p>
+            <p class="text-claim mt-5 max-w-120 text-text">{service.claim}</p>
 
-            <p class="mt-3 max-w-120 text-pretty font-body text-base leading-relaxed text-text/85">
+            <p class="text-body mt-3 max-w-120 text-text/90">
               {service.description}
             </p>
           </div>

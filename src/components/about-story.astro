@@ -5,22 +5,16 @@ import { getHomeData } from "../data/home";
 const { aboutStory } = getHomeData();
 ---
 
-<section id="el-box" class="scroll-mt-18 bg-surface-warm text-bg">
+<section id="el-box" class="bg-surface-warm text-bg">
   <div class="mx-auto max-w-350 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)]">
     <div class="px-4 py-section md:px-10 lg:pr-16">
       <header>
-        <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-bg/65 md:text-sm">
-          {aboutStory.label}
-        </p>
+        <p class="text-eyebrow text-bg/75">{aboutStory.label}</p>
         <div aria-hidden="true" class="mt-4 h-0.5 w-10 bg-accent"></div>
-        <h2 class="mt-7 font-pontejos-display text-[clamp(3.125rem,4.2vw,4.875rem)] leading-[0.95] tracking-[-0.02em] md:mt-8">
-          {aboutStory.title.split(" ").map((word) => (
-            <span class="block">{word}</span>
-          ))}
-        </h2>
+        <h2 class="text-page-title mt-7 md:mt-8">{aboutStory.title}</h2>
       </header>
 
-      <div class="mt-8 max-w-[39ch] space-y-4 font-body text-sm leading-[1.65] text-bg/80 md:mt-9 md:space-y-5 md:text-[0.9375rem]">
+      <div class="text-body mt-8 max-w-[45ch] space-y-4 text-bg/80 md:mt-9 md:space-y-5">
         {aboutStory.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}

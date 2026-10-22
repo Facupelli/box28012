@@ -31,23 +31,35 @@
   --color-surface: #1c1c1c;
   --color-surface-warm: #f4f0e8;
   --color-text: #f0f0f0;
-  --color-muted: #a3a3a3;
-  --color-subtle: #777777;
+  --color-muted: #b5b5b5;
+  --color-subtle: #999999;
   --color-accent: #cc2727;
+  /* Small text on dark surfaces needs a lighter red than the brand accent. */
+  --color-accent-text: #ed6868;
 
   --spacing-section: var(--section-space);
+  --spacing-section-compact: var(--section-compact-space);
   --spacing-section-content: var(--section-content-space);
+  --spacing-nav: var(--nav-height);
 }
 
 @layer base {
   :root {
+    --nav-height: 4.5rem;
     --section-space: 4rem;
+    --section-compact-space: 2rem;
     --section-content-space: 2.5rem;
 
     @media (width >= 48rem) {
       --section-space: 6rem;
+      --section-compact-space: 3rem;
       --section-content-space: 3.5rem;
     }
+  }
+
+  html {
+    /* Reserve room for the fixed nav, including when it reappears on scroll. */
+    scroll-padding-top: calc(var(--nav-height) + 1rem);
   }
 
   body {
@@ -63,32 +75,46 @@
   }
 }
 
-@utility text-brand-kicker {
-  @apply font-chulapa text-[clamp(0.875rem,2vw,1.125rem)] font-medium uppercase tracking-[0.2em];
+/* Visual roles are independent of heading level and surface color.
+   Balance phrases naturally, without breakpoint-specific hard line breaks. */
+@utility text-page-title {
+  @apply text-balance font-pontejos-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-[1.1] tracking-[-0.01em];
 }
 
-@utility text-section-title {
-  @apply font-chulapa text-2xl md:text-3xl leading-none font-normal uppercase tracking-[0.08em];
+@utility text-feature-title {
+  @apply text-balance font-pontejos-display text-[clamp(2.5rem,4vw,3.5rem)] font-normal leading-[1.1] tracking-[-0.01em];
 }
 
 @utility text-card-title {
-  @apply font-chulapa text-xl md:text-2xl font-medium leading-tight tracking-[0.02em];
+  @apply text-balance font-pontejos-display text-[clamp(2rem,2.8vw,2.625rem)] font-normal leading-[1.15] tracking-[-0.01em];
 }
 
-@utility text-lead {
-  @apply font-body text-lg md:text-xl leading-relaxed text-muted;
+@utility text-subheading {
+  @apply text-balance font-pontejos-display text-[clamp(1.75rem,2.25vw,2rem)] font-normal leading-[1.15] tracking-[-0.01em];
+}
+
+@utility text-section-title {
+  @apply text-balance font-chulapa text-2xl md:text-3xl font-normal leading-tight uppercase tracking-[0.08em];
 }
 
 @utility text-body {
-  @apply font-body text-base md:text-lg text-muted;
+  @apply text-pretty font-body text-base md:text-lg leading-[1.65];
+}
+
+@utility text-body-small {
+  @apply text-pretty font-body text-sm md:text-base leading-[1.65];
+}
+
+@utility text-claim {
+  @apply text-pretty font-body text-base md:text-lg font-bold leading-[1.4];
 }
 
 @utility text-meta {
-  @apply font-body text-sm leading-normal text-subtle;
+  @apply font-body text-sm leading-relaxed text-subtle;
 }
 
 @utility text-eyebrow {
-  @apply font-chulapa text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-subtle;
+  @apply font-chulapa text-xs md:text-sm font-normal uppercase leading-normal tracking-[0.18em];
 }
 
 @utility text-cta {
@@ -96,5 +122,5 @@
 }
 
 @utility text-price {
-  @apply font-body text-4xl md:text-5xl font-medium leading-none;
+  @apply whitespace-nowrap font-pontejos-identity text-[clamp(2rem,2.5vw,2.25rem)] font-normal leading-[1.1] tracking-[-0.02em] tabular-nums;
 }

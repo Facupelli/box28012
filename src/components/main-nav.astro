@@ -19,32 +19,32 @@ const navItems = [
   data-hero={String(isHome)}
   data-visible="true"
   data-menu-open="false"
-  class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full"
+  class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full max-lg:data-[menu-open=true]:bg-bg"
 >
   <div
     data-nav-header
-    class="relative z-20 mx-auto flex h-18 max-w-350 items-center justify-between px-6 transition-[height] duration-300 ease-out group-data-[hero=true]:h-20 lg:px-10 lg:group-data-[hero=true]:h-28"
+    class="relative z-20 mx-auto flex h-nav max-w-350 items-center justify-between px-4 md:px-10"
   >
     <a
       href={isHome ? "#inicio" : "/"}
-      class="font-pontejos-identity text-lg tracking-[-0.06em] transition-[font-size] duration-300 ease-out lg:text-xl lg:group-data-[hero=true]:text-2xl"
+      class="font-pontejos-identity text-lg tracking-[-0.06em] lg:text-xl"
     >
       BOX 28012
     </a>
 
     <!-- DESKTOP -->
-    <ul class="hidden items-center gap-6 text-text/80 transition-[gap] duration-300 ease-out group-data-[hero=true]:gap-8 lg:flex xl:gap-10 xl:group-data-[hero=true]:gap-12">
+    <ul class="hidden items-center gap-6 text-text/80 lg:flex xl:gap-10">
       {navItems.map((item) => (
         <li>
           {item.href ? (
             <a
               href={item.href}
-              class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base"
+              class="text-sm font-medium uppercase tracking-[0.18em]"
             >
               {item.label}
             </a>
           ) : (
-            <span class="text-sm font-medium uppercase tracking-[0.18em] transition-[font-size] duration-300 ease-out group-data-[hero=true]:text-base">
+            <span class="text-sm font-medium uppercase tracking-[0.18em]">
               {item.label}
             </span>
           )}
@@ -79,9 +79,9 @@ const navItems = [
   id="mobile-menu"
   aria-hidden="true"
   inert
-  class="pointer-events-none invisible fixed inset-x-0 bottom-0 z-40 bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
+  class="pointer-events-none invisible fixed inset-x-0 top-nav bottom-0 z-40 overflow-y-auto bg-bg opacity-0 transition-[opacity,visibility] duration-300 ease-out lg:hidden"
 >
-  <ul class="flex h-full -translate-y-10 flex-col justify-center gap-10 px-6 text-[clamp(2rem,10vw,3rem)] text-text/80 opacity-0 transition-[opacity,transform] duration-300 ease-out">
+  <ul class="flex min-h-full -translate-y-2 flex-col justify-center gap-10 px-4 py-6 text-[clamp(1.5rem,6vw,2rem)] text-text/80 opacity-0 transition-[opacity,transform] duration-300 ease-out md:px-10">
     {navItems.map((item) => (
       <li>
         {item.href ? (
@@ -118,15 +118,8 @@ const navItems = [
     let ticking = false;
     let isMenuOpen = false;
 
-    const updateMenuOffset = () => {
-      const headerHeight = navHeader?.offsetHeight ?? 72;
-      mobileMenu.style.top = `${headerHeight}px`;
-    };
-
     const setMenuOpen = (open: boolean) => {
       isMenuOpen = open;
-
-      if (open) updateMenuOffset();
 
       nav.dataset.menuOpen = String(open);
       menuToggleButton?.setAttribute("aria-expanded", String(open));
@@ -148,17 +141,19 @@ const navItems = [
       document.documentElement.style.overflow = open ? "hidden" : "";
 
       if (open) {
+        // Wait for the menu's first visible frame before moving focus.
         window.requestAnimationFrame(() => {
-          mobileMenuLinks[0]?.focus();
+          window.requestAnimationFrame(() => {
+            if (isMenuOpen) mobileMenuLinks[0]?.focus();
+          });
         });
       }
     };
 
     const updateNav = () => {
       const currentScrollY = window.scrollY;
-      const compactNavHeight = 72;
-      const isHero =
-        (hero?.getBoundingClientRect().bottom ?? 0) > compactNavHeight;
+      const navHeight = navHeader?.offsetHeight ?? nav.offsetHeight;
+      const isHero = (hero?.getBoundingClientRect().bottom ?? 0) > navHeight;
       const isScrollingUp = currentScrollY < lastScrollY;
       const isNearTop = currentScrollY < 8;
 
@@ -166,8 +161,6 @@ const navItems = [
       nav.dataset.visible = String(
         isMenuOpen || isHero || isScrollingUp || isNearTop,
       );
-
-      if (!isMenuOpen) window.requestAnimationFrame(updateMenuOffset);
 
       lastScrollY = currentScrollY;
       ticking = false;
@@ -245,7 +238,6 @@ const navItems = [
       requestUpdate();
     });
 
-    updateMenuOffset();
     updateNav();
     window.addEventListener("scroll", requestUpdate, { passive: true });
   }

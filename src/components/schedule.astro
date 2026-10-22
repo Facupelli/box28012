@@ -1,5 +1,6 @@
 ---
 import { getHomeData } from "../data/home";
+import FreeTrialCTA from "./free-trial-cta.astro";
 
 const {
   schedule,
@@ -24,13 +25,9 @@ const sessionBySlot = new Map(
 
 <section id="horarios" class="px-4 py-24 md:px-10 md:py-36">
   <header class="space-y-2">
-    <h1 class="font-pontejos-display text-[clamp(2.5rem,5vw,4rem)] leading-none tracking-[-0.02em]">
-      {schedule.title}
-    </h1>
+    <h1 class="text-page-title">{schedule.title}</h1>
 
-    <p class="max-w-150 font-body text-base leading-relaxed text-muted md:text-lg">
-      {schedule.headline}
-    </p>
+    <p class="text-body max-w-150 text-muted">{schedule.headline}</p>
   </header>
 
   <div class="mt-section-content hidden md:block">
@@ -134,12 +131,16 @@ const sessionBySlot = new Map(
     </div>
   </div>
 
-  <div class="mt-8 text-sm leading-relaxed text-subtle md:mt-8">
+  <div class="text-meta mt-8 md:mt-8">
     <p>Aforo mínimo 2 personas.</p>
     <p>
       Los horarios pueden estar sujetos a modificaciones en función de la
       logística del box.
     </p>
+  </div>
+
+  <div class="mt-8 md:mt-10">
+    <FreeTrialCTA />
   </div>
 </section>
 
