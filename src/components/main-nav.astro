@@ -1,20 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
 
+const isHome = Astro.url.pathname === "/";
+const homePath = isHome ? "" : "/";
 const navItems = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Actividades", href: "#actividades" },
-  { label: "Horarios", href: "#horarios" },
-  { label: "Tarifas", href: "#tarifas" },
-  { label: "El Box", href: "#el-box" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: `${homePath}#servicios` },
+  { label: "Actividades", href: `${homePath}#actividades` },
+  { label: "Horarios", href: "/horarios" },
+  { label: "Tarifas", href: "/tarifas" },
+  { label: "El Box", href: `${homePath}#el-box` },
+  { label: "Contacto", href: `${homePath}#contacto` },
 ];
 ---
 
 <nav
   id="main-nav"
   aria-label="Navegación principal"
-  data-hero="true"
+  data-hero={String(isHome)}
   data-visible="true"
   data-menu-open="false"
   class="group fixed top-0 left-0 z-50 w-full bg-transparent transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] data-[hero=false]:bg-bg data-[visible=false]:-translate-y-full"
@@ -24,7 +26,7 @@ const navItems = [
     class="relative z-20 mx-auto flex h-18 max-w-350 items-center justify-between px-6 transition-[height] duration-300 ease-out group-data-[hero=true]:h-20 lg:px-10 lg:group-data-[hero=true]:h-28"
   >
     <a
-      href="#inicio"
+      href={isHome ? "#inicio" : "/"}
       class="font-pontejos-identity text-lg tracking-[-0.06em] transition-[font-size] duration-300 ease-out lg:text-xl lg:group-data-[hero=true]:text-2xl"
     >
       BOX 28012
@@ -111,7 +113,7 @@ const navItems = [
   const mobileMenuLinks =
     document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
 
-  if (nav && hero && mobileMenu && mobileMenuList) {
+  if (nav && mobileMenu && mobileMenuList) {
     let lastScrollY = window.scrollY;
     let ticking = false;
     let isMenuOpen = false;
@@ -155,7 +157,8 @@ const navItems = [
     const updateNav = () => {
       const currentScrollY = window.scrollY;
       const compactNavHeight = 72;
-      const isHero = hero.getBoundingClientRect().bottom > compactNavHeight;
+      const isHero =
+        (hero?.getBoundingClientRect().bottom ?? 0) > compactNavHeight;
       const isScrollingUp = currentScrollY < lastScrollY;
       const isNearTop = currentScrollY < 8;
 

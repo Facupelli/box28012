@@ -4,8 +4,7 @@ import MainNav from "../components/main-nav.astro";
 import Hero from "../components/hero.astro";
 import Services from "../components/services.astro";
 import Activities from "../components/activities.astro";
-import Schedule from "../components/schedule.astro";
-import Pricing from "../components/pricing.astro";
+import TrainingInfo from "../components/training-info.astro";
 import AboutStory from "../components/about-story.astro";
 import Team from "../components/team.astro";
 import Contact from "../components/contact.astro";
@@ -34,10 +33,7 @@ const structuredData = getBusinessStructuredData(Astro.site);
     <Hero />
     <Services />
     <Activities />
-    <div class="mx-auto max-w-350">
-      <Schedule />
-    </div>
-    <Pricing />
+    <TrainingInfo />
     <AboutStory />
     <Team />
     <Contact />

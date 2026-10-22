@@ -5,9 +5,11 @@ const { pricing } = getHomeData();
 ---
 
 <div class="mx-auto max-w-350">
-  <section id="tarifas" class="scroll-mt-18 px-4 py-section md:px-10">
+  <section id="tarifas" class="px-4 py-24 md:px-10 md:py-36">
     <header class="space-y-2">
-      <h2 class="text-section-title text-text">{pricing.title}</h2>
+      <h1 class="font-pontejos-display text-[clamp(2.5rem,5vw,4rem)] leading-none tracking-[-0.02em]">
+        {pricing.title}
+      </h1>
       <p class="font-body text-base leading-relaxed text-muted md:text-lg">
         {pricing.headline}
       </p>
@@ -22,12 +24,12 @@ const { pricing } = getHomeData();
         class="min-w-0 lg:row-span-2 lg:grid lg:grid-rows-subgrid"
       >
         <div>
-          <h3
+          <h2
             id="pricing-group-title"
             class="text-pretty font-pontejos-display text-[clamp(1.75rem,2.25vw,2rem)] leading-none tracking-[-0.02em] text-text"
           >
             {pricing.smallGroup.title}
-          </h3>
+          </h2>
 
           {pricing.smallGroup.periods.map((period, index) => (
             <p
@@ -80,9 +82,9 @@ const { pricing } = getHomeData();
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div class="min-w-0">
-                    <h4 class="font-chulapa text-base font-normal uppercase leading-tight tracking-[0.08em] text-text md:text-lg">
+                    <h3 class="font-chulapa text-base font-normal uppercase leading-tight tracking-[0.08em] text-text md:text-lg">
                       {plan.name}
-                    </h4>
+                    </h3>
                     <p class="mt-2 font-body text-xs uppercase leading-tight tracking-[0.06em] text-muted">
                       {plan.sessionsLabel}
                     </p>
@@ -102,12 +104,12 @@ const { pricing } = getHomeData();
         class="min-w-0 lg:row-span-2 lg:grid lg:grid-rows-subgrid"
       >
         <header>
-          <h3
+          <h2
             id="pricing-personal-title"
             class="text-pretty font-pontejos-display text-[clamp(1.75rem,2.25vw,2rem)] leading-none tracking-[-0.02em] text-text"
           >
             {pricing.personal.title}
-          </h3>
+          </h2>
           <p class="max-w-120 pt-4 font-body text-sm leading-relaxed text-muted md:text-base">
             {pricing.personal.description}
           </p>
@@ -119,9 +121,9 @@ const { pricing } = getHomeData();
               <span class="font-body text-sm font-semibold leading-none text-accent">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h4 class="min-w-0 font-chulapa text-base font-normal uppercase leading-tight tracking-[0.08em] text-text md:text-lg">
+              <h3 class="min-w-0 font-chulapa text-base font-normal uppercase leading-tight tracking-[0.08em] text-text md:text-lg">
                 {plan.name}
-              </h4>
+              </h3>
               <p class="whitespace-nowrap text-right font-pontejos-identity text-[clamp(2rem,2.5vw,2.25rem)] leading-none text-text tabular-nums">
                 {plan.price} €
               </p>
@@ -131,9 +133,9 @@ const { pricing } = getHomeData();
       </section>
 
       <article class="min-w-0 justify-self-start lg:col-span-2 lg:mt-10">
-        <h3 class="font-chulapa text-lg uppercase tracking-[0.08em] text-text md:text-xl">
+        <h2 class="font-chulapa text-lg uppercase tracking-[0.08em] text-text md:text-xl">
           {pricing.smallGroup.dropIn.name}
-        </h3>
+        </h2>
         <p class="mt-1 font-body text-base font-semibold leading-snug text-text">
           {pricing.smallGroup.dropIn.headline}
         </p>

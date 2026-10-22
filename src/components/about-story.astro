@@ -1,63 +1,53 @@
 ---
-import { Image, getImage } from "astro:assets";
-import TransparentTile from "../assets/images/tiles/transparent-tile-1-cropped.png";
+import { Image } from "astro:assets";
 import { getHomeData } from "../data/home";
 
 const { aboutStory } = getHomeData();
-const backgroundTile = await getImage({
-  src: TransparentTile,
-  width: 520,
-  format: "webp",
-});
 ---
 
-<section
-  id="el-box"
-  class="relative isolate scroll-mt-18 overflow-hidden bg-bg"
->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute top-[16%] left-0 hidden h-[52%] w-[clamp(150px,16vw,300px)] bg-size-[260px_260px] opacity-[0.07] [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%,black_78%,transparent_100%)] lg:block"
-    style={`background-image: url("${backgroundTile.src}")`}
-  ></div>
-  <div class="relative mx-auto grid max-w-350 gap-12 px-4 py-section md:px-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12 xl:gap-18">
-    <div class="lg:order-2 lg:pt-14">
+<section id="el-box" class="scroll-mt-18 bg-surface-warm text-bg">
+  <div class="mx-auto max-w-350 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)]">
+    <div class="px-4 py-section md:px-10 lg:pr-16">
       <header>
-        <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-muted md:text-sm">
+        <p class="font-chulapa text-xs uppercase tracking-[0.22em] text-bg/65 md:text-sm">
           {aboutStory.label}
         </p>
         <div aria-hidden="true" class="mt-4 h-0.5 w-10 bg-accent"></div>
-        <h2 class="mt-7 font-pontejos-display text-[clamp(3.125rem,4.2vw,4.875rem)] leading-[0.95] tracking-[-0.02em] text-text md:mt-8">
+        <h2 class="mt-7 font-pontejos-display text-[clamp(3.125rem,4.2vw,4.875rem)] leading-[0.95] tracking-[-0.02em] md:mt-8">
           {aboutStory.title.split(" ").map((word) => (
             <span class="block">{word}</span>
           ))}
         </h2>
       </header>
 
-      <div class="mt-8 max-w-[39ch] space-y-4 font-body text-sm leading-[1.65] text-text/80 md:mt-9 md:space-y-5 md:text-[0.9375rem]">
+      <div class="mt-8 max-w-[39ch] space-y-4 font-body text-sm leading-[1.65] text-bg/80 md:mt-9 md:space-y-5 md:text-[0.9375rem]">
         {aboutStory.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
       </div>
     </div>
 
-    <div class="relative lg:order-1 lg:self-start">
-      <figure class="aspect-[4/5] w-[84%] overflow-hidden bg-black lg:w-[78%]">
+    <div class="grid aspect-[4/3] grid-cols-[minmax(0,3fr)_minmax(0,1fr)] gap-1.5 md:gap-2 lg:mr-[min(0px,calc((87.5rem-100vw)/2))] lg:aspect-auto lg:min-h-160">
+      <figure class="relative overflow-hidden bg-surface">
         <Image
           src={aboutStory.image}
           alt={aboutStory.alt}
-          widths={[480, 720, 960, 1200]}
-          sizes="(min-width: 1400px) 650px, (min-width: 1024px) 46vw, 80vw"
-          class="size-full object-cover object-center"
+          widths={[480, 720, 960, 1200, 1600]}
+          sizes="(min-width: 1400px) calc(37.5vw + 122px), (min-width: 1024px) 47vw, 75vw"
+          class="absolute inset-0 size-full object-cover object-center"
+          loading="lazy"
         />
       </figure>
-      <figure class="relative z-20 -mt-14 ml-auto aspect-[4/3] w-[69%] overflow-hidden bg-black lg:-mt-[45%] lg:mr-[5%] lg:w-[66%]">
+      <figure class="relative overflow-hidden bg-surface">
         <Image
           src={aboutStory.accentImage}
           alt={aboutStory.accentAlt}
-          widths={[360, 600, 840]}
-          sizes="(min-width: 1400px) 480px, (min-width: 1024px) 33vw, 62vw"
-          class="size-full object-cover object-center"
+          width={480}
+          height={1600}
+          fit="cover"
+          widths={[240, 360, 480, 720]}
+          sizes="(min-width: 1400px) calc(12.5vw + 41px), (min-width: 1024px) 16vw, 25vw"
+          class="absolute inset-0 size-full object-cover object-center"
           loading="lazy"
         />
       </figure>

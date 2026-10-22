@@ -22,9 +22,11 @@ const sessionBySlot = new Map(
 );
 ---
 
-<section id="horarios" class="scroll-mt-18 px-4 py-section md:px-10">
+<section id="horarios" class="px-4 py-24 md:px-10 md:py-36">
   <header class="space-y-2">
-    <h2 class="text-section-title">{schedule.title}</h2>
+    <h1 class="font-pontejos-display text-[clamp(2.5rem,5vw,4rem)] leading-none tracking-[-0.02em]">
+      {schedule.title}
+    </h1>
 
     <p class="max-w-150 font-body text-base leading-relaxed text-muted md:text-lg">
       {schedule.headline}
@@ -107,7 +109,7 @@ const sessionBySlot = new Map(
           data-schedule-panel={day.id}
           hidden={index !== 0}
         >
-          <h3 class="sr-only font-chulapa">Horario del {day.label}</h3>
+          <h2 class="sr-only font-chulapa">Horario del {day.label}</h2>
           <div class="grid grid-cols-[5.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
             <span>Hora</span>
             <span>Actividad</span>

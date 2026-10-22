@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+import { getHomeData } from "../data/home";
+
+const { schedule } = getHomeData();
+const items = [
+  {
+    id: "horarios",
+    title: "Horarios",
+    description: schedule.description,
+    label: "Ver horarios",
+    href: "/horarios",
+  },
+  {
+    id: "tarifas",
+    title: "Tarifas",
+    description:
+      "Conoce los planes de entrenamiento en grupo reducido y las sesiones de entrenamiento personal.",
+    label: "Ver tarifas",
+    href: "/tarifas",
+  },
+];
+---
+
+<section
+  aria-label="Horarios y tarifas"
+  class="mx-auto max-w-350 px-4 py-24 md:px-10 md:py-36"
+>
+  <div class="grid divide-y divide-white/20 md:grid-cols-2 md:divide-x md:divide-y-0">
+    {items.map((item) => (
+      <article
+        id={item.id}
+        class="flex scroll-mt-18 flex-col items-start py-10 first:pt-0 last:pb-0 md:py-0 md:first:pr-12 md:last:pl-12 lg:first:pr-20 lg:last:pl-20"
+      >
+        <h2 class="font-pontejos-display text-[clamp(2.5rem,4vw,3.5rem)] leading-none tracking-[-0.02em]">
+          {item.title}
+        </h2>
+        <p class="mt-5 mb-8 max-w-120 text-pretty text-base leading-relaxed text-muted md:mb-10 md:text-lg">
+          {item.description}
+        </p>
+        <a
+          href={item.href}
+          class="group mt-auto inline-flex min-h-11 items-center gap-6 bg-text px-4 py-3 font-chulapa text-sm font-bold uppercase tracking-[0.08em] text-bg transition-colors hover:bg-text/90 md:text-base"
+        >
+          {item.label}
+          <Icon
+            name="arrow-right"
+            class="size-5 text-accent transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+            aria-hidden="true"
+          />
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
