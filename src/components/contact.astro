@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import WhatsAppLink from "./whatsapp-link.astro";
+import FreeTrialCTA from "./free-trial-cta.astro";
 import { getHomeData } from "../data/home";
 
 const { businessInfo, contact } = getHomeData();
@@ -18,17 +19,7 @@ const { businessInfo, contact } = getHomeData();
           {contact.description}
         </p>
         <div class="mt-8 md:mt-10">
-          <WhatsAppLink
-            variant="ghost"
-            class="group inline-flex items-center gap-3 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-3 font-chulapa text-xs font-bold uppercase leading-tight tracking-[0.08em] text-black shadow-none transition-colors hover:bg-[#E8E8E8]/90 sm:text-sm md:w-fit md:px-4 md:text-base"
-          >
-            {contact.cta}
-            <Icon
-              name="arrow-right"
-              class="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1"
-              aria-hidden="true"
-            />
-          </WhatsAppLink>
+          <FreeTrialCTA />
         </div>
       </div>
     </div>

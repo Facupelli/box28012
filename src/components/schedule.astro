@@ -30,7 +30,7 @@ const sessionBySlot = new Map(
 );
 ---
 
-<section id="horarios" class="px-4 py-24 md:px-10 md:py-36">
+<section id="horarios" class="px-4 py-16 md:px-10 md:py-36">
   <header class="space-y-2">
     <h1 class="text-page-title">{schedule.title}</h1>
 
@@ -114,7 +114,7 @@ const sessionBySlot = new Map(
           aria-selected={index === 0 ? "true" : "false"}
           tabindex={index === 0 ? 0 : -1}
           data-schedule-tab={day.id}
-          class="relative py-4 font-chulapa text-xs font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
+          class="relative min-h-12 py-3.5 font-chulapa text-sm font-medium tracking-[0.1em] text-muted after:absolute after:inset-x-2 after:bottom-0 after:h-0.5 after:scale-x-0 after:bg-accent after:content-[''] aria-selected:text-text aria-selected:after:scale-x-100"
         >
           {day.shortLabel}
         </button>
@@ -131,15 +131,15 @@ const sessionBySlot = new Map(
           hidden={index !== 0}
         >
           <h2 class="sr-only font-chulapa">Horario del {day.label}</h2>
-          <div class="grid grid-cols-[5.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
+          <div class="grid grid-cols-[4.5rem_1fr] border-b border-white/20 pb-3 text-xs font-medium uppercase tracking-[0.16em] text-subtle">
             <span>Hora</span>
             <span>Actividad</span>
           </div>
           <ul>
             {day.sessions.map((session) => (
-              <li class="grid min-h-15 grid-cols-[5.5rem_1fr] items-center border-b border-white/10">
+              <li class="grid min-h-14 grid-cols-[4.5rem_1fr] items-center border-b border-white/10">
                 <time
-                  class="text-sm font-medium tabular-nums text-muted"
+                  class="text-base font-medium tabular-nums text-muted"
                   datetime={session.time}
                 >
                   {session.time}

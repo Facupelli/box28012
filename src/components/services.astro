@@ -9,9 +9,9 @@ const { services } = getHomeData();
   <section id="servicios" class="px-4 pt-section pb-section-compact md:px-10">
     <h2 class="text-section-title text-text/80">{services.title}</h2>
 
-    <div class="mt-section-content grid grid-cols-1 gap-6 lg:min-h-160 lg:grid-cols-2 lg:grid-rows-[1fr_auto_auto_auto] lg:gap-x-8 lg:gap-y-0">
+    <div class="mt-section-content grid grid-cols-1 gap-6 lg:min-h-160 lg:grid-cols-2 lg:grid-rows-[1fr_auto_auto] lg:gap-x-8 lg:gap-y-0">
       {services.items.map((service) => (
-        <article class="relative isolate flex min-h-130 flex-col justify-end overflow-hidden bg-surface p-6 sm:p-10 md:min-h-170 lg:min-h-160 lg:row-span-4 lg:grid lg:grid-cols-1 lg:grid-rows-subgrid lg:justify-normal">
+        <article class="relative isolate flex min-h-130 flex-col justify-end overflow-hidden bg-surface p-6 sm:p-10 md:min-h-170 lg:min-h-160 lg:row-span-3 lg:grid lg:grid-cols-1 lg:grid-rows-subgrid lg:justify-normal">
           <Image
             src={service.image}
             alt={service.alt}
@@ -25,12 +25,10 @@ const { services } = getHomeData();
             class="absolute inset-0 -z-20 size-full object-cover"
           />
 
-          <div class="service-panel-content relative lg:row-span-3 lg:row-start-2 lg:grid lg:grid-rows-subgrid">
+          <div class="service-panel-content relative lg:row-span-2 lg:row-start-2 lg:grid lg:grid-rows-subgrid">
             <h3 class="text-card-title max-w-120 text-text">{service.title}</h3>
 
-            <p class="text-claim mt-5 max-w-120 text-text">{service.claim}</p>
-
-            <p class="text-body mt-3 max-w-120 text-text/90">
+            <p class="text-body mt-5 max-w-120 text-text/90">
               {service.description}
             </p>
           </div>

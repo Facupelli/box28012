@@ -6,14 +6,14 @@ const { pricing } = getHomeData();
 ---
 
 <div class="mx-auto max-w-350">
-  <section id="tarifas" class="px-4 py-24 md:px-10 md:py-36">
+  <section id="tarifas" class="px-4 py-16 md:px-10 md:py-36">
     <header class="space-y-2">
       <h1 class="text-page-title">{pricing.title}</h1>
       <p class="text-body max-w-[60ch] text-muted">{pricing.headline}</p>
     </header>
 
     <div
-      class="mt-section-content grid gap-y-20 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-0 xl:gap-x-28"
+      class="mt-section-content grid gap-y-14 md:gap-y-20 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-0 xl:gap-x-28"
       data-pricing
     >
       <section
@@ -30,7 +30,7 @@ const { pricing } = getHomeData();
               id={`pricing-description-${period.id}`}
               hidden={index !== 0}
               data-pricing-period={period.id}
-              class="text-body-small max-w-[60ch] pt-4 text-muted"
+              class="text-body-small max-w-[60ch] pt-4 text-muted max-md:text-[15px]"
             >
               {period.description}
             </p>
@@ -51,7 +51,7 @@ const { pricing } = getHomeData();
                 aria-selected={index === 0 ? "true" : "false"}
                 tabindex={index === 0 ? 0 : -1}
                 data-pricing-tab={period.id}
-                class="min-h-11 cursor-pointer px-4 font-chulapa text-xs uppercase tracking-[0.08em] text-muted aria-selected:bg-text aria-selected:text-bg aria-[selected=false]:hover:bg-white/5 aria-[selected=false]:hover:text-text md:text-sm"
+                class="min-h-11 cursor-pointer px-4 font-chulapa text-sm uppercase tracking-[0.08em] text-muted aria-selected:bg-text aria-selected:text-bg aria-[selected=false]:hover:bg-white/5 aria-[selected=false]:hover:text-text"
               >
                 {period.label}
               </button>
@@ -71,7 +71,7 @@ const { pricing } = getHomeData();
           >
             <div class="mt-6">
               {period.plans.map((plan, index) => (
-                <article class="grid min-h-20 min-w-0 grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b border-white/10 py-4 last:border-b-0 md:gap-x-5">
+                <article class="grid min-h-20 min-w-0 grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-3 border-b border-white/10 py-4 last:border-b-0 md:gap-x-5">
                   <span class="font-body text-sm font-semibold leading-none text-accent-text">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -99,14 +99,14 @@ const { pricing } = getHomeData();
           <h2 id="pricing-personal-title" class="text-subheading text-text">
             {pricing.personal.title}
           </h2>
-          <p class="text-body-small max-w-120 pt-4 text-muted">
+          <p class="text-body-small max-w-120 pt-4 text-muted max-md:text-[15px]">
             {pricing.personal.description}
           </p>
         </header>
 
         <div class="mt-6 lg:row-start-2">
           {pricing.personal.plans.map((plan, index) => (
-            <article class="grid min-h-20 grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b border-white/10 py-4 last:border-b-0 md:gap-x-5">
+            <article class="grid min-h-20 grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-3 border-b border-white/10 py-4 last:border-b-0 md:gap-x-5">
               <span class="font-body text-sm font-semibold leading-none text-accent-text">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -127,7 +127,7 @@ const { pricing } = getHomeData();
           {pricing.smallGroup.dropIn.headline}
         </p>
         <div class="mt-3 flex flex-wrap items-center gap-4 md:gap-8">
-          <p class="text-body-small max-w-[60ch] text-muted">
+          <p class="text-body-small max-w-[60ch] text-muted max-md:text-[15px]">
             {pricing.smallGroup.dropIn.description}
           </p>
           <p class="text-price text-right text-text">

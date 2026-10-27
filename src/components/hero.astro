@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import WhatsAppLink from "./whatsapp-link.astro";
+import FreeTrialCTA from "./free-trial-cta.astro";
 import HeroImage from "../assets/images/box/box-50.jpg";
 ---
 
@@ -21,7 +21,7 @@ import HeroImage from "../assets/images/box/box-50.jpg";
   ></div>
 
   <div class="mx-auto w-full max-w-350 px-6 pb-10 pt-32 md:px-10 md:pb-16 lg:pb-20">
-    <div class="max-w-230">
+    <div data-hero-content class="max-w-230">
       <p class="text-eyebrow mb-5 text-text text-shadow-[0_1px_2px_#000,0_0_1px_#000] md:mb-7">
         Lavapiés <span class="mx-2 text-text/65">·</span> Calle Cañizares, 3
       </p>
@@ -40,18 +40,7 @@ import HeroImage from "../assets/images/box/box-50.jpg";
       </p>
 
       <div class="mt-8 md:mt-10">
-        <WhatsAppLink
-          variant="ghost"
-          class="group inline-flex items-center gap-6 rounded-none border-0 bg-[#E8E8E8] px-3.5 py-2.5 font-chulapa text-base font-bold uppercase tracking-[0.08em] text-black shadow-none transition-colors md:px-4 md:py-3 md:text-lg"
-        >
-          ¡PRUEBA GRATIS!
-          <span
-            aria-hidden="true"
-            class="text-xl font-normal leading-none text-[#d52b2f] transition-transform group-hover:translate-x-1"
-          >
-            →
-          </span>
-        </WhatsAppLink>
+        <FreeTrialCTA />
       </div>
     </div>
   </div>

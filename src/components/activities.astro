@@ -1,11 +1,12 @@
 ---
 import { getHomeData } from "../data/home";
+import FreeTrialCTA from "./free-trial-cta.astro";
 
 const { activities } = getHomeData();
 ---
 
 <section id="actividades" class="bg-bg text-text">
-  <div class="mx-auto max-w-350 px-4 py-section-compact md:px-10">
+  <div class="mx-auto max-w-350 px-4 pt-section-compact pb-16 md:px-10 md:pb-section-compact">
     <h2 class="text-section-title text-text/80">{activities.title}</h2>
 
     <div class="mt-section-content divide-y divide-white/20">
@@ -15,14 +16,26 @@ const { activities } = getHomeData();
             {String(index + 1).padStart(2, "0")}
           </span>
           <h3 class="text-card-title text-text">{activity.title}</h3>
-          <div class="col-start-2 md:col-start-3">
-            <p class="text-claim text-text">{activity.claim}</p>
-            <p class="text-body mt-3 max-w-140 text-muted">
-              {activity.description}
-            </p>
-          </div>
+          <p class="text-body col-start-2 max-w-140 text-muted md:col-start-3">
+            {activity.description}
+          </p>
         </article>
       ))}
+    </div>
+
+    <div
+      id="prueba"
+      class="grid gap-6 border-t border-white/20 pt-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-12 md:pt-12"
+    >
+      <div>
+        <h3 class="text-feature-title">{activities.invitation.title}</h3>
+        <p class="text-body mt-4 max-w-140 text-muted">
+          {activities.invitation.description}
+        </p>
+      </div>
+      <div class="flex">
+        <FreeTrialCTA />
+      </div>
     </div>
   </div>
 </section>

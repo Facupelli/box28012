@@ -114,6 +114,7 @@ const navItems = [
 <script>
   const nav = document.querySelector<HTMLElement>("#main-nav");
   const hero = document.querySelector<HTMLElement>("#inicio");
+  const heroContent = hero?.querySelector<HTMLElement>("[data-hero-content]");
   const navHeader = nav?.querySelector<HTMLElement>("[data-nav-header]");
   const menuToggleButton = document.querySelector<HTMLButtonElement>(
     "#mobile-menu-toggle",
@@ -124,6 +125,7 @@ const navItems = [
     document.querySelectorAll<HTMLAnchorElement>(".mobile-menu-link");
 
   if (nav && mobileMenu && mobileMenuList) {
+    const desktopMedia = window.matchMedia("(min-width: 1024px)");
     let lastScrollY = window.scrollY;
     let ticking = false;
     let isMenuOpen = false;
@@ -163,13 +165,19 @@ const navItems = [
     const updateNav = () => {
       const currentScrollY = window.scrollY;
       const navHeight = navHeader?.offsetHeight ?? nav.offsetHeight;
-      const isHero = (hero?.getBoundingClientRect().bottom ?? 0) > navHeight;
+      const isOverHero =
+        (hero?.getBoundingClientRect().bottom ?? 0) > navHeight;
+      // On mobile, use a solid background once the hero copy reaches the header.
+      const isHero =
+        isOverHero &&
+        (desktopMedia.matches ||
+          (heroContent?.getBoundingClientRect().top ?? 0) > navHeight);
       const isScrollingUp = currentScrollY < lastScrollY;
       const isNearTop = currentScrollY < 8;
 
       nav.dataset.hero = String(isHero);
       nav.dataset.visible = String(
-        isMenuOpen || isHero || isScrollingUp || isNearTop,
+        isMenuOpen || isOverHero || isScrollingUp || isNearTop,
       );
 
       lastScrollY = currentScrollY;
@@ -244,7 +252,7 @@ const navItems = [
     });
 
     window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) setMenuOpen(false);
+      if (desktopMedia.matches) setMenuOpen(false);
       requestUpdate();
     });
 

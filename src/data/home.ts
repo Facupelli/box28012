@@ -28,14 +28,12 @@ const services = {
       title: "Entrenamiento Personal",
       description:
         "Entrenamiento individual, adaptado a tus objetivos y necesidades.",
-      claim: "Más atención, más calidad, mejor entrenamiento.",
       image: PersonalTrainingImage,
       alt: "Persona levantando una barra durante una sesión de entrenamiento",
     },
     {
       id: "grupo-reducido",
       title: "Entrenamiento en Grupo Reducido",
-      claim: "Entrena en grupo, progresa a tu ritmo.",
       description:
         "Entrena en grupo de máximo 8 - 10 personas, con atención cercana y dinámicas de entrenamiento adaptadas a tu nivel.",
       image: CrosstrainingImage,
@@ -46,25 +44,27 @@ const services = {
 
 const activities = {
   title: "Actividades",
+  invitation: {
+    title: "¿ENTRENAMOS?",
+    description:
+      "Cuéntanos tus objetivos por WhatsApp y te ayudamos a elegir cómo entrenar.",
+  },
   items: [
     {
       id: "cross-training",
       title: "CrossTraining",
-      claim: "Fuerza. Skills. Acondicionamiento",
       description:
         "Entrenamiento funcional de alta intensidad para mejorar fuerza, resistencia, velocidad, agilidad y coordinación, con una programación estructurada y segura.",
     },
     {
       id: "iron-body",
       title: "IronBody",
-      claim: "Fuerza. Técnica. Progresión",
       description:
         "Entrenamiento de fuerza para mejorar la postura y la calidad del movimiento, reducir el riesgo de lesiones y construir una base física sólida.",
     },
     {
       id: "run-x",
       title: "RunX",
-      claim: "Corre. Mejora. Progresa.",
       description:
         "Entrenamiento de carrera para mejorar la técnica, ganar fondo y disfrutar de cada kilómetro. Para todos los niveles, con una progresión sostenible.",
     },
@@ -257,13 +257,12 @@ const pricing = {
 
 const contact = {
   title: "CONTACTO",
-  headline: "ESTAMOS AQUÍ PARA AYUDARTE.",
+  headline: "VEN A CONOCER EL BOX.",
   description:
-    "¿Tienes dudas o no sabes por dónde empezar? Escríbenos y te ayudamos a encontrar el entrenamiento que mejor encaja contigo.",
+    "¿Tienes dudas o quieres reservar una prueba? Escríbenos por WhatsApp y te ayudamos a dar el primer paso.",
   address: "C/ Cañizares, 3 · 28012 Madrid",
   whatsapp: businessInfo.phone,
   instagram: businessInfo.instagramHandle,
-  cta: "RESERVA TU PRIMERA SESIÓN GRATIS",
   image: ContactImage,
   imageAlt: "Placa cerámica de Box 28012 en Lavapiés, Madrid",
 };
@@ -273,8 +272,7 @@ const aboutStory = {
   title: "NUESTRA HISTORIA",
   paragraphs: [
     "Box 28012 nació en noviembre de 2019 con una idea clara: entrenar en grupo sin renunciar a la atención individual.",
-    "Desde entonces, hemos crecido junto al barrio de Lavapiés, apostando por los grupos reducidos, la calidad del entrenamiento y la cercanía.",
-    "Hoy seguimos evolucionando con una nueva identidad, pero con la misma filosofía: entrenar bien, progresar y construir comunidad.",
+    "Desde entonces, hemos crecido junto al barrio de Lavapiés, manteniendo la misma filosofía: entrenar bien, progresar y construir comunidad.",
     "Porque 28012 no es solo un código postal. Es el barrio al que pertenecemos.",
   ],
   image: BoxInteriorWideImage,
@@ -294,8 +292,8 @@ const team = {
       imageAlt: "Lorena, fundadora de Box 28012",
       role: "OWNER",
       description: [
-        "Graduada en Ciencias de la Actividad Física y del Deporte (CAFYD) y CrossFit Level 2, Lorena es la fundadora de Box 28012.",
-        "Desde 2019, su trabajo se centra en ofrecer un entrenamiento estructurado de calidad, con atención cercana y grupos reducidos, donde cada persona pueda mejorar, progresar y disfrutar del proceso.",
+        "Fundadora de Box 28012, graduada en Ciencias de la Actividad Física y del Deporte (CAFYD) y certificada CrossFit Level 2.",
+        "Su enfoque combina entrenamiento estructurado y atención cercana para que cada persona progrese y disfrute del proceso.",
       ],
     },
     {
@@ -305,8 +303,8 @@ const team = {
       imageAlt: "Albert, entrenador de Box 28012",
       role: "HEAD COACH",
       description: [
-        "Graduado en Enseñanzas Deportivas, con formación en adaptación a necesidades especiales, y en Magisterio de Educación Infantil, Albert es Head Coach en Box 28012.",
-        "Desde su incorporación al equipo, destaca por su atención al orden, el cuidado de los pequeños detalles y su compromiso con la inclusión y la adaptación de sus clases a las necesidades de cada persona.",
+        "Graduado en Enseñanzas Deportivas y en Magisterio de Educación Infantil, con formación en adaptación a necesidades especiales.",
+        "Cuida los pequeños detalles y adapta sus clases a las necesidades de cada persona, con un enfoque inclusivo.",
       ],
     },
   ],
