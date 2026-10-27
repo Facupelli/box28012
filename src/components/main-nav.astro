@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 
 const isHome = Astro.url.pathname === "/";
 const homePath = isHome ? "" : "/";
+const heroTextShadowClasses =
+  "group-data-[hero=true]:group-data-[menu-open=false]:text-shadow-[0_1px_2px_#000c,0_0_1px_#0008]";
 const navItems = [
   { label: "Servicios", href: `${homePath}#servicios` },
   { label: "Actividades", href: `${homePath}#actividades` },
@@ -27,13 +29,21 @@ const navItems = [
   >
     <a
       href={isHome ? "#inicio" : "/"}
-      class="font-pontejos-identity text-lg tracking-[-0.06em] lg:text-xl"
+      class:list={[
+        "font-pontejos-identity text-lg tracking-[-0.06em] lg:text-xl",
+        heroTextShadowClasses,
+      ]}
     >
       BOX 28012
     </a>
 
     <!-- DESKTOP -->
-    <ul class="hidden items-center gap-6 text-text/80 lg:flex xl:gap-10">
+    <ul
+      class:list={[
+        "hidden items-center gap-6 text-text/80 group-data-[hero=true]:text-text lg:flex xl:gap-10",
+        heroTextShadowClasses,
+      ]}
+    >
       {navItems.map((item) => (
         <li>
           {item.href ? (
@@ -62,7 +72,7 @@ const navItems = [
     >
       <Icon
         name="list"
-        class="absolute size-7 group-data-[menu-open=true]:hidden"
+        class="absolute size-7 group-data-[hero=true]:drop-shadow-[0_1px_2px_#000c] group-data-[menu-open=true]:hidden"
         aria-hidden="true"
       />
       <Icon

@@ -1,5 +1,5 @@
 ---
-import { getHomeData } from "../data/home";
+import { getHomeData, type ScheduleActivityAppearance } from "../data/home";
 import FreeTrialCTA from "./free-trial-cta.astro";
 
 const {
@@ -10,6 +10,13 @@ const {
   scheduleTimes,
 } = getHomeData();
 
+const activityBlockClasses = "block border px-1.5 py-1";
+const appearanceClasses = {
+  accent: "bg-[#402125] border-transparent",
+  neutral: "bg-[#292929] border-transparent",
+  outline: "border-[#444444]",
+} satisfies Record<ScheduleActivityAppearance, string>;
+
 const sessionsByDay = scheduleDays.map((day) => ({
   ...day,
   sessions: scheduleSessions.filter((session) => session.day === day.id),
@@ -18,7 +25,7 @@ const sessionsByDay = scheduleDays.map((day) => ({
 const sessionBySlot = new Map(
   scheduleSessions.map((session) => [
     `${session.day}-${session.time}`,
-    scheduleActivities[session.activity].label,
+    session.activity,
   ]),
 );
 ---
@@ -68,11 +75,28 @@ const sessionBySlot = new Map(
             >
               {time}
             </th>
-            {scheduleDays.map((day) => (
-              <td class="px-1 text-center text-[0.6875rem] font-medium leading-tight text-text lg:px-3 lg:text-sm xl:text-base">
-                {sessionBySlot.get(`${day.id}-${time}`) ?? ""}
-              </td>
-            ))}
+            {scheduleDays.map((day) => {
+              const activity = sessionBySlot.get(`${day.id}-${time}`);
+
+              return (
+                <td class="px-1 py-1 text-center text-[0.6875rem] font-medium leading-tight text-text lg:px-3 lg:text-sm xl:text-base">
+                  {activity && (
+                    <span
+                      class:list={[
+                        activityBlockClasses,
+                        appearanceClasses[
+                          scheduleActivities[activity].appearance
+                        ],
+                      ]}
+                      data-activity={activity}
+                      data-appearance={scheduleActivities[activity].appearance}
+                    >
+                      {scheduleActivities[activity].label}
+                    </span>
+                  )}
+                </td>
+              );
+            })}
           </tr>
         ))}
       </tbody>
@@ -120,7 +144,19 @@ const sessionBySlot = new Map(
                 >
                   {session.time}
                 </time>
-                <span class="text-base font-medium text-text">
+                <span
+                  class:list={[
+                    activityBlockClasses,
+                    appearanceClasses[
+                      scheduleActivities[session.activity].appearance
+                    ],
+                    "text-base font-medium text-text",
+                  ]}
+                  data-activity={session.activity}
+                  data-appearance={
+                    scheduleActivities[session.activity].appearance
+                  }
+                >
                   {scheduleActivities[session.activity].label}
                 </span>
               </li>

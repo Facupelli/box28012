@@ -52,21 +52,21 @@ const activities = {
       title: "CrossTraining",
       claim: "Fuerza. Skills. Acondicionamiento",
       description:
-        "Entrenamiento funcional de alta intensidad, donde trabajarás todas tus cualidades físicas. Programación estructurada para que mejores tu fuerza, resistencia, velocidad, agilidad y coordinación de forma consistente y segura.",
+        "Entrenamiento funcional de alta intensidad para mejorar fuerza, resistencia, velocidad, agilidad y coordinación, con una programación estructurada y segura.",
     },
     {
       id: "iron-body",
       title: "IronBody",
       claim: "Fuerza. Técnica. Progresión",
       description:
-        "Entrenamientos desarrollados para mejorar la fuerza, la higiene postural y optimizar la calidad del movimiento. Planificación estructurada para reducir el riesgo de lesiones y construir una base física sólida.",
+        "Entrenamiento de fuerza para mejorar la postura y la calidad del movimiento, reducir el riesgo de lesiones y construir una base física sólida.",
     },
     {
       id: "run-x",
       title: "RunX",
       claim: "Corre. Mejora. Progresa.",
       description:
-        "Entrenamiento de carrera y resistencia para mejorar la técnica, ganar fondo y desarrollar tu capacidad cardiovascular. Adaptado a todos los niveles, para disfrutar de cada kilómetro y progresar de forma sostenible.",
+        "Entrenamiento de carrera para mejorar la técnica, ganar fondo y disfrutar de cada kilómetro. Para todos los niveles, con una progresión sostenible.",
     },
   ],
 };
@@ -81,14 +81,6 @@ const schedule = {
 export type ScheduleDay =
   "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
 
-export type ScheduleActivity = "cross-training" | "ironbody" | "partner-wod";
-
-export type ScheduleSession = {
-  day: ScheduleDay;
-  time: string;
-  activity: ScheduleActivity;
-};
-
 const scheduleDays: Array<{
   id: ScheduleDay;
   label: string;
@@ -102,10 +94,25 @@ const scheduleDays: Array<{
   { id: "saturday", label: "Sábado", shortLabel: "SÁB" },
 ];
 
-const scheduleActivities: Record<ScheduleActivity, { label: string }> = {
-  "cross-training": { label: "CrossTraining" },
-  ironbody: { label: "IronBody" },
-  "partner-wod": { label: "Partner WOD" },
+export type ScheduleActivityAppearance = "accent" | "neutral" | "outline";
+
+type ScheduleActivityDefinition = {
+  label: string;
+  appearance: ScheduleActivityAppearance;
+};
+
+const scheduleActivities = {
+  "cross-training": { label: "CrossTraining", appearance: "accent" },
+  ironbody: { label: "IronBody", appearance: "neutral" },
+  "partner-wod": { label: "Partner WOD", appearance: "outline" },
+} satisfies Record<string, ScheduleActivityDefinition>;
+
+export type ScheduleActivity = keyof typeof scheduleActivities;
+
+export type ScheduleSession = {
+  day: ScheduleDay;
+  time: string;
+  activity: ScheduleActivity;
 };
 
 const scheduleTimes = [

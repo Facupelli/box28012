@@ -12,26 +12,30 @@ const { team } = getHomeData();
       <p class="text-body max-w-[60ch] text-muted">{team.headline}</p>
     </header>
 
-    <div class="mt-section-content grid grid-cols-1 gap-y-12 md:gap-y-14 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-0 xl:gap-x-18">
+    <div class="mt-section-content grid grid-cols-1 gap-y-16 md:gap-y-14 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-0 xl:gap-x-18">
       {team.members.map((member, index) => (
         <article
           class:list={[
             "min-w-0",
             index === 1 &&
-              "border-t border-white/20 pt-12 md:pt-14 lg:border-t-0 lg:pt-0",
+              "md:border-t md:border-white/20 md:pt-14 lg:border-t-0 lg:pt-0",
           ]}
         >
           <figure class="mb-8 h-60 w-full overflow-hidden bg-surface md:h-72">
             <Image
               src={member.image}
               alt={member.imageAlt}
-              widths={[480, 720, 960, 1200]}
-              sizes="(min-width: 1024px) 45vw, (min-width: 768px) calc(100vw - 80px), calc(100vw - 32px)"
+              widths={[480, 720, 960, 1200, 1600]}
+              sizes={
+                member.id === "lorena"
+                  ? "(min-width: 1400px) 718px, (min-width: 1280px) calc((100vw - 152px) * 0.575), (min-width: 1024px) calc((100vw - 136px) * 0.575), (min-width: 768px) calc((100vw - 80px) * 1.15), calc((100vw - 32px) * 1.15)"
+                  : "(min-width: 1400px) 843px, (min-width: 1280px) calc((100vw - 152px) * 0.675), (min-width: 1024px) calc((100vw - 136px) * 0.675), (min-width: 768px) calc((100vw - 80px) * 1.35), calc((100vw - 32px) * 1.35)"
+              }
               class:list={[
                 "size-full object-cover",
                 member.id === "lorena"
-                  ? "object-[center_40%] md:object-[center_25%] lg:object-[center_40%]"
-                  : "scale-120 object-[center_60%] md:object-[center_44%] lg:object-[center_60%]",
+                  ? "scale-115 object-[center_40%] md:object-[center_20%] lg:object-[center_25%]"
+                  : "scale-135 object-[center_60%] md:object-[center_40%] lg:object-[center_55%]",
               ]}
               loading="lazy"
             />
@@ -40,7 +44,7 @@ const { team } = getHomeData();
             <h3 class="text-feature-title text-text">{member.name}</h3>
             <p class="text-eyebrow mt-3 text-accent-text">{member.role}</p>
           </header>
-          <div class="text-body mt-8 max-w-[43ch] border-t border-white/20 pt-8 text-muted space-y-4 md:space-y-5">
+          <div class="text-body mt-6 max-w-[43ch] border-t border-white/20 pt-6 text-muted space-y-4 md:mt-8 md:pt-8 md:space-y-5">
             {member.description.map((paragraph) => (
               <p>{paragraph}</p>
             ))}
