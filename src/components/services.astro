@@ -11,7 +11,7 @@ const { services } = getHomeData();
 
     <div class="mt-section-content grid grid-cols-1 gap-6 lg:min-h-160 lg:grid-cols-2 lg:grid-rows-[1fr_auto_auto] lg:gap-x-8 lg:gap-y-0">
       {services.items.map((service) => (
-        <article class="relative isolate flex min-h-130 flex-col justify-end overflow-hidden bg-surface p-6 sm:p-10 md:min-h-170 lg:min-h-160 lg:row-span-3 lg:grid lg:grid-cols-1 lg:grid-rows-subgrid lg:justify-normal">
+        <article class="relative isolate flex min-h-120 flex-col justify-end overflow-hidden bg-surface p-6 sm:p-10 md:min-h-170 lg:min-h-160 lg:row-span-3 lg:grid lg:grid-cols-1 lg:grid-rows-subgrid lg:justify-normal">
           <Image
             src={service.image}
             alt={service.alt}
@@ -26,9 +26,9 @@ const { services } = getHomeData();
           />
 
           <div class="service-panel-content relative lg:row-span-2 lg:row-start-2 lg:grid lg:grid-rows-subgrid">
-            <h3 class="text-card-title max-w-120 text-text">{service.title}</h3>
+            <h3 class="text-card-title mx-auto max-w-120 text-center text-balance text-text md:mx-0 md:text-left md:text-wrap">{service.title}</h3>
 
-            <p class="text-body mt-5 max-w-120 text-text/90">
+            <p class="text-body mx-auto mt-5 max-w-120 text-center text-pretty text-text/90 md:mx-0 md:text-left md:text-wrap">
               {service.description}
             </p>
           </div>
