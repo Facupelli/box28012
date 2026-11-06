@@ -9,8 +9,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:production": "SITE_ENV=production astro build",
+    "build:preview": "SITE_ENV=preview astro build",
     "preview": "astro preview",
-    "deploy": "pnpm build && wrangler deploy",
+    "deploy": "pnpm build:preview && wrangler deploy",
     "astro": "astro",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",

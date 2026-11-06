@@ -336,6 +336,11 @@ export function getBusinessStructuredData(siteUrl: URL) {
     name: businessInfo.name,
     url: businessUrl.href,
     telephone: businessInfo.phone,
+    description:
+      "Centro de entrenamiento funcional y personal en Lavapiés, Madrid, con entrenamiento en grupos reducidos.",
+    foundingDate: "2019-11",
+    hasMap:
+      "https://www.google.com/maps/search/?api=1&query=Calle+de+los+Ca%C3%B1izares+3+28012+Madrid",
     address: {
       "@type": "PostalAddress",
       streetAddress: businessInfo.addressLine1,

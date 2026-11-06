@@ -8,6 +8,7 @@ import { SITE_URL } from "./site.config.mjs";
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  trailingSlash: "always",
 
   vite: {
     plugins: [tailwindcss()],
@@ -80,5 +81,22 @@ export default defineConfig({
     },
   ],
 
-  integrations: [icon()],
+  integrations: [
+    icon(),
+    {
+      name: "require-build-environment",
+      hooks: {
+        "astro:config:setup": ({ command }) => {
+          if (
+            command === "build" &&
+            !["production", "preview"].includes(process.env.SITE_ENV ?? "")
+          ) {
+            throw new Error(
+              "Build requires SITE_ENV=production or SITE_ENV=preview. Use pnpm build:production or pnpm build:preview.",
+            );
+          }
+        },
+      },
+    },
+  ],
 });

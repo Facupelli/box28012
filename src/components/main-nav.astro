@@ -8,8 +8,8 @@ const heroTextShadowClasses =
 const navItems = [
   { label: "Servicios", href: `${homePath}#servicios` },
   { label: "Actividades", href: `${homePath}#actividades` },
-  { label: "Horarios", href: "/horarios" },
-  { label: "Tarifas", href: "/tarifas" },
+  { label: "Horarios", href: "/horarios/" },
+  { label: "Tarifas", href: "/tarifas/" },
   { label: "El Box", href: `${homePath}#el-box` },
   { label: "Contacto", href: `${homePath}#contacto` },
 ];
@@ -88,6 +88,21 @@ const navItems = [
     </button>
   </div>
 </nav>
+
+<noscript>
+  <nav
+    aria-label="Navegación sin JavaScript"
+    class="relative z-50 bg-bg px-4 pt-nav pb-4 lg:hidden"
+  >
+    <ul class="flex flex-wrap gap-4">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</noscript>
 
 <!-- MOBILE MENU-->
 <div

@@ -5,6 +5,17 @@ import FreeTrialCTA from "./free-trial-cta.astro";
 const { pricing } = getHomeData();
 ---
 
+<noscript>
+  <style>
+    [data-pricing-period][hidden] {
+      display: block !important;
+    }
+    [data-pricing] [role="tablist"] {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
 <div class="mx-auto max-w-350">
   <section id="tarifas" class="px-4 py-16 md:px-10 md:py-36">
     <header class="space-y-2">
@@ -69,6 +80,9 @@ const { pricing } = getHomeData();
             data-pricing-panel={period.id}
             data-pricing-period={period.id}
           >
+            <noscript>
+              <h3 class="mt-6 font-chulapa">{period.label}</h3>
+            </noscript>
             <div class="mt-6">
               {period.plans.map((plan, index) => (
                 <article class="grid min-h-20 min-w-0 grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-3 border-b border-white/10 py-4 last:border-b-0 md:gap-x-5">

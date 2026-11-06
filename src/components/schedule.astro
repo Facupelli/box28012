@@ -30,6 +30,28 @@ const sessionBySlot = new Map(
 );
 ---
 
+<noscript>
+  <style>
+    [data-schedule-panel][hidden] {
+      display: block !important;
+    }
+    [data-schedule-panel] {
+      margin-top: 1.5rem;
+    }
+    [data-schedule-panel] h2 {
+      position: static;
+      width: auto;
+      height: auto;
+      clip: auto;
+      clip-path: none;
+      margin-bottom: 1rem;
+    }
+    [data-schedule-mobile] [role="tablist"] {
+      display: none !important;
+    }
+  </style>
+</noscript>
+
 <section id="horarios" class="px-4 py-16 md:px-10 md:py-36">
   <header class="space-y-2">
     <h1 class="text-page-title">{schedule.title}</h1>

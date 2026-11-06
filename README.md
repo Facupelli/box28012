@@ -1,43 +1,41 @@
-# Astro Starter Kit: Minimal
+# BOX 28012
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Astro website for https://box28012.com. Requires Node >=22.12 and pnpm.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+- `pnpm dev`: start local development.
+- `pnpm build:production`: build the live site, allowing search indexing.
+- `pnpm build:preview`: build a preview, with `noindex, nofollow`.
+- `pnpm check`: check types.
+- `pnpm lint`: lint code.
 
-Inside of your Astro project, you'll see the following folders and files:
+Builds require `SITE_ENV=production` or `SITE_ENV=preview`. The build scripts
+above set it for you. Local development needs no setting.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Deployment
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Upload `dist/` to the static web host. Use preview builds for staging, ideally
+with password protection. Never publish a production build to a preview host.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`pnpm deploy` uses Cloudflare for client previews only, not production.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Configure the production host to:
 
-## 🧞 Commands
+- Redirect HTTP, www, and other domains to `https://box28012.com`.
+- Redirect page URLs to trailing slashes and remove `index.html` from URLs.
+- Return 404 for missing pages instead of showing Home.
+- Allow access to `robots.txt` and `sitemap.xml`, without blocking indexing.
 
-All commands are run from the root of the project, from a terminal:
+Disable old public previews. Submit `/sitemap.xml` to Google Search Console
+and Bing Webmaster Tools.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## SEO files
 
-## 👀 Want to learn more?
+- `site.config.mjs`: domain and indexing settings.
+- `src/components/base-head.astro`: shared search and social metadata.
+- `src/pages/`: page titles, descriptions, sitemap, and crawler rules.
+- `src/data/home.ts`: business details and structured data.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Search crawlers and Google-Extended are allowed. Selected training bots are
+blocked in `robots.txt`; these rules depend on crawlers respecting them.
